@@ -454,7 +454,12 @@
             document.getElementById('modal-description').textContent = app.description;
             document.getElementById('modal-link').href = app.link;
             
+            // Lock body scroll when opening modal
+            document.body.style.overflow = 'hidden';
+            
             modal.style.display = 'flex';
+            // Force browser reflow
+            modal.offsetHeight;
             setTimeout(() => {
                 modal.classList.add('show');
             }, 10);
@@ -463,18 +468,29 @@
         function closeModal() {
             const modal = document.getElementById('modal');
             modal.classList.remove('show');
+            
+            // Unlock body scroll when closing modal
             setTimeout(() => {
+                document.body.style.overflow = '';
                 modal.style.display = 'none';
             }, 300);
         }
 
         // Close modal when clicking outside
-        window.onclick = function(event) {
+        window.addEventListener('click', function(event) {
             const modal = document.getElementById('modal');
             if (event.target == modal) {
                 closeModal();
             }
-        }
+        });
+        
+        // Add touch event for mobile
+        window.addEventListener('touchend', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
 
         // Close modal with escape key
         document.addEventListener('keydown', function(event) {
