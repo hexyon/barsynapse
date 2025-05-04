@@ -10,7 +10,6 @@
     --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
     --card-border: 1px solid rgba(226, 232, 240, 0.8);
     --card-radius: 12px;
-    --transition-standard: all 0.2s ease;
     --bg-gradient: linear-gradient(135deg, #F5F5F7 0%, #EEEEEE 100%);
 }
 
