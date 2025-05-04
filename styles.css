@@ -374,188 +374,9 @@ hr {
     transform: translateY(-2px);
 }
 
-.info-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px; 
-    height: 44px; 
-    border-radius: 8px;
-    background: rgba(226, 232, 240, 0.5);
-    border: none;
-    color: var(--medium-text);
-    cursor: pointer;
-    transition: var(--transition-standard);
-}
 
-.info-button:hover {
-    background: rgba(226, 232, 240, 0.8);
-    color: var(--dark-text);
-    transform: translateY(-2px);
-}
 
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-.modal.show {
-    opacity: 1;
-}
-
-.modal-content {
-    background: #fff;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: modalFadeIn 0.3s ease forwards;
-    position: relative;
-    z-index: 1001;
-}
-
-@keyframes modalFadeIn {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.6rem;
-    color: var(--medium-text);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    z-index: 10;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(226, 232, 240, 0.5);
-}
-
-.close-button:hover {
-    color: var(--dark-text);
-    background: rgba(226, 232, 240, 0.8);
-}
-
-.modal-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.modal-icon {
-    width: 52px; 
-    height: 52px; 
-    border-radius: 12px;
-    object-fit: contain;
-    margin-right: 1rem;
-    background-color: transparent !important;
-    padding: 8px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.modal-header h2 {
-    font-family: Roboto, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 1.5rem;
-    color: var(--dark-text);
-    margin-right: 1rem;
-}
-
-.modal-body {
-    padding: 1.5rem;
-}
-
-.modal-body p {
-    color: var(--medium-text);
-    font-size: 1.1rem; 
-    line-height: 1.7; 
-    margin-bottom: 1.5rem;
-}
-
-.modal-features h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--dark-text);
-    margin-bottom: 1rem;
-}
-
-.modal-features ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.modal-features li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--medium-text);
-    font-size: 1.05rem; 
-}
-
-.modal-features li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-.modal-footer {
-    padding: 1.5rem;
-    border-top: 1px solid rgba(226, 232, 240, 0.8);
-    display: flex;
-    justify-content: flex-end;
-}
-
-.modal-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1.6rem; 
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05rem; 
-    transition: var(--transition-standard);
-}
-
-.modal-button.primary {
-    background: var(--primary-color);
-    color: var(--light-text);
-}
-
-.modal-button.primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-.modal-button i {
-    margin-right: 0.75rem;
-}
 
 /* Footer Styles */
 footer {
@@ -734,9 +555,7 @@ footer {
         justify-content: center;
     }
     
-    .modal-content {
-        width: 95%;
-    }
+
     
     .footer-section {
         flex: 100%;
@@ -766,39 +585,12 @@ footer {
         padding: 1.2rem;
     }
     
-    .modal-content {
-        width: 95%;
-        max-height: 85vh;
-        overflow-y: auto;
-        margin: auto 10px;
-    }
-    
-    .modal-header {
-        padding: 1.2rem;
-        flex-wrap: wrap;
-    }
-    
-    .modal-body {
-        padding: 1.2rem;
-    }
-    
-    .modal-footer {
-        padding: 1.2rem;
-    }
+
     
     .action-buttons {
         flex-direction: column;
         width: 100%;
     }
     
-    .info-button {
-        width: 100%;
-        height: 44px;
-    }
-    
-    /* Improve tap targets on mobile */
-    .visit-button, .info-button, .close-button {
-        min-height: 44px;
-        min-width: 44px;
-    }
+
 }
