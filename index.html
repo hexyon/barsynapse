@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Synapse</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="background-gradient"></div>
+    
+    <header>
+        <div class="logo">
+            <h1>Bar Synapse</h1>
+        </div>
+        <div class="header-buttons">
+            <button class="header-button primary" onclick="toggleView('grid')">
+                <i class="fas fa-th-large"></i>
+                <span>Grid View</span>
+            </button>
+            <button class="header-button secondary" onclick="toggleView('list')">
+                <i class="fas fa-list"></i>
+                <span>List View</span>
+            </button>
+            <button class="header-button accent" onclick="openAllWebsites()">
+                <i class="fas fa-external-link-alt"></i>
+                <span>Launch All</span>
+            </button>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search applications..." onkeyup="searchApps()">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </header>
+
+    <div class="section-title">
+        <h2>Digital Collection</h2>
+        <p class="app-count"><span id="visible-count">11</span> applications available</p>
+    </div>
+    
+    <main id="app-grid" class="grid-view">
+        <div class="website" data-name="slide pro" onclick="showDescription('slidePro')">
+            <div class="website-header">
+                <img src="https://slidepro.netlify.app/favicon.ico" alt="Slide Pro Icon" class="site-icon">
+                <span class="site-name">Slide Pro</span>
+                <div class="badge">Media</div>
+            </div>
+            <hr>
+            <p class="site-description" id="slidePro-description">A sleek, feature-rich image slideshow web app. Upload multiple images and control the slideshow with start, stop, shuffle, fullscreen, loop, and progress bar options. Customize slide delay, navigate with arrow keys, and enjoy smooth transitions with a responsive design.</p>
+            <div class="action-buttons">
+                <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('slidePro')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="photo resolution sorter" onclick="showDescription('photoResolutionSorter')">
+            <div class="website-header">
+                <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="Photo Resolution Sorter Icon" class="site-icon">
+                <span class="site-name">Photo Resolution Sorter</span>
+                <div class="badge">Utility</div>
+            </div>
+            <hr>
+            <p class="site-description" id="photoResolutionSorter-description">Photo Resolution Sorter: A web tool that categorizes images by resolution. Upload your photos to automatically sort them into low, standard, or high-res groups. Process entire collections at once and export with a single click. Simple, fast, effective.</p>
+            <div class="action-buttons">
+                <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('photoResolutionSorter')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="reader" onclick="showDescription('reader')">
+            <div class="website-header">
+                <img src="https://readeron.netlify.app/favicon.ico" alt="Reader On Icon" class="site-icon">
+                <span class="site-name">Reader</span>
+                <div class="badge">Text</div>
+            </div>
+            <hr>
+            <p class="site-description" id="reader-description">Reader is a simple web app designed for rich text editing and display. The application features a clean, minimalist design with rounded edges and a user-friendly interface. Users can input text into an editor with a customized toolbar and submit it to display the formatted content below.</p>
+            <div class="action-buttons">
+                <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('reader')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="random number generator" onclick="showDescription('randomNumberGenerator')">
+            <div class="website-header">
+                <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="Random Number Generator Icon" class="site-icon">
+                <span class="site-name">Random Number Generator</span>
+                <div class="badge">Tool</div>
+            </div>
+            <hr>
+            <p class="site-description" id="randomNumberGenerator-description">A simple web app that generates 12-digit numbers. It features a button to generate numbers, a display area, and a copy-to-clipboard function. The design includes a responsive layout, and interactive buttons. Ideal for quick and easy random number generation.</p>
+            <div class="action-buttons">
+                <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('randomNumberGenerator')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="media hub" onclick="showDescription('mediaHub')">
+            <div class="website-header">
+                <img src="https://mediahubon.netlify.app/favicon.ico" alt="Media Hub On Icon" class="site-icon">
+                <span class="site-name">Media Hub</span>
+                <div class="badge">Media</div>
+            </div>
+            <hr>
+            <p class="site-description" id="mediaHub-description">A sleek media viewer web app for images and videos with a modern UI. Features include fullscreen viewing, keyboard navigation, file upload support, blur background effects, and an index system. It offers smooth transitions and a responsive design.</p>
+            <div class="action-buttons">
+                <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('mediaHub')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="gradient designer" onclick="showDescription('gradientDesigner')">
+            <div class="website-header">
+                <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Gradient Designer Icon" class="site-icon">
+                <span class="site-name">Gradient Designer</span>
+                <div class="badge">Design</div>
+            </div>
+            <hr>
+            <p class="site-description" id="gradientDesigner-description">A dynamic Gradient Designer web app for creating, customizing, and downloading gradient backgrounds. Generate random gradients, manually select colors, extract colors from photos, and view color names. Enjoy responsive design and an interactive UI for a seamless experience.</p>
+            <div class="action-buttons">
+                <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('gradientDesigner')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="token" onclick="showDescription('token')">
+            <div class="website-header">
+                <img src="https://tokenon.netlify.app/favicon.ico" alt="Token Icon" class="site-icon">
+                <span class="site-name">Token</span>
+                <div class="badge">Personal</div>
+            </div>
+            <hr>
+            <p class="site-description" id="token-description">A sleek, minimalist personal website offering a seamless user experience with intuitive navigation and modern aesthetics.</p>
+            <div class="action-buttons">
+                <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('token')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="memory prism" onclick="showDescription('memoryPrism')">
+            <div class="website-header">
+                <img src="https://memoryprism.netlify.app/favicon.ico" alt="MemoryPrism Icon" class="site-icon">
+                <span class="site-name">Memory Prism</span>
+                <div class="badge">Journal</div>
+            </div>
+            <hr>
+            <p class="site-description" id="memoryPrism-description">An online memory that lets you easily write and save your personal entries. Use the simple editor to capture your thoughts, format them as you like, and revisit them anytime. Duplicate entries are prevented to keep your journal unique. You can also save all your entries to a file or load them back, ensuring your memories are secure and accessible.</p>
+            <div class="action-buttons">
+                <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('memoryPrism')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="video resolution filter" onclick="showDescription('videoResolutionFilter')">
+            <div class="website-header">
+                <img src="https://videoresolutionfilter.netlify.app/favicon.ico" alt="Video Resolution Filter Icon" class="site-icon">
+                <span class="site-name">Video Resolution Filter</span>
+                <div class="badge">Utility</div>
+            </div>
+            <hr>
+            <p class="site-description" id="videoResolutionFilter-description">A sleek web tool to categorize videos by resolution. Upload videos (MP4, WebM, MOV), and sort them into Small, Default, and Large categories based on resolution. Easily adjust threshold settings, view video details, and download categorized files. Designed with a modern UI.</p>
+            <div class="action-buttons">
+                <a href="https://videoresolutionfilter.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('videoResolutionFilter')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="define plus" onclick="showDescription('definePlus')">
+            <div class="website-header">
+                <img src="https://defineplus.vercel.app/favicon.ico" alt="Define+ Icon" class="site-icon">
+                <span class="site-name">Define+</span>
+                <div class="badge">Dictionary</div>
+            </div>
+            <hr>
+            <p class="site-description" id="definePlus-description">Define+ is a modern, responsive English dictionary that combines definitions, pronunciation, synonyms, antonyms, and visual references in a clean interface. Search any word to get comprehensive language data with real-time results and an intuitive UI designed for both desktop and mobile use.</p>
+            <div class="action-buttons">
+                <a href="https://defineplus.vercel.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('definePlus')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="website" data-name="dictionary lens" onclick="showDescription('dictionaryLens')">
+            <div class="website-header">
+                <img src="https://dl-production.up.railway.app/static/favicon.ico" alt="dictionaryLens Icon" class="site-icon">
+                <span class="site-name">Dictionary Lens</span>
+                <div class="badge">Dictionary</div>
+            </div>
+            <hr>
+            <p class="site-description" id="dictionaryLens-description">Dictionary Lens is an interactive web application that brings words to life with definitions and visual imagery. Search for any word to see its meanings, usage examples, and related images in a clean, modern interface. Features history and a clickable mode that lets you explore word relationships by clicking on terms within definitions.</p>
+            <div class="action-buttons">
+                <a href="https://dl-production.up.railway.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit
+                </a>
+                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('dictionaryLens')">
+                    <i class="fas fa-info-circle"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <img id="modal-icon" src="" alt="App Icon" class="modal-icon">
+                <h2 id="modal-title"></h2>
+                <div id="modal-badge" class="badge"></div>
+            </div>
+            <div class="modal-body">
+                <p id="modal-description"></p>
+            </div>
+            <div class="modal-footer">
+                <a id="modal-link" href="#" target="_blank" class="modal-button primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Launch App
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <p class="footer-title">About Bar Synapse</p>
+                <p>A curated collection of web applications designed to enhance your digital experience.</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Created with</p>
+                <div class="tool-links">
+                    <a href="https://claude.ai/" target="_blank">Claude</a>
+                    <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Developer</p>
+                <a href="https://github.com/hexyon" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    Hexy
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Bar Synapse by Hexy</a> | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Store app data for modal
+        const appData = {
+            slidePro: {
+                title: "Slide Pro",
+                icon: "https://slidepro.netlify.app/favicon.ico",
+                description: "A sleek, feature-rich image slideshow web app. Upload multiple images and control the slideshow with start, stop, shuffle, fullscreen, loop, and progress bar options. Customize slide delay, navigate with arrow keys, and enjoy smooth transitions with a responsive design.",
+                link: "https://slidepro.netlify.app",
+                badge: "Media"
+            },
+            photoResolutionSorter: {
+                title: "Photo Resolution Sorter",
+                icon: "https://photoresolutionsorter.netlify.app/favicon.ico",
+                description: "Photo Resolution Sorter: A web tool that categorizes images by resolution. Upload your photos to automatically sort them into low, standard, or high-res groups. Process entire collections at once and export with a single click. Simple, fast, effective.",
+                link: "https://photoresolutionsorter.netlify.app",
+                badge: "Utility"
+            },
+            reader: {
+                title: "Reader",
+                icon: "https://readeron.netlify.app/favicon.ico",
+                description: "Reader is a simple web app designed for rich text editing and display. The application features a clean, minimalist design with rounded edges and a user-friendly interface. Users can input text into an editor with a customized toolbar and submit it to display the formatted content below.",
+                link: "https://readeron.netlify.app",
+                badge: "Text"
+            },
+            randomNumberGenerator: {
+                title: "Random Number Generator",
+                icon: "https://randomnumbergeneratoron.netlify.app/favicon.ico",
+                description: "A simple web app that generates 12-digit numbers. It features a button to generate numbers, a display area, and a copy-to-clipboard function. The design includes a responsive layout, and interactive buttons. Ideal for quick and easy random number generation.",
+                link: "https://randomnumbergeneratoron.netlify.app",
+                badge: "Tool"
+            },
+            mediaHub: {
+                title: "Media Hub",
+                icon: "https://mediahubon.netlify.app/favicon.ico",
+                description: "A sleek media viewer web app for images and videos with a modern UI. Features include fullscreen viewing, keyboard navigation, file upload support, blur background effects, and an index system. It offers smooth transitions and a responsive design.",
+                link: "https://mediahubon.netlify.app",
+                badge: "Media"
+            },
+            gradientDesigner: {
+                title: "Gradient Designer",
+                icon: "https://gradientdesigner.netlify.app/favicon.ico",
+                description: "A dynamic Gradient Designer web app for creating, customizing, and downloading gradient backgrounds. Generate random gradients, manually select colors, extract colors from photos, and view color names. Enjoy responsive design and an interactive UI for a seamless experience.",
+                link: "https://gradientdesigner.netlify.app",
+                badge: "Design"
+            },
+            token: {
+                title: "Token",
+                icon: "https://tokenon.netlify.app/favicon.ico",
+                description: "A sleek, minimalist personal website offering a seamless user experience with intuitive navigation and modern aesthetics.",
+                link: "https://tokenon.netlify.app",
+                badge: "Personal"
+            },
+            memoryPrism: {
+                title: "Memory Prism",
+                icon: "https://memoryprism.netlify.app/favicon.ico",
+                description: "An online memory that lets you easily write and save your personal entries. Use the simple editor to capture your thoughts, format them as you like, and revisit them anytime. Duplicate entries are prevented to keep your journal unique. You can also save all your entries to a file or load them back, ensuring your memories are secure and accessible.",
+                link: "https://memoryprism.netlify.app",
+                badge: "Journal"
+            },
+            videoResolutionFilter: {
+                title: "Video Resolution Filter",
+                icon: "https://videoresolutionfilter.netlify.app/favicon.ico",
+                description: "A sleek web tool to categorize videos by resolution. Upload videos (MP4, WebM, MOV), and sort them into Small, Default, and Large categories based on resolution. Easily adjust threshold settings, view video details, and download categorized files. Designed with a modern UI.",
+                link: "https://videoresolutionfilter.netlify.app",
+                badge: "Utility"
+            },
+            definePlus: {
+                title: "Define+",
+                icon: "https://defineplus.vercel.app/favicon.ico",
+                description: "Define+ is a modern, responsive English dictionary that combines definitions, pronunciation, synonyms, antonyms, and visual references in a clean interface. Search any word to get comprehensive language data with real-time results and an intuitive UI designed for both desktop and mobile use.",
+                link: "https://defineplus.vercel.app",
+                badge: "Dictionary"
+            },
+            dictionaryLens: {
+                title: "Dictionary Lens",
+                icon: "https://dl-production.up.railway.app/static/favicon.ico",
+                description: "Dictionary Lens is an interactive web application that brings words to life with definitions and visual imagery. Search for any word to see its meanings, usage examples, and related images in a clean, modern interface. Features history and a clickable mode that lets you explore word relationships by clicking on terms within definitions.",
+                link: "https://dl-production.up.railway.app",
+                badge: "Dictionary"
+            }
+        };
+
+        // Show description when clicking on a website
+        function showDescription(siteId) {
+            const descriptions = document.querySelectorAll('.site-description');
+            descriptions.forEach(desc => {
+                desc.style.display = 'none';
+            });
+            
+            const targetDesc = document.getElementById(siteId + '-description');
+            if (targetDesc) {
+                targetDesc.style.display = 'block';
+            }
+        }
+
+        // Initialize descriptions on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const descriptions = document.querySelectorAll('.site-description');
+            descriptions.forEach((desc, index) => {
+                if (index !== 0) desc.style.display = 'none';
+            });
+            
+            // Default to grid view
+            document.getElementById('app-grid').className = 'grid-view';
+        });
+
+        // Toggle between grid and list view
+        function toggleView(viewType) {
+            const appGrid = document.getElementById('app-grid');
+            appGrid.className = viewType + '-view';
+        }
+
+        // Open all websites in new tabs
+        function openAllWebsites() {
+            const websites = document.querySelectorAll('.website');
+            websites.forEach(website => {
+                if (website.style.display !== 'none') {
+                    const link = website.querySelector('a.visit-button').href;
+                    window.open(link, '_blank');
+                }
+            });
+        }
+
+        // Search functionality
+        function searchApps() {
+            const input = document.getElementById('search-input');
+            const filter = input.value.toLowerCase();
+            const websites = document.querySelectorAll('.website');
+            let visibleCount = 0;
+            
+            websites.forEach(website => {
+                const name = website.getAttribute('data-name');
+                if (name.indexOf(filter) > -1) {
+                    website.style.display = "";
+                    visibleCount++;
+                } else {
+                    website.style.display = "none";
+                }
+            });
+            
+            document.getElementById('visible-count').textContent = visibleCount;
+        }
+
+        // Modal functionality
+        function showMoreInfo(appId) {
+            const app = appData[appId];
+            const modal = document.getElementById('modal');
+            
+            document.getElementById('modal-icon').src = app.icon;
+            document.getElementById('modal-title').textContent = app.title;
+            document.getElementById('modal-badge').textContent = app.badge;
+            document.getElementById('modal-description').textContent = app.description;
+            document.getElementById('modal-link').href = app.link;
+            
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
