@@ -57,9 +57,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('slidePro')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -76,9 +74,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('photoResolutionSorter')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -95,9 +91,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('reader')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -114,9 +108,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('randomNumberGenerator')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -133,9 +125,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('mediaHub')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -152,9 +142,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('gradientDesigner')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -171,9 +159,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('token')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -190,9 +176,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('memoryPrism')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -209,9 +193,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('videoResolutionFilter')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -228,9 +210,7 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('definePlus')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
 
@@ -247,32 +227,12 @@
                     <i class="fas fa-external-link-alt"></i>
                     Visit
                 </a>
-                <button class="info-button" onclick="event.stopPropagation(); showMoreInfo('dictionaryLens')">
-                    <i class="fas fa-info-circle"></i>
-                </button>
+
             </div>
         </div>
     </main>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="modal-header">
-                <img id="modal-icon" src="" alt="App Icon" class="modal-icon">
-                <h2 id="modal-title"></h2>
-                <div id="modal-badge" class="badge"></div>
-            </div>
-            <div class="modal-body">
-                <p id="modal-description"></p>
-            </div>
-            <div class="modal-footer">
-                <a id="modal-link" href="#" target="_blank" class="modal-button primary">
-                    <i class="fas fa-external-link-alt"></i>
-                    Launch App
-                </a>
-            </div>
-        </div>
-    </div>
+
 
     <footer>
         <div class="footer-content">
@@ -301,86 +261,7 @@
     </footer>
 
     <script>
-        // Store app data for modal
-        const appData = {
-            slidePro: {
-                title: "Slide Pro",
-                icon: "https://slidepro.netlify.app/favicon.ico",
-                description: "A sleek, feature-rich image slideshow web app. Upload multiple images and control the slideshow with start, stop, shuffle, fullscreen, loop, and progress bar options. Customize slide delay, navigate with arrow keys, and enjoy smooth transitions with a responsive design.",
-                link: "https://slidepro.netlify.app",
-                badge: "Media"
-            },
-            photoResolutionSorter: {
-                title: "Photo Resolution Sorter",
-                icon: "https://photoresolutionsorter.netlify.app/favicon.ico",
-                description: "Photo Resolution Sorter: A web tool that categorizes images by resolution. Upload your photos to automatically sort them into low, standard, or high-res groups. Process entire collections at once and export with a single click. Simple, fast, effective.",
-                link: "https://photoresolutionsorter.netlify.app",
-                badge: "Utility"
-            },
-            reader: {
-                title: "Reader",
-                icon: "https://readeron.netlify.app/favicon.ico",
-                description: "Reader is a simple web app designed for rich text editing and display. The application features a clean, minimalist design with rounded edges and a user-friendly interface. Users can input text into an editor with a customized toolbar and submit it to display the formatted content below.",
-                link: "https://readeron.netlify.app",
-                badge: "Text"
-            },
-            randomNumberGenerator: {
-                title: "Random Number Generator",
-                icon: "https://randomnumbergeneratoron.netlify.app/favicon.ico",
-                description: "A simple web app that generates 12-digit numbers. It features a button to generate numbers, a display area, and a copy-to-clipboard function. The design includes a responsive layout, and interactive buttons. Ideal for quick and easy random number generation.",
-                link: "https://randomnumbergeneratoron.netlify.app",
-                badge: "Tool"
-            },
-            mediaHub: {
-                title: "Media Hub",
-                icon: "https://mediahubon.netlify.app/favicon.ico",
-                description: "A sleek media viewer web app for images and videos with a modern UI. Features include fullscreen viewing, keyboard navigation, file upload support, blur background effects, and an index system. It offers smooth transitions and a responsive design.",
-                link: "https://mediahubon.netlify.app",
-                badge: "Media"
-            },
-            gradientDesigner: {
-                title: "Gradient Designer",
-                icon: "https://gradientdesigner.netlify.app/favicon.ico",
-                description: "A dynamic Gradient Designer web app for creating, customizing, and downloading gradient backgrounds. Generate random gradients, manually select colors, extract colors from photos, and view color names. Enjoy responsive design and an interactive UI for a seamless experience.",
-                link: "https://gradientdesigner.netlify.app",
-                badge: "Design"
-            },
-            token: {
-                title: "Token",
-                icon: "https://tokenon.netlify.app/favicon.ico",
-                description: "A sleek, minimalist personal website offering a seamless user experience with intuitive navigation and modern aesthetics.",
-                link: "https://tokenon.netlify.app",
-                badge: "Personal"
-            },
-            memoryPrism: {
-                title: "Memory Prism",
-                icon: "https://memoryprism.netlify.app/favicon.ico",
-                description: "An online memory that lets you easily write and save your personal entries. Use the simple editor to capture your thoughts, format them as you like, and revisit them anytime. Duplicate entries are prevented to keep your journal unique. You can also save all your entries to a file or load them back, ensuring your memories are secure and accessible.",
-                link: "https://memoryprism.netlify.app",
-                badge: "Journal"
-            },
-            videoResolutionFilter: {
-                title: "Video Resolution Filter",
-                icon: "https://videoresolutionfilter.netlify.app/favicon.ico",
-                description: "A sleek web tool to categorize videos by resolution. Upload videos (MP4, WebM, MOV), and sort them into Small, Default, and Large categories based on resolution. Easily adjust threshold settings, view video details, and download categorized files. Designed with a modern UI.",
-                link: "https://videoresolutionfilter.netlify.app",
-                badge: "Utility"
-            },
-            definePlus: {
-                title: "Define+",
-                icon: "https://defineplus.vercel.app/favicon.ico",
-                description: "Define+ is a modern, responsive English dictionary that combines definitions, pronunciation, synonyms, antonyms, and visual references in a clean interface. Search any word to get comprehensive language data with real-time results and an intuitive UI designed for both desktop and mobile use.",
-                link: "https://defineplus.vercel.app",
-                badge: "Dictionary"
-            },
-            dictionaryLens: {
-                title: "Dictionary Lens",
-                icon: "https://dl-production.up.railway.app/static/favicon.ico",
-                description: "Dictionary Lens is an interactive web application that brings words to life with definitions and visual imagery. Search for any word to see its meanings, usage examples, and related images in a clean, modern interface. Features history and a clickable mode that lets you explore word relationships by clicking on terms within definitions.",
-                link: "https://dl-production.up.railway.app",
-                badge: "Dictionary"
-            }
-        };
+
 
         // Show description when clicking on a website
         function showDescription(siteId) {
@@ -443,61 +324,7 @@
             document.getElementById('visible-count').textContent = visibleCount;
         }
 
-        // Modal functionality
-        function showMoreInfo(appId) {
-            const app = appData[appId];
-            const modal = document.getElementById('modal');
-            
-            document.getElementById('modal-icon').src = app.icon;
-            document.getElementById('modal-title').textContent = app.title;
-            document.getElementById('modal-badge').textContent = app.badge;
-            document.getElementById('modal-description').textContent = app.description;
-            document.getElementById('modal-link').href = app.link;
-            
-            // Lock body scroll when opening modal
-            document.body.style.overflow = 'hidden';
-            
-            modal.style.display = 'flex';
-            // Force browser reflow
-            modal.offsetHeight;
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
-        }
 
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.remove('show');
-            
-            // Unlock body scroll when closing modal
-            setTimeout(() => {
-                document.body.style.overflow = '';
-                modal.style.display = 'none';
-            }, 300);
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        });
-        
-        // Add touch event for mobile
-        window.addEventListener('touchend', function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        });
-
-        // Close modal with escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
     </script>
 </body>
 </html>
