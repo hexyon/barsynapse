@@ -489,6 +489,7 @@ footer {
     display: flex;
     align-items: center;
     color: var(--primary-color);
+    justify-content: center; /* Add this line */
     text-decoration: none;
     font-size: 1rem; 
     transition: var(--transition-standard);
@@ -518,52 +519,102 @@ footer {
 /* Responsive Styles */
 @media (max-width: 992px) {
     header {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         padding: 1rem;
         gap: 1rem;
+        align-items: center;
     }
     
-    .search-container {
-        width: 100%;
+    .logo {
+        flex: 1;
         order: 1;
     }
     
     .header-buttons {
+        order: 2;
+        flex: none;
+        gap: 0.5rem;
+    }
+    
+    .search-container {
         width: 100%;
         order: 3;
-        justify-content: center;
-    }
-    
-    .logo {
-        order: 2;
-    }
-    
-    .grid-view {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+        flex-basis: 100%;
     }
 }
 
 @media (max-width: 768px) {
+    /* Keep header buttons horizontal */
+    .header-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    
+    .header-button {
+        padding: 0.6rem 0.8rem;
+        width: auto;
+        height: auto;
+        min-width: 44px;
+        justify-content: center;
+    }
+    
     .header-button span {
         display: none;
     }
     
     .header-button i {
         margin-right: 0;
-        font-size: 1.2rem; 
+        font-size: 1.2rem;
     }
     
-    .header-button {
-        padding: 0.6rem;
-        width: 44px; 
-        height: 44px; 
-        display: flex;
-        justify-content: center;
+    /* Fix descriptions container spacing */
+    .descriptions-container {
+        padding: 1.5rem 1rem;
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .description-header {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .description-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .description-badge {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    .description-text {
+        margin-bottom: 1.5rem;
+    }
+    
+    .description-actions {
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix navigation controls positioning */
+    .nav-controls {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(226, 232, 240, 0.5);
+    }
+    
+    /* Footer fixes */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .footer-section {
-        flex: 100%;
-        text-align: center;
+        margin-bottom: 1.5rem;
     }
     
     .footer-title::after {
@@ -574,65 +625,29 @@ footer {
     .tool-links {
         justify-content: center;
     }
-
-    .descriptions-container {
-        padding: 1.5rem;
-    }
-
-    .description-header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .description-icon {
-        margin-right: 0;
-        margin-bottom: 1rem;
-    }
-
-    .description-badge {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
-
-.description-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 0; /* Remove or reduce margin-bottom */
-}
 }
 
-.footer-section:last-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 @media (max-width: 576px) {
     .section-title h2 {
         font-size: 1.6rem;
     }
     
-    .grid-view {
-        grid-template-columns: 1fr;
+    .descriptions-container {
+        padding: 1rem;
+        height: 500px;
     }
     
-    .website {
-        padding: 1.2rem;
+    .description-title {
+        font-size: 1.5rem;
     }
     
-    .action-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+    .description-text {
+        font-size: 1rem;
     }
     
-    .footer-section {
-        margin-bottom: 2rem;
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
