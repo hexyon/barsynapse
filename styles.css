@@ -8,6 +8,9 @@
     --card-radius: 20px;
     --transition-standard: all 0.3s ease;
     --bg-gradient: linear-gradient(135deg, #F5F5F7 0%, #EEEEEE 100%); /* Retained for footer compatibility */
+    --primary-color: #007AFF;
+    --dark-text: #2c3e50;
+    --medium-text: #ecf0f1;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700&display=swap');
@@ -496,10 +499,10 @@ footer::after {
     bottom: -5px;
     width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), #0050D0);
+    background: linear-gradient(90deg, #007AFF, #0050D0);
     transform: translateX(-50%);
     border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 122, 255, 0.5);
 }
 
 .tool-links {
