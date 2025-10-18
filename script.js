@@ -89,24 +89,50 @@ function openAllWebsites() {
     });
 }
 
-function searchApps() {
-    const input = document.getElementById('search-input');
-    const filter = input.value.toLowerCase();
-    const websites = document.querySelectorAll('.website');
-    let visibleCount = 0;
-    
-    websites.forEach(website => {
-        const name = website.getAttribute('data-name');
-        if (name.indexOf(filter) > -1) {
-            website.style.display = "";
-            visibleCount++;
-        } else {
-            website.style.display = "none";
-        }
-    });
-    
-    document.getElementById('visible-count').textContent = visibleCount;
+function toggleLanguageMenu() {
+    const dropdown = document.getElementById('language-dropdown');
+    dropdown.classList.toggle('show');
 }
+
+function changeLanguage(langCode) {
+    console.log('Language changed to:', langCode);
+    
+    // Determine current path and construct new path
+    const currentPath = window.location.pathname;
+    const isInLanguageFolder = currentPath.includes('/languages/');
+    
+    let newPath;
+    if (langCode === 'en') {
+        // Return to main index.html
+        if (isInLanguageFolder) {
+            newPath = '../../index.html';
+        } else {
+            newPath = 'index.html';
+        }
+    } else {
+        // Navigate to language-specific folder
+        if (isInLanguageFolder) {
+            // Already in a language folder, go to sibling folder
+            newPath = `../${langCode}/index.html`;
+        } else {
+            // In root, go to language folder
+            newPath = `languages/${langCode}/index.html`;
+        }
+    }
+    
+    // Navigate to the new page
+    window.location.href = newPath;
+}
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function(event) {
+    if (!event.target.matches('.language-button') && !event.target.closest('.language-button')) {
+        const dropdown = document.getElementById('language-dropdown');
+        if (dropdown && dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+        }
+    }
+});
 
 // Theme switching functionality
 function toggleTheme() {
