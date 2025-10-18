@@ -371,6 +371,10 @@ header {
     font-weight: bold;
 }
 
+[data-theme="dark"] .language-option.active {
+    color: #1a1a1a;
+}
+
 .language-option:hover {
     background: rgba(0, 122, 255, 0.1);
     color: var(--primary-color);
