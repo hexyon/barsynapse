@@ -364,6 +364,11 @@ header {
     transition: var(--transition-standard);
     color: var(--text-color);
     font-size: 1rem;
+    font-weight: normal;
+}
+
+.language-option.active {
+    font-weight: bold;
 }
 
 .language-option:hover {
