@@ -33,9 +33,19 @@
                 <span>Launch All</span>
             </button>
         </div>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search applications..." onkeyup="searchApps()">
-            <i class="fas fa-search search-icon"></i>
+        <div class="language-selector">
+            <button class="default-language-button" onclick="changeLanguage('en')">English</button>
+            <button class="language-button" onclick="toggleLanguageMenu()">
+                <i class="fas fa-language"></i>
+                <span>Language</span>
+            </button>
+            <div class="language-dropdown" id="language-dropdown">
+                <div class="language-option" onclick="changeLanguage('ar')">Arabic</div>
+                <div class="language-option" onclick="changeLanguage('he')">Hebrew</div>
+                <div class="language-option" onclick="changeLanguage('ku')">Kurdish</div>
+                <div class="language-option" onclick="changeLanguage('tr')">Turkish</div>
+                <div class="language-option" onclick="changeLanguage('ka')">Georgian</div>
+            </div>
         </div>
     </header>
 
