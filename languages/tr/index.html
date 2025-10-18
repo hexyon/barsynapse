@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Synapse</title>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="background-gradient"></div>
+    <header>
+        <div class="logo">
+            <h1>Bar Synapse</h1>
+            <button class="toggle-switch" onclick="toggleTheme()" title="Karanlık Modu Aç/Kapat">
+                <div class="switch-track">
+                    <div class="switch-thumb"></div>
+                </div>
+            </button>
+        </div>
+        <div class="header-buttons">
+            <button class="header-button primary" onclick="toggleView('grid')">
+                <i class="fas fa-th-large"></i>
+                <span>Uygulamalar</span>
+            </button>
+            <button class="header-button accent" onclick="openAllWebsites()">
+                <i class="fas fa-external-link-alt"></i>
+                <span>Hepsini Aç</span>
+            </button>
+        </div>
+        <div class="language-selector">
+            <button class="default-language-button" onclick="changeLanguage('en')">English</button>
+            <button class="language-button" onclick="toggleLanguageMenu()">
+                <i class="fas fa-language"></i>
+                <span>Language</span>
+            </button>
+            <div class="language-dropdown" id="language-dropdown">
+                <div class="language-option" onclick="changeLanguage('ar')">Arabic</div>
+                <div class="language-option" onclick="changeLanguage('he')">Hebrew</div>
+                <div class="language-option" onclick="changeLanguage('ku')">Kurdish</div>
+                <div class="language-option" onclick="changeLanguage('tr')">Turkish</div>
+                <div class="language-option" onclick="changeLanguage('ka')">Georgian</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-title">
+        <h2>Dijital Koleksiyon</h2>
+    </div>
+    
+    <main id="app-grid" class="grid-view">
+        <div class="website" data-name="slide pro" data-index="0" onclick="showDescription(0)">
+            <div class="website-header">
+                <img src="https://slidepro.netlify.app/favicon.ico" alt="Slayt Pro Simgesi" class="site-icon">
+                <span class="site-name">Slayt Pro</span>
+                <div class="badge">Medya</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="photo resolution sorter" data-index="1" onclick="showDescription(1)">
+            <div class="website-header">
+                <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="Fotoğraf Çözünürlük Sıralayıcı Simgesi" class="site-icon">
+                <span class="site-name">Fotoğraf Çözünürlük Sıralayıcı</span>
+                <div class="badge">Araç</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="reader" data-index="2" onclick="showDescription(2)">
+            <div class="website-header">
+                <img src="https://readeron.netlify.app/favicon.ico" alt="Okuyucu Simgesi" class="site-icon">
+                <span class="site-name">Okuyucu</span>
+                <div class="badge">Metin</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="random number generator" data-index="3" onclick="showDescription(3)">
+            <div class="website-header">
+                <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="Rastgele Sayı Üreteci Simgesi" class="site-icon">
+                <span class="site-name">Rastgele Sayı Üreteci</span>
+                <div class="badge">Araç</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="media hub" data-index="4" onclick="showDescription(4)">
+            <div class="website-header">
+                <img src="https://mediahubon.netlify.app/favicon.ico" alt="Medya Merkezi Simgesi" class="site-icon">
+                <span class="site-name">Medya Merkezi</span>
+                <div class="badge">Medya</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="gradient designer" data-index="5" onclick="showDescription(5)">
+            <div class="website-header">
+                <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Gradyan Tasarımcısı Simgesi" class="site-icon">
+                <span class="site-name">Gradyan Tasarımcısı</span>
+                <div class="badge">Tasarım</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="token" data-index="6" onclick="showDescription(6)">
+            <div class="website-header">
+                <img src="https://tokenon.netlify.app/favicon.ico" alt="Jeton Simgesi" class="site-icon">
+                <span class="site-name">Jeton</span>
+                <div class="badge">Kişisel</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="memory prism" data-index="7" onclick="showDescription(7)">
+            <div class="website-header">
+                <img src="https://memoryprism.netlify.app/favicon.ico" alt="Hafıza Prizması Simgesi" class="site-icon">
+                <span class="site-name">Hafıza Prizması</span>
+                <div class="badge">Günlük</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="website" data-name="dictionary lens" data-index="8" onclick="showDescription(8)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="Sözlük Lensi Simgesi" class="site-icon">
+                <span class="site-name">Sözlük Lensi</span>
+                <div class="badge">Sözlük</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="connect experience" data-index="9" onclick="showDescription(9)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="Bağlantı Deneyimi Simgesi" class="site-icon">
+                <span class="site-name">Bağlantı Deneyimi</span>
+                <div class="badge">AI</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ziyaret Et
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="descriptions-section">
+        <div class="descriptions-container">
+            <div class="description-content" data-index="0">
+                <div class="description-header">
+                    <img src="https://slidepro.netlify.app/favicon.ico" alt="Slayt Pro Simgesi" class="description-icon">
+                    <h2 class="description-title">Slayt Pro</h2>
+                    <span class="description-badge">Medya</span>
+                </div>
+                <p class="description-text">Şık, özellik açısından zengin bir görüntü slayt gösterisi web uygulaması. Birden fazla görüntü yükleyin ve başlat, durdur, karıştır, tam ekran, döngü ve ilerleme çubuğu seçenekleriyle slayt gösterisini kontrol edin. Slayt gecikmesini özelleştirin, ok tuşlarıyla gezinin ve duyarlı tasarımla düzgün geçişlerin keyfini çıkarın.</p>
+                <div class="description-actions">
+                    <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="1">
+                <div class="description-header">
+                    <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="Fotoğraf Çözünürlük Sıralayıcı Simgesi" class="description-icon">
+                    <h2 class="description-title">Fotoğraf Çözünürlük Sıralayıcı</h2>
+                    <span class="description-badge">Araç</span>
+                </div>
+                <p class="description-text">Fotoğraf Çözünürlük Sıralayıcı: Görüntüleri çözünürlüğe göre kategorize eden bir web aracı. Fotoğraflarınızı otomatik olarak düşük, standart veya yüksek çözünürlüklü gruplara sıralamak için yükleyin. Tüm koleksiyonları aynı anda işleyin ve tek tıklamayla dışa aktarın. Basit, hızlı, etkili.</p>
+                <div class="description-actions">
+                    <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="2">
+                <div class="description-header">
+                    <img src="https://readeron.netlify.app/favicon.ico" alt="Okuyucu Simgesi" class="description-icon">
+                    <h2 class="description-title">Okuyucu</h2>
+                    <span class="description-badge">Metin</span>
+                </div>
+                <p class="description-text">Okuyucu, zengin metin düzenleme ve görüntüleme için tasarlanmış basit bir web uygulamasıdır. Uygulama, yuvarlak kenarlar ve kullanıcı dostu bir arayüze sahip temiz, minimalist bir tasarıma sahiptir. Kullanıcılar, özelleştirilmiş bir araç çubuğuna sahip bir düzenleyiciye metin girebilir ve biçimlendirilmiş içeriği aşağıda görüntülemek için gönderebilir.</p>
+                <div class="description-actions">
+                    <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="3">
+                <div class="description-header">
+                    <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="Rastgele Sayı Üreteci Simgesi" class="description-icon">
+                    <h2 class="description-title">Rastgele Sayı Üreteci</h2>
+                    <span class="description-badge">Araç</span>
+                </div>
+                <p class="description-text">12 basamaklı sayılar üreten basit bir web uygulaması. Sayı üretmek için bir düğme, bir görüntüleme alanı ve panoya kopyalama işlevi içerir. Tasarım, duyarlı bir düzen ve etkileşimli düğmeler içerir. Hızlı ve kolay rastgele sayı üretimi için ideal.</p>
+                <div class="description-actions">
+                    <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="4">
+                <div class="description-header">
+                    <img src="https://mediahubon.netlify.app/favicon.ico" alt="Medya Merkezi Simgesi" class="description-icon">
+                    <h2 class="description-title">Medya Merkezi</h2>
+                    <span class="description-badge">Medya</span>
+                </div>
+                <p class="description-text">Modern bir kullanıcı arayüzüne sahip görüntüler ve videolar için şık bir medya görüntüleyici web uygulaması. Özellikler tam ekran görüntüleme, klavye gezinmesi, dosya yükleme desteği, bulanık arka plan efektleri ve bir dizin sistemi içerir. Düzgün geçişler ve duyarlı tasarım sunar.</p>
+                <div class="description-actions">
+                    <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="5">
+                <div class="description-header">
+                    <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Gradyan Tasarımcısı Simgesi" class="description-icon">
+                    <h2 class="description-title">Gradyan Tasarımcısı</h2>
+                    <span class="description-badge">Tasarım</span>
+                </div>
+                <p class="description-text">Gradyan arka planları oluşturmak, özelleştirmek ve indirmek için dinamik bir Gradyan Tasarımcısı web uygulaması. Rastgele gradyanlar oluşturun, renkleri manuel olarak seçin, fotoğraflardan renkleri çıkarın ve renk adlarını görüntüleyin. Sorunsuz bir deneyim için duyarlı tasarım ve etkileşimli kullanıcı arayüzünün keyfini çıkarın.</p>
+                <div class="description-actions">
+                    <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="6">
+                <div class="description-header">
+                    <img src="https://tokenon.netlify.app/favicon.ico" alt="Jeton Simgesi" class="description-icon">
+                    <h2 class="description-title">Jeton</h2>
+                    <span class="description-badge">Kişisel</span>
+                </div>
+                <p class="description-text">Sezgisel gezinme ve modern estetikle sorunsuz bir kullanıcı deneyimi sunan şık, minimalist bir kişisel web sitesi.</p>
+                <div class="description-actions">
+                    <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="7">
+                <div class="description-header">
+                    <img src="https://memoryprism.netlify.app/favicon.ico" alt="Hafıza Prizması Simgesi" class="description-icon">
+                    <h2 class="description-title">Hafıza Prizması</h2>
+                    <span class="description-badge">Günlük</span>
+                </div>
+                <p class="description-text">Kişisel girişlerinizi kolayca yazmanızı ve kaydetmenizi sağlayan çevrimiçi bir hafıza. Düşüncelerinizi yakalamak, istediğiniz gibi biçimlendirmek ve istediğiniz zaman yeniden ziyaret etmek için basit düzenleyiciyi kullanın. Günlüğünüzü benzersiz tutmak için yinelenen girişler engellenir. Ayrıca tüm girişlerinizi bir dosyaya kaydedebilir veya geri yükleyebilirsiniz, böylece anılarınızın güvenli ve erişilebilir olması sağlanır.</p>
+                <div class="description-actions">
+                    <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+
+            <div class="description-content" data-index="8">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="Sözlük Lensi Simgesi" class="description-icon">
+                    <h2 class="description-title">Sözlük Lensi</h2>
+                    <span class="description-badge">Sözlük</span>
+                </div>
+                <p class="description-text">Sözlük Lensi, kelimeleri tanımlar ve görsel imgelerle hayata geçiren etkileşimli bir web uygulamasıdır. Anlamlarını, kullanım örneklerini ve ilgili görüntüleri temiz, modern bir arayüzde görmek için herhangi bir kelimeyi arayın. Geçmiş ve tanımlar içindeki terimlere tıklayarak kelime ilişkilerini keşfetmenizi sağlayan tıklanabilir mod içerir.</p>
+                <div class="description-actions">
+                    <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="9">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="Bağlantı Deneyimi Simgesi" class="description-icon">
+                    <h2 class="description-title">Bağlantı Deneyimi</h2>
+                    <span class="description-badge">AI</span>
+                </div>
+                <p class="description-text">Bir fotoğraf yükleyin. Yapay zeka bir deneyim yaratır. Her görüntü bir öncekinin üzerine inşa edilir, var olduğunu bilmediğiniz bağlantıları keşfeden akıllı, gelişen bir yolculuk yaratır.</p>
+                <div class="description-actions">
+                    <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ziyaret Et
+                    </a>
+                </div>
+            </div>
+
+        </div>
+            <div class="nav-controls">
+                <button class="nav-button" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="nav-info">
+                    <span id="current-index">1</span> / <span id="total-count">10</span>
+                </div>
+                <button class="nav-button" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <p class="footer-title">About Bar Synapse</p>
+                <p>A curated collection of web applications designed to enhance your digital experience</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Created with</p>
+                <div class="tool-links">
+                    <a href="https://claude.ai/" target="_blank">Claude</a>
+                    <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Developer</p>
+                <a href="https://github.com/hexyon" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    Hexy
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Bar Synapse by Hexy | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

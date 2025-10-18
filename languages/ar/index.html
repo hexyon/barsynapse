@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Synapse</title>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        /* RTL specific fixes for Arabic */
+        body {
+            direction: rtl;
+        }
+        
+        /* Fix icon margins for RTL */
+        .header-button i {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .language-button i {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .visit-button i {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        /* Fix site icon margin */
+        .site-icon {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        /* Fix description icon margin */
+        .description-icon {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        /* Fix badge margin */
+        .badge {
+            margin-left: 0;
+            margin-right: 0.75rem;
+        }
+        
+        .description-badge {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        /* Fix dropdown position */
+        .language-dropdown {
+            right: auto;
+            left: 0;
+        }
+        
+        /* Fix logo h1 before element */
+        .logo h1::before {
+            right: auto;
+            left: 25%;
+        }
+        
+        /* Fix footer title after element for first child */
+        .footer-section:first-child .footer-title::after {
+            left: auto;
+            right: 0;
+        }
+        
+        /* Fix description text alignment */
+        .description-text {
+            text-align: right;
+        }
+        
+        /* Keep footer in LTR */
+        footer {
+            direction: ltr;
+        }
+        
+        .footer-content {
+            direction: ltr;
+        }
+        
+        .footer-section {
+            direction: ltr;
+        }
+        
+        /* Fix GitHub link icon */
+        .github-link i {
+            margin-right: 0.5rem;
+            margin-left: 0;
+        }
+        
+        .tool-links a i {
+            margin-right: 0.5rem;
+            margin-left: 0;
+        }
+        
+        /* Fix navigation controls for RTL */
+        .nav-controls {
+            direction: ltr;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="background-gradient"></div>
+    
+    <header>
+        <div class="logo">
+            <h1>Bar Synapse</h1>
+            <button class="toggle-switch" onclick="toggleTheme()" title="تبديل الوضع الليلي">
+                <div class="switch-track">
+                    <div class="switch-thumb"></div>
+                </div>
+            </button>
+        </div>
+        <div class="header-buttons">
+            <button class="header-button primary" onclick="toggleView('grid')">
+                <i class="fas fa-th-large"></i>
+                <span>التطبيقات</span>
+            </button>
+            <button class="header-button accent" onclick="openAllWebsites()">
+                <i class="fas fa-external-link-alt"></i>
+                <span>تشغيل الكل</span>
+            </button>
+        </div>
+        <div class="language-selector">
+            <button class="default-language-button" onclick="changeLanguage('en')">English</button>
+            <button class="language-button" onclick="toggleLanguageMenu()">
+                <i class="fas fa-language"></i>
+                <span>Language</span>
+            </button>
+            <div class="language-dropdown" id="language-dropdown">
+                <div class="language-option" onclick="changeLanguage('ar')">Arabic</div>
+                <div class="language-option" onclick="changeLanguage('he')">Hebrew</div>
+                <div class="language-option" onclick="changeLanguage('ku')">Kurdish</div>
+                <div class="language-option" onclick="changeLanguage('tr')">Turkish</div>
+                <div class="language-option" onclick="changeLanguage('ka')">Georgian</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-title">
+        <h2>المجموعة الرقمية</h2>
+    </div>
+    
+    <main id="app-grid" class="grid-view">
+        <div class="website" data-name="slide pro" data-index="0" onclick="showDescription(0)">
+            <div class="website-header">
+                <img src="https://slidepro.netlify.app/favicon.ico" alt="أيقونة سلايد برو" class="site-icon">
+                <span class="site-name">سلايد برو</span>
+                <div class="badge">وسائط</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="photo resolution sorter" data-index="1" onclick="showDescription(1)">
+            <div class="website-header">
+                <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="أيقونة مصنف دقة الصور" class="site-icon">
+                <span class="site-name">مصنف دقة الصور</span>
+                <div class="badge">أداة</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="reader" data-index="2" onclick="showDescription(2)">
+            <div class="website-header">
+                <img src="https://readeron.netlify.app/favicon.ico" alt="أيقونة القارئ" class="site-icon">
+                <span class="site-name">القارئ</span>
+                <div class="badge">نص</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="random number generator" data-index="3" onclick="showDescription(3)">
+            <div class="website-header">
+                <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="أيقونة مولد الأرقام العشوائية" class="site-icon">
+                <span class="site-name">مولد الأرقام العشوائية</span>
+                <div class="badge">أداة</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="media hub" data-index="4" onclick="showDescription(4)">
+            <div class="website-header">
+                <img src="https://mediahubon.netlify.app/favicon.ico" alt="أيقونة مركز الوسائط" class="site-icon">
+                <span class="site-name">مركز الوسائط</span>
+                <div class="badge">وسائط</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="gradient designer" data-index="5" onclick="showDescription(5)">
+            <div class="website-header">
+                <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="أيقونة مصمم التدرجات" class="site-icon">
+                <span class="site-name">مصمم التدرجات</span>
+                <div class="badge">تصميم</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="token" data-index="6" onclick="showDescription(6)">
+            <div class="website-header">
+                <img src="https://tokenon.netlify.app/favicon.ico" alt="أيقونة توكين" class="site-icon">
+                <span class="site-name">توكين</span>
+                <div class="badge">شخصي</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="memory prism" data-index="7" onclick="showDescription(7)">
+            <div class="website-header">
+                <img src="https://memoryprism.netlify.app/favicon.ico" alt="أيقونة منشور الذاكرة" class="site-icon">
+                <span class="site-name">منشور الذاكرة</span>
+                <div class="badge">مذكرة</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="website" data-name="dictionary lens" data-index="8" onclick="showDescription(8)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="أيقونة عدسة القاموس" class="site-icon">
+                <span class="site-name">عدسة القاموس</span>
+                <div class="badge">قاموس</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="connect experience" data-index="9" onclick="showDescription(9)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="أيقونة تجربة الاتصال" class="site-icon">
+                <span class="site-name">تجربة الاتصال</span>
+                <div class="badge">AI</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    زيارة
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="descriptions-section">
+        <div class="descriptions-container">
+            <div class="description-content" data-index="0">
+                <div class="description-header">
+                    <img src="https://slidepro.netlify.app/favicon.ico" alt="أيقونة سلايد برو" class="description-icon">
+                    <h2 class="description-title">سلايد برو</h2>
+                    <span class="description-badge">وسائط</span>
+                </div>
+                <p class="description-text">تطبيق ويب أنيق وغني بالمميزات لعرض الصور. قم بتحميل صور متعددة والتحكم في العرض بخيارات البدء والإيقاف والخلط والشاشة الكاملة والتكرار وشريط التقدم. قم بتخصيص تأخير الشرائح والتنقل باستخدام مفاتيح الأسهم واستمتع بانتقالات سلسة مع تصميم متجاوب.</p>
+                <div class="description-actions">
+                    <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="1">
+                <div class="description-header">
+                    <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="أيقونة مصنف دقة الصور" class="description-icon">
+                    <h2 class="description-title">مصنف دقة الصور</h2>
+                    <span class="description-badge">أداة</span>
+                </div>
+                <p class="description-text">مصنف دقة الصور: أداة ويب تصنف الصور حسب الدقة. قم بتحميل صورك لفرزها تلقائيًا إلى مجموعات منخفضة أو قياسية أو عالية الدقة. معالجة مجموعات كاملة دفعة واحدة والتصدير بنقرة واحدة. بسيط وسريع وفعال.</p>
+                <div class="description-actions">
+                    <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="2">
+                <div class="description-header">
+                    <img src="https://readeron.netlify.app/favicon.ico" alt="أيقونة القارئ" class="description-icon">
+                    <h2 class="description-title">القارئ</h2>
+                    <span class="description-badge">نص</span>
+                </div>
+                <p class="description-text">القارئ هو تطبيق ويب بسيط مصمم لتحرير وعرض النصوص المنسقة. يتميز التطبيق بتصميم نظيف وبسيط مع حواف مستديرة وواجهة سهلة الاستخدام. يمكن للمستخدمين إدخال النص في محرر بشريط أدوات مخصص وإرساله لعرض المحتوى المنسق أدناه.</p>
+                <div class="description-actions">
+                    <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="3">
+                <div class="description-header">
+                    <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="أيقونة مولد الأرقام العشوائية" class="description-icon">
+                    <h2 class="description-title">مولد الأرقام العشوائية</h2>
+                    <span class="description-badge">أداة</span>
+                </div>
+                <p class="description-text">تطبيق ويب بسيط ينشئ أرقامًا من 12 رقمًا. يحتوي على زر لتوليد الأرقام ومنطقة عرض ووظيفة نسخ إلى الحافظة. يتضمن التصميم تخطيطًا متجاوبًا وأزرارًا تفاعلية. مثالي للتوليد السريع والسهل للأرقام العشوائية.</p>
+                <div class="description-actions">
+                    <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="4">
+                <div class="description-header">
+                    <img src="https://mediahubon.netlify.app/favicon.ico" alt="أيقونة مركز الوسائط" class="description-icon">
+                    <h2 class="description-title">مركز الوسائط</h2>
+                    <span class="description-badge">وسائط</span>
+                </div>
+                <p class="description-text">تطبيق ويب أنيق لعرض الوسائط للصور والفيديوهات بواجهة مستخدم حديثة. تشمل الميزات العرض بملء الشاشة والتنقل بلوحة المفاتيح ودعم تحميل الملفات وتأثيرات خلفية ضبابية ونظام فهرسة. يوفر انتقالات سلسة وتصميمًا متجاوبًا.</p>
+                <div class="description-actions">
+                    <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="5">
+                <div class="description-header">
+                    <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="أيقونة مصمم التدرجات" class="description-icon">
+                    <h2 class="description-title">مصمم التدرجات</h2>
+                    <span class="description-badge">تصميم</span>
+                </div>
+                <p class="description-text">تطبيق ويب ديناميكي لمصمم التدرجات لإنشاء وتخصيص وتنزيل خلفيات متدرجة. قم بتوليد تدرجات عشوائية واختيار الألوان يدويًا واستخراج الألوان من الصور وعرض أسماء الألوان. استمتع بتصميم متجاوب وواجهة مستخدم تفاعلية لتجربة سلسة.</p>
+                <div class="description-actions">
+                    <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="6">
+                <div class="description-header">
+                    <img src="https://tokenon.netlify.app/favicon.ico" alt="أيقونة توكين" class="description-icon">
+                    <h2 class="description-title">توكين</h2>
+                    <span class="description-badge">شخصي</span>
+                </div>
+                <p class="description-text">موقع شخصي أنيق وبسيط يوفر تجربة مستخدم سلسة مع تنقل بديهي وجماليات حديثة.</p>
+                <div class="description-actions">
+                    <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="7">
+                <div class="description-header">
+                    <img src="https://memoryprism.netlify.app/favicon.ico" alt="أيقونة منشور الذاكرة" class="description-icon">
+                    <h2 class="description-title">منشور الذاكرة</h2>
+                    <span class="description-badge">مذكرة</span>
+                </div>
+                <p class="description-text">ذاكرة عبر الإنترنت تتيح لك كتابة وحفظ إدخالاتك الشخصية بسهولة. استخدم المحرر البسيط لالتقاط أفكارك وتنسيقها كما تريد ومراجعتها في أي وقت. يتم منع الإدخالات المكررة للحفاظ على يوميتك فريدة. يمكنك أيضًا حفظ جميع إدخالاتك في ملف أو تحميلها مرة أخرى مما يضمن أن ذكرياتك آمنة وسهلة الوصول.</p>
+                <div class="description-actions">
+                    <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+
+            <div class="description-content" data-index="8">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="أيقونة عدسة القاموس" class="description-icon">
+                    <h2 class="description-title">عدسة القاموس</h2>
+                    <span class="description-badge">قاموس</span>
+                </div>
+                <p class="description-text">عدسة القاموس هو تطبيق ويب تفاعلي يحيي الكلمات بالتعاريف والصور المرئية. ابحث عن أي كلمة لرؤية معانيها وأمثلة الاستخدام والصور ذات الصلة في واجهة نظيفة وحديثة. يتضمن السجل والوضع القابل للنقر الذي يتيح لك استكشاف علاقات الكلمات بالنقر على المصطلحات داخل التعاريف.</p>
+                <div class="description-actions">
+                    <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="9">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="أيقونة تجربة الاتصال" class="description-icon">
+                    <h2 class="description-title">تجربة الاتصال</h2>
+                    <span class="description-badge">AI</span>
+                </div>
+                <p class="description-text">قم بتحميل صورة. يصنع الذكاء الاصطناعي تجربة. كل صورة تبني على السابقة مما يخلق رحلة ذكية ومتطورة تكتشف اتصالات لم تكن تعلم بوجودها.</p>
+                <div class="description-actions">
+                    <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        زيارة
+                    </a>
+                </div>
+            </div>
+
+        </div>
+            <div class="nav-controls">
+                <button class="nav-button" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="nav-info">
+                    <span id="current-index">1</span> / <span id="total-count">10</span>
+                </div>
+                <button class="nav-button" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <p class="footer-title">About Bar Synapse</p>
+                <p>A curated collection of web applications designed to enhance your digital experience</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Created with</p>
+                <div class="tool-links">
+                    <a href="https://claude.ai/" target="_blank">Claude</a>
+                    <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Developer</p>
+                <a href="https://github.com/hexyon" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    Hexy
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Bar Synapse by Hexy | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

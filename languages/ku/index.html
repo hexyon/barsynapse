@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Synapse</title>
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="background-gradient"></div>
+    
+
+
+    <header>
+        <div class="logo">
+            <h1>Bar Synapse</h1>
+            <button class="toggle-switch" onclick="toggleTheme()" title="Moda Tarî Veguherîne">
+                <div class="switch-track">
+                    <div class="switch-thumb"></div>
+                </div>
+            </button>
+        </div>
+        <div class="header-buttons">
+            <button class="header-button primary" onclick="toggleView('grid')">
+                <i class="fas fa-th-large"></i>
+                <span>Sepan</span>
+            </button>
+            <button class="header-button accent" onclick="openAllWebsites()">
+                <i class="fas fa-external-link-alt"></i>
+                <span>Hemûyan Veke</span>
+            </button>
+        </div>
+        <div class="language-selector">
+            <button class="default-language-button" onclick="changeLanguage('en')">English</button>
+            <button class="language-button" onclick="toggleLanguageMenu()">
+                <i class="fas fa-language"></i>
+                <span>Language</span>
+            </button>
+            <div class="language-dropdown" id="language-dropdown">
+                <div class="language-option" onclick="changeLanguage('ar')">Arabic</div>
+                <div class="language-option" onclick="changeLanguage('he')">Hebrew</div>
+                <div class="language-option" onclick="changeLanguage('ku')">Kurdish</div>
+                <div class="language-option" onclick="changeLanguage('tr')">Turkish</div>
+                <div class="language-option" onclick="changeLanguage('ka')">Georgian</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="section-title">
+        <h2>Berhevoka Dîjîtal</h2>
+    </div>
+    
+    <main id="app-grid" class="grid-view">
+        <div class="website" data-name="slide pro" data-index="0" onclick="showDescription(0)">
+            <div class="website-header">
+                <img src="https://slidepro.netlify.app/favicon.ico" alt="Îkona Slaydê Pro" class="site-icon">
+                <span class="site-name">Slaydê Pro</span>
+                <div class="badge">Medya</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="photo resolution sorter" data-index="1" onclick="showDescription(1)">
+            <div class="website-header">
+                <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="Îkona Rêzkera Çareseriya Wêneyan" class="site-icon">
+                <span class="site-name">Rêzkera Çareseriya Wêneyan</span>
+                <div class="badge">Amûr</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="reader" data-index="2" onclick="showDescription(2)">
+            <div class="website-header">
+                <img src="https://readeron.netlify.app/favicon.ico" alt="Îkona Xwîner" class="site-icon">
+                <span class="site-name">Xwîner</span>
+                <div class="badge">Nivîs</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="random number generator" data-index="3" onclick="showDescription(3)">
+            <div class="website-header">
+                <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="Îkona Çêkera Hejmarên Rast Hatî" class="site-icon">
+                <span class="site-name">Çêkera Hejmarên Rast Hatî</span>
+                <div class="badge">Amûr</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="media hub" data-index="4" onclick="showDescription(4)">
+            <div class="website-header">
+                <img src="https://mediahubon.netlify.app/favicon.ico" alt="Îkona Navendê Medyayê" class="site-icon">
+                <span class="site-name">Navendê Medyayê</span>
+                <div class="badge">Medya</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="gradient designer" data-index="5" onclick="showDescription(5)">
+            <div class="website-header">
+                <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Îkona Dîzaynerê Gradientê" class="site-icon">
+                <span class="site-name">Dîzaynerê Gradientê</span>
+                <div class="badge">Dîzayn</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="token" data-index="6" onclick="showDescription(6)">
+            <div class="website-header">
+                <img src="https://tokenon.netlify.app/favicon.ico" alt="Îkona Nîşane" class="site-icon">
+                <span class="site-name">Nîşane</span>
+                <div class="badge">Kesane</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="memory prism" data-index="7" onclick="showDescription(7)">
+            <div class="website-header">
+                <img src="https://memoryprism.netlify.app/favicon.ico" alt="Îkona Prîzma Bîranînê" class="site-icon">
+                <span class="site-name">Prîzma Bîranînê</span>
+                <div class="badge">Rojname</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+
+
+        <div class="website" data-name="dictionary lens" data-index="8" onclick="showDescription(8)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="Îkona Lênza Ferhengê" class="site-icon">
+                <span class="site-name">Lênza Ferhengê</span>
+                <div class="badge">Ferheng</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+
+        <div class="website" data-name="connect experience" data-index="9" onclick="showDescription(9)">
+            <div class="website-header">
+                <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="Îkona Ezmûna Girêdanê" class="site-icon">
+                <span class="site-name">Ezmûna Girêdanê</span>
+                <div class="badge">AI</div>
+            </div>
+            <div class="action-buttons">
+                <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Serdana Bike
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="descriptions-section">
+        <div class="descriptions-container">
+            <div class="description-content" data-index="0">
+                <div class="description-header">
+                    <img src="https://slidepro.netlify.app/favicon.ico" alt="Îkona Slaydê Pro" class="description-icon">
+                    <h2 class="description-title">Slaydê Pro</h2>
+                    <span class="description-badge">Medya</span>
+                </div>
+                <p class="description-text">Sepaneke wêbê ya şîk û dewlemend ji bo nîşandana wêneyan. Gelek wêneyan bar bikin û kontrola nîşandanê bi vebijarkên destpêkirin, rawestandin, têkel kirin, dîmena tevahî, loop û barê pêşkeftinê bikin. Derengketina slaydan xwerû bikin, bi bişkokên tîrê bigerin û ji guhertinên nerm bi dîzayneke responsive kêfxweş bibin.</p>
+                <div class="description-actions">
+                    <a href="https://slidepro.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="1">
+                <div class="description-header">
+                    <img src="https://photoresolutionsorter.netlify.app/favicon.ico" alt="Îkona Rêzkera Çareseriya Wêneyan" class="description-icon">
+                    <h2 class="description-title">Rêzkera Çareseriya Wêneyan</h2>
+                    <span class="description-badge">Amûr</span>
+                </div>
+                <p class="description-text">Rêzkera Çareseriya Wêneyan: Amûreke wêbê ku wêneyan li gor çareseriyê kategorî dike. Wêneyên xwe bar bikin da ku bi awayekî otomatîk li komên çareseriya nizm, standard an bilind rêz bikin. Berhevokên tevahî di heman demê de pêvajo bikin û bi yek klikê export bikin. Hêsan, bilez, bandorker.</p>
+                <div class="description-actions">
+                    <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="2">
+                <div class="description-header">
+                    <img src="https://readeron.netlify.app/favicon.ico" alt="Îkona Xwîner" class="description-icon">
+                    <h2 class="description-title">Xwîner</h2>
+                    <span class="description-badge">Nivîs</span>
+                </div>
+                <p class="description-text">Xwîner sepaneke wêbeke hêsan e ku ji bo guherandin û nîşandana nivîsên dewlemend hatiye çêkirin. Sepan xwedî dîzaynek paqij û mînîmalîst e bi quncikên girseyî û navrûyek hevseng ji bo bikarhêner. Bikarhêner dikarin nivîs di edîtoreke bi toolbareke xwerû de binivîsin û bişînin da ku naveroka format kirî li jêr nîşan bidin.</p>
+                <div class="description-actions">
+                    <a href="https://readeron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="3">
+                <div class="description-header">
+                    <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico" alt="Îkona Çêkera Hejmarên Rast Hatî" class="description-icon">
+                    <h2 class="description-title">Çêkera Hejmarên Rast Hatî</h2>
+                    <span class="description-badge">Amûr</span>
+                </div>
+                <p class="description-text">Sepaneke wêbeke hêsan ku hejmarên 12-hejmaran çêdike. Bişkokek ji bo çêkirina hejmaran, qadeke dîtin û fonksiyoneke kopîkirinê bo clipboard-ê tê de heye. Dîzayn rêxistinek responsive û bişkokên înteraktîf vedihewîne. Ji bo çêkirina bilez û hêsan a hejmarên rast hatî mînak e.</p>
+                <div class="description-actions">
+                    <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="4">
+                <div class="description-header">
+                    <img src="https://mediahubon.netlify.app/favicon.ico" alt="Îkona Navendê Medyayê" class="description-icon">
+                    <h2 class="description-title">Navendê Medyayê</h2>
+                    <span class="description-badge">Medya</span>
+                </div>
+                <p class="description-text">Sepaneke wêbeke şîk a dîtina medyayê ji bo wêne û vîdyoyan bi navrûyek bikarhênerê modern. Taybetî dîtina dîmena tevahî, gerîna klavyeyê, piştgirîya barkirin pelê, efektên paşxaneyê blur û pergaleke îndekså vedihewîne. Guhertinên nerm û dîzayinek responsive pêşkêş dike.</p>
+                <div class="description-actions">
+                    <a href="https://mediahubon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="5">
+                <div class="description-header">
+                    <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Îkona Dîzaynerê Gradientê" class="description-icon">
+                    <h2 class="description-title">Dîzaynerê Gradientê</h2>
+                    <span class="description-badge">Dîzayn</span>
+                </div>
+                <p class="description-text">Sepaneke wêbeke dînamîk a Dîzaynerê Gradientê ji bo çêkirin, xwerûkirin û daxistina paşxaneyên gradient. Gradientên rast hatî çêbikin, rengan bi destî hilbijêrin, rengan ji wêneyan derxînin û navên rengan nîşan bidin. Ji dîzayineke responsive û navrûyeke înteraktîf a bikarhêner kêfxweş bibin ji bo ezmûnek nerm.</p>
+                <div class="description-actions">
+                    <a href="https://gradientdesigner.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="6">
+                <div class="description-header">
+                    <img src="https://tokenon.netlify.app/favicon.ico" alt="Îkona Nîşane" class="description-icon">
+                    <h2 class="description-title">Nîşane</h2>
+                    <span class="description-badge">Kesane</span>
+                </div>
+                <p class="description-text">Malpera kesane ya şîk û mînîmalîst ku ezmûnek bikarhênerê bêkêmasî bi gerîna întuîtîf û estetîkeke modern pêşkêş dike.</p>
+                <div class="description-actions">
+                    <a href="https://tokenon.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="7">
+                <div class="description-header">
+                    <img src="https://memoryprism.netlify.app/favicon.ico" alt="Îkona Prîzma Bîranînê" class="description-icon">
+                    <h2 class="description-title">Prîzma Bîranînê</h2>
+                    <span class="description-badge">Rojname</span>
+                </div>
+                <p class="description-text">Bîranînek serhêl ku destûrê dide we bi hêsanî tomaran kesane binivîsin û biparêzin. Edîtorê hêsan bikar bînin da ku ramanên xwe bistînin, wan wek ku hûn dixwazin format bikin û her dem serdana wan bikin. Tomar dubare têne astengkirin da ku rojnameya we bêhempa bimîne. Her weha hûn dikarin hemî tomarên xwe di pelekê de biparêzin an dîsa barbikin, ku ewlehî û gihandina bîranînên we misoger dike.</p>
+                <div class="description-actions">
+                    <a href="https://memoryprism.netlify.app" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+
+            <div class="description-content" data-index="8">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico" alt="Îkona Lênza Ferhengê" class="description-icon">
+                    <h2 class="description-title">Lênza Ferhengê</h2>
+                    <span class="description-badge">Ferheng</span>
+                </div>
+                <p class="description-text">Lênza Ferhengê sepaneke wêbeke înteraktîf e ku peyvan bi pênase û wêneyên dîtbarî jiyandin dike. Ji bo her peyvekê bigerin da ku wateyan, mînakên bikaranînê û wêneyên têkildar di navrûyeke paqij û modern de bibînin. Dîrok û moda klîkkirin vedihewîne ku destûrê dide we têkiliyên peyvan bi klîkkirina bêjeyên di nav pênaseyan de bigerin.</p>
+                <div class="description-actions">
+                    <a href="https://dlalternative.onrender.com" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+            <div class="description-content" data-index="9">
+                <div class="description-header">
+                    <img src="https://raw.githubusercontent.com/hexyon/connectexperience/refs/heads/master/client/public/favicon.ico" alt="Îkona Ezmûna Girêdanê" class="description-icon">
+                    <h2 class="description-title">Ezmûna Girêdanê</h2>
+                    <span class="description-badge">AI</span>
+                </div>
+                <p class="description-text">Wêneyekê bar bikin. AI ezmûnek çêdike. Her wêne li ser ya berê dike, rêwîtiyek aqilmend û pêşkeftî çêdike ku girêdanên ku hûn nizanibûn ku hene vedibîne.</p>
+                <div class="description-actions">
+                    <a href="https://visionthread.onrender.com/" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Serdana Bike
+                    </a>
+                </div>
+            </div>
+
+        </div>
+            <div class="nav-controls">
+                <button class="nav-button" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="nav-info">
+                    <span id="current-index">1</span> / <span id="total-count">10</span>
+                </div>
+                <button class="nav-button" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <p class="footer-title">About Bar Synapse</p>
+                <p>A curated collection of web applications designed to enhance your digital experience</p>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Created with</p>
+                <div class="tool-links">
+                    <a href="https://claude.ai/" target="_blank">Claude</a>
+                    <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <p class="footer-title">Developer</p>
+                <a href="https://github.com/hexyon" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    Hexy
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Bar Synapse by Hexy | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
