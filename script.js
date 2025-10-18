@@ -174,6 +174,31 @@ function applyTranslation(trans) {
     }
 }
 
+// Update active language in dropdown
+function updateActiveLanguage(langCode) {
+    // Remove active class from all language options
+    document.querySelectorAll('.language-option').forEach(option => {
+        option.classList.remove('active');
+    });
+    
+    // Add active class to selected language
+    const languageMap = {
+        'ar': 'Arabic',
+        'he': 'Hebrew',
+        'ku': 'Kurdish',
+        'tr': 'Turkish',
+        'ka': 'Georgian'
+    };
+    
+    if (langCode !== 'en' && languageMap[langCode]) {
+        document.querySelectorAll('.language-option').forEach(option => {
+            if (option.textContent.trim() === languageMap[langCode]) {
+                option.classList.add('active');
+            }
+        });
+    }
+}
+
 // Change language without page reload
 async function changeLanguage(langCode) {
     console.log('Language changed to:', langCode);
@@ -190,6 +215,9 @@ async function changeLanguage(langCode) {
         translations[langCode] = trans;
         currentLanguage = langCode;
         applyTranslation(trans);
+        
+        // Update active language indicator
+        updateActiveLanguage(langCode);
         
         // Save language preference
         localStorage.setItem('language-preference', langCode);
