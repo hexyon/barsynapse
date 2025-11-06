@@ -281,6 +281,17 @@ function initKeyboardNavigation() {
             }
         });
     });
+    
+    // Add keyboard navigation for RTL toggle button
+    const rtlToggle = document.querySelector('.rtl-toggle-circle');
+    if (rtlToggle) {
+        rtlToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFooterLanguage();
+            }
+        });
+    }
 }
 
 // Toggle footer language (USA <-> Israel flag)
