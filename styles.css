@@ -665,6 +665,7 @@ footer {
     justify-content: center;
     height: auto;
     aspect-ratio: 1.9 / 1;
+    max-height: 600px;
 }
 
 footer.rtl-footer {
@@ -726,6 +727,20 @@ footer.rtl-footer {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Hover State */
+.rtl-toggle-circle:hover {
+    background: #e8e8ed;
+    border-color: #c7c7cc;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Focus State for keyboard navigation */
+.rtl-toggle-circle:focus {
+    outline: none;
+}
+
 /* Active/Pressed State - subtle feedback only */
 .rtl-toggle-circle:active {
     transform: scale(0.98);
@@ -751,9 +766,16 @@ footer.rtl-footer {
 
 /* Dark mode adjustments */
 [data-theme="dark"] .rtl-toggle-circle {
+    background: #1c1c1e;
+    border-color: #2c2c2e;
     box-shadow: 
         0 2px 8px rgba(0, 0, 0, 0.5),
-        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+        inset 0 1px 2px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .rtl-toggle-circle:hover {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
 }
 
 [data-theme="dark"] .rtl-toggle-circle:hover {
@@ -766,6 +788,20 @@ footer.rtl-footer {
     border-top: none;
 }
 
+/* Improve readability of text over flag - stronger translucent backdrop */
+.footer-section {
+    backdrop-filter: saturate(1.1) blur(2px);
+}
+
+/* Ensure text contrast inside footer cards */
+.footer-section, .footer-section p, .footer-title {
+    color: #111827;
+}
+
+[data-theme="dark"] .footer-section, [data-theme="dark"] .footer-section p, [data-theme="dark"] .footer-title {
+    color: #f9fafb;
+}
+
 footer::before {
     content: '';
     position: absolute;
@@ -773,7 +809,7 @@ footer::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.65);
     z-index: 1;
 }
 
@@ -807,10 +843,10 @@ footer::after {
 .footer-section {
     text-align: center;
     margin-bottom: 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.25);
     padding: 1.2rem 1.5rem;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: var(--transition-standard);
 }
@@ -874,7 +910,7 @@ footer::after {
 .tool-links a {
     display: flex;
     align-items: center;
-    color: #4a5568;
+    color: #1f2937;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
@@ -884,6 +920,7 @@ footer::after {
     text-shadow: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tool-links a i {
@@ -891,16 +928,22 @@ footer::after {
 }
 
 .tool-links a:hover {
-    background: #E8E8ED;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    color: #4a5568;
+    background: #dcdce1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(200, 206, 216, 0.9);
+    color: #111827;
+    transform: translateY(-1px);
+}
+
+.tool-links a:focus {
+    outline: 3px solid #007AFF;
+    outline-offset: 2px;
 }
 
 .github-link {
     display: flex;
     align-items: center;
-    color: #4a5568;
+    color: #1f2937;
     justify-content: center;
     text-decoration: none;
     font-size: 1rem;
@@ -911,6 +954,7 @@ footer::after {
     text-shadow: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .github-link i {
@@ -918,10 +962,16 @@ footer::after {
 }
 
 .github-link:hover {
-    background: #E8E8ED;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    color: #4a5568;
+    background: #dcdce1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(200, 206, 216, 0.9);
+    color: #111827;
+    transform: translateY(-1px);
+}
+
+.github-link:focus {
+    outline: 3px solid #007AFF;
+    outline-offset: 2px;
 }
 
 .copyright {
@@ -1167,10 +1217,10 @@ footer::after {
         text-align: center !important;
     }
 
-    /* Force white mode styles on mobile footer */
+    /* Adapt footer sections for mobile - respect theme */
     [data-theme="dark"] .footer-section {
-        background: rgba(255, 255, 255, 0.6) !important;
-        border: 1px solid rgba(226, 232, 240, 0.8) !important;
+        background: rgba(30, 30, 32, 0.85) !important;
+        border: 1px solid rgba(60, 60, 67, 0.6) !important;
     }
     
     .footer-section:first-child {
@@ -1191,23 +1241,23 @@ footer::after {
     }
     
     .footer-title {
-        color: #2c3e50 !important;
+        color: #1f2937 !important;
         text-shadow: none !important;
     }
     
-    /* Force dark text in footer on mobile even in dark mode */
+    /* Respect dark mode in footer on mobile */
     [data-theme="dark"] .footer-title {
-        color: #2c3e50 !important;
+        color: #f9fafb !important;
         text-shadow: none !important;
     }
     
     .footer-section p {
-        color: #2c3e50 !important;
+        color: #374151 !important;
         text-shadow: none !important;
     }
 
     [data-theme="dark"] .footer-section p {
-        color: #2c3e50 !important;
+        color: #e5e7eb !important;
         text-shadow: none !important;
     }
     
@@ -1236,18 +1286,18 @@ footer::after {
     .tool-links a,
     .github-link {
         background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
-        color: #4a5568 !important;
+        color: #1f2937 !important;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         border: 0.5px solid rgba(226, 232, 240, 0.8);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* Force white mode buttons in footer on mobile */
+    /* Dark mode buttons in footer on mobile */
     [data-theme="dark"] .tool-links a,
     [data-theme="dark"] .github-link {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
-        color: #4a5568 !important;
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%) !important;
+        color: #f9fafb !important;
+        border: 1px solid rgba(60, 60, 67, 0.6);
     }
     
     .tool-links a:active,
@@ -1267,8 +1317,9 @@ footer::after {
     }
 
     [data-theme="dark"] .copyright p {
-        color: #6E6E73 !important;
-        background: rgba(255, 255, 255, 0.6) !important;
+        color: #a1a1a6 !important;
+        background: rgba(30, 30, 32, 0.85) !important;
+        border: 1px solid rgba(60, 60, 67, 0.6);
     }
     
     /* Hide RTL toggle on mobile */
