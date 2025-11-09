@@ -1200,7 +1200,9 @@ footer::after {
         background-image: none !important;
         background: var(--bg-color) !important;
         padding: 2.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
-        aspect-ratio: auto;
+        aspect-ratio: auto !important;
+        height: auto !important;
+        max-height: none !important;
         border-top: 0.5px solid var(--border-color) !important;
     }
 
