@@ -362,8 +362,12 @@
             <div class="footer-section">
                 <p class="footer-title">Created with</p>
                 <div class="tool-links">
-                    <a href="https://claude.ai/" target="_blank" aria-label="Claude AI (opens in new tab)">Claude</a>
-                    <a href="https://chatgpt.com/" target="_blank" aria-label="ChatGPT (opens in new tab)">ChatGPT</a>
+                    <a href="https://claude.ai/" target="_blank" class="ai-tool-button" aria-label="Claude AI (opens in new tab)">
+                        <img src="logos/claude.png" alt="" class="ai-logo">Claude
+                    </a>
+                    <a href="https://chatgpt.com/" target="_blank" class="ai-tool-button" aria-label="ChatGPT (opens in new tab)">
+                        <img src="logos/openai.png" alt="" class="ai-logo">ChatGPT
+                    </a>
                 </div>
             </div>
             <div class="footer-section">
@@ -379,7 +383,7 @@
         </div>
     </footer>
     
-    <div class="rtl-toggle-circle" onclick="toggleFooterLanguage()" title="Toggle Footer" aria-label="Toggle footer"></div>
+    <div class="rtl-toggle-circle" onclick="toggleFooterLanguage()" title="Toggle Footer Flag (USA/Israel)" aria-label="Toggle footer flag between USA and Israel" tabindex="0" role="button"></div>
 
     <script src="script.js"></script>
 </body>
