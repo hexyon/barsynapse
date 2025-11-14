@@ -13,14 +13,14 @@
 }
 
 [data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #f5f5f5;
-    --text-color-secondary: #d4d4d4;
-    --border-color: rgba(255, 255, 255, 0.18);
-    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    --bg-gradient: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    --dark-text: #f5f5f5;
-    --medium-text: #d4d4d4;
+    --bg-color: #0d0d0d;
+    --text-color: #ffffff;
+    --text-color-secondary: #b0b0b0;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+    --bg-gradient: linear-gradient(135deg, #121212 0%, #0d0d0d 100%);
+    --dark-text: #ffffff;
+    --medium-text: #e5e5e5;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700&display=swap');
@@ -113,7 +113,7 @@ body.rtl-mode .nav-controls {
 
 /* Dark mode body background */
 [data-theme="dark"] body {
-    background: #0f0f0f;
+    background: #000000;
 }
 
 .background-gradient {
@@ -221,8 +221,8 @@ header {
 
 
 [data-theme="dark"] .switch-track {
-    background: #4a4a4a;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 [data-theme="dark"] .switch-thumb {
@@ -479,8 +479,9 @@ main {
 }
 
 [data-theme="dark"] .badge {
-    background: #4a4a4a;
-    color: #f5f5f5;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .action-buttons {
@@ -589,8 +590,9 @@ main {
 }
 
 [data-theme="dark"] .description-badge {
-    background: #4a4a4a;
-    color: #f5f5f5;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .description-text {
