@@ -1,0 +1,31 @@
+{
+  "lang": "tr",
+  "direction": "ltr",
+  "header": {
+    "title": "Bar Synapse",
+    "toggleTheme": "Karanlık Modu Aç/Kapat",
+    "appsButton": "Uygulamalar",
+    "launchAllButton": "Hepsini Aç",
+    "languageButton": "Language"
+  },
+  "sectionTitle": "Dijital Koleksiyon",
+  "apps": [
+    { "name": "Slayt Pro", "badge": "Medya", "visit": "Ziyaret Et", "description": "Şık, özellik açısından zengin bir görüntü slayt gösterisi web uygulaması. Birden fazla görüntü yükleyin ve başlat, durdur, karıştır, tam ekran, döngü ve ilerleme çubuğu seçenekleriyle slayt gösterisini kontrol edin. Slayt gecikmesini özelleştirin, ok tuşlarıyla gezinin ve duyarlı tasarımla düzgün geçişlerin keyfini çıkarın." },
+    { "name": "Fotoğraf Çözünürlük Sıralayıcı", "badge": "Araç", "visit": "Ziyaret Et", "description": "Fotoğraf Çözünürlük Sıralayıcı: Görüntüleri çözünürlüğe göre kategorize eden bir web aracı. Fotoğraflarınızı otomatik olarak düşük, standart veya yüksek çözünürlüklü gruplara sıralamak için yükleyin. Tüm koleksiyonları aynı anda işleyin ve tek tıklamayla dışa aktarın. Basit, hızlı, etkili." },
+    { "name": "Okuyucu", "badge": "Metin", "visit": "Ziyaret Et", "description": "Okuyucu, zengin metin düzenleme ve görüntüleme için tasarlanmış basit bir web uygulamasıdır. Uygulama, yuvarlak kenarlar ve kullanıcı dostu bir arayüze sahip temiz, minimalist bir tasarıma sahiptir. Kullanıcılar, özelleştirilmiş bir araç çubuğuna sahip bir düzenleyiciye metin girebilir ve biçimlendirilmiş içeriği aşağıda görüntülemek için gönderebilir." },
+    { "name": "Rastgele Sayı Üreteci", "badge": "Araç", "visit": "Ziyaret Et", "description": "12 basamaklı sayılar üreten basit bir web uygulaması. Sayı üretmek için bir düğme, bir görüntüleme alanı ve panoya kopyalama işlevi içerir. Tasarım, duyarlı bir düzen ve etkileşimli düğmeler içerir. Hızlı ve kolay rastgele sayı üretimi için ideal." },
+    { "name": "Medya Merkezi", "badge": "Medya", "visit": "Ziyaret Et", "description": "Modern bir kullanıcı arayüzüne sahip görüntüler ve videolar için şık bir medya görüntüleyici web uygulaması. Özellikler tam ekran görüntüleme, klavye gezinmesi, dosya yükleme desteği, bulanık arka plan efektleri ve bir dizin sistemi içerir. Düzgün geçişler ve duyarlı tasarım sunar." },
+    { "name": "Gradyan Tasarımcısı", "badge": "Tasarım", "visit": "Ziyaret Et", "description": "Gradyan arka planları oluşturmak, özelleştirmek ve indirmek için dinamik bir Gradyan Tasarımcısı web uygulaması. Rastgele gradyanlar oluşturun, renkleri manuel olarak seçin, fotoğraflardan renkleri çıkarın ve renk adlarını görüntüleyin. Sorunsuz bir deneyim için duyarlı tasarım ve etkileşimli kullanıcı arayüzünün keyfini çıkarın." },
+    { "name": "Jeton", "badge": "Kişisel", "visit": "Ziyaret Et", "description": "Sezgisel gezinme ve modern estetikle sorunsuz bir kullanıcı deneyimi sunan şık, minimalist bir kişisel web sitesi." },
+    { "name": "Hafıza Prizması", "badge": "Günlük", "visit": "Ziyaret Et", "description": "Kişisel girişlerinizi kolayca yazmanızı ve kaydetmenizi sağlayan çevrimiçi bir hafıza. Düşüncelerinizi yakalamak, istediğiniz gibi biçimlendirmek ve istediğiniz zaman yeniden ziyaret etmek için basit düzenleyiciyi kullanın. Günlüğünüzü benzersiz tutmak için yinelenen girişler engellenir. Ayrıca tüm girişlerinizi bir dosyaya kaydedebilir veya geri yükleyebilirsiniz, böylece anılarınızın güvenli ve erişilebilir olması sağlanır." },
+    { "name": "Sözlük Lensi", "badge": "Sözlük", "visit": "Ziyaret Et", "description": "Sözlük Lensi, kelimeleri tanımlar ve görsel imgelerle hayata geçiren etkileşimli bir web uygulamasıdır. Anlamlarını, kullanım örneklerini ve ilgili görüntüleri temiz, modern bir arayüzde görmek için herhangi bir kelimeyi arayın. Geçmiş ve tanımlar içindeki terimlere tıklayarak kelime ilişkilerini keşfetmenizi sağlayan tıklanabilir mod içerir." },
+    { "name": "Bağlantı Deneyimi", "badge": "AI", "visit": "Ziyaret Et", "description": "Bir fotoğraf yükleyin. Yapay zeka bir deneyim yaratır. Her görüntü bir öncekinin üzerine inşa edilir, var olduğunu bilmediğiniz bağlantıları keşfeden akıllı, gelişen bir yolculuk yaratır." }
+  ],
+  "footer": {
+    "aboutTitle": "About Bar Synapse",
+    "aboutText": "An experimental collection of curated web applications",
+    "createdWithTitle": "Created with",
+    "developerTitle": "Developer",
+    "copyright": "© 2025 Bar Synapse by Hexy | All rights reserved"
+  }
+}
