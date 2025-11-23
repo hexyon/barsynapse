@@ -470,6 +470,19 @@ header {
     font-size: 2rem;
     color: var(--text-color);
     margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.section-heart-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    vertical-align: middle;
+    order: 2;
 }
 
 .app-count {
@@ -960,6 +973,8 @@ footer::after {
     transform: none;
 }
 
+
+
 .footer-title {
     font-family: 'Dudu Calligraphy', serif;
     font-weight: 600;
@@ -978,10 +993,13 @@ footer::after {
     bottom: -5px;
     width: 40px;
     height: 3px;
-    background: #007AFF;
+    background: #f5f5f7;
     transform: translateX(-50%);
     border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.2);
 }
+
+
 
 .tool-links {
     display: flex;
@@ -999,11 +1017,12 @@ footer::after {
     font-weight: 500;
     padding: 0.7rem 1.3rem;
     border-radius: 12px;
-    background: #E8E8ED;
+    background: transparent;
     text-shadow: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(226, 232, 240, 0.8);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .tool-links a i {
@@ -1025,7 +1044,7 @@ footer::after {
 }
 
 .tool-links a:hover {
-    background: #dcdce1;
+    background: rgba(220, 220, 225, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(200, 206, 216, 0.9);
     color: #111827;
@@ -1033,8 +1052,7 @@ footer::after {
 }
 
 .tool-links a:focus {
-    outline: 3px solid #007AFF;
-    outline-offset: 2px;
+    outline: none;
 }
 
 .github-link {
@@ -1047,11 +1065,12 @@ footer::after {
     font-weight: 500;
     padding: 0.7rem 1.3rem;
     border-radius: 12px;
-    background: #E8E8ED;
+    background: transparent;
     text-shadow: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(226, 232, 240, 0.8);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .github-link i {
@@ -1059,7 +1078,7 @@ footer::after {
 }
 
 .github-link:hover {
-    background: #dcdce1;
+    background: rgba(220, 220, 225, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(200, 206, 216, 0.9);
     color: #111827;
@@ -1067,8 +1086,7 @@ footer::after {
 }
 
 .github-link:focus {
-    outline: 3px solid #007AFF;
-    outline-offset: 2px;
+    outline: none;
 }
 
 .copyright {
@@ -1338,6 +1356,8 @@ footer::after {
         left: 50%;
         transform: translateX(-50%);
     }
+    
+
     
     .footer-title {
         color: #1f2937 !important;
