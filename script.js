@@ -101,8 +101,16 @@ function applyTranslation(trans) {
     document.querySelectorAll('.header-button span')[1].textContent = trans.header.launchAllButton;
     document.querySelector('.language-button span').textContent = trans.header.languageButton;
     
-    // Update section title
-    document.querySelector('.section-title h2').textContent = trans.sectionTitle;
+    // Update section title (preserve heart icon)
+    const sectionTitle = document.querySelector('.section-title h2');
+    const heartIcon = sectionTitle.querySelector('.section-heart-icon');
+    if (heartIcon) {
+        sectionTitle.innerHTML = '';
+        sectionTitle.appendChild(heartIcon);
+        sectionTitle.appendChild(document.createTextNode(trans.sectionTitle));
+    } else {
+        sectionTitle.textContent = trans.sectionTitle;
+    }
     
     // Update apps
     const websites = document.querySelectorAll('.website');
