@@ -483,6 +483,101 @@ header {
     object-fit: contain;
     vertical-align: middle;
     order: 2;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.3));
+    position: relative;
+}
+
+.section-heart-icon:hover {
+    filter: drop-shadow(0 4px 12px rgba(255, 105, 180, 0.5));
+}
+
+
+
+/* Color variations */
+.section-heart-icon.color-red {
+    filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(0deg);
+}
+
+.section-heart-icon.color-pink {
+    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.4)) hue-rotate(330deg);
+}
+
+.section-heart-icon.color-purple {
+    filter: drop-shadow(0 2px 8px rgba(138, 43, 226, 0.4)) hue-rotate(270deg);
+}
+
+.section-heart-icon.color-blue {
+    filter: drop-shadow(0 2px 8px rgba(30, 144, 255, 0.4)) hue-rotate(200deg);
+}
+
+.section-heart-icon.color-rainbow {
+    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.4));
+    animation: heartFloat 3s ease-in-out infinite, rainbowShift 3s linear infinite;
+}
+
+@keyframes rainbowShift {
+    0% { filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(0deg); }
+    16.6% { filter: drop-shadow(0 2px 8px rgba(255, 165, 0, 0.4)) hue-rotate(60deg); }
+    33.3% { filter: drop-shadow(0 2px 8px rgba(255, 255, 0, 0.4)) hue-rotate(120deg); }
+    50% { filter: drop-shadow(0 2px 8px rgba(0, 255, 0, 0.4)) hue-rotate(180deg); }
+    66.6% { filter: drop-shadow(0 2px 8px rgba(0, 0, 255, 0.4)) hue-rotate(240deg); }
+    83.3% { filter: drop-shadow(0 2px 8px rgba(138, 43, 226, 0.4)) hue-rotate(300deg); }
+    100% { filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(360deg); }
+}
+
+/* Sparkle particles */
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 16px;
+    animation: sparkleFloat 1s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(var(--tx) * 2), calc(var(--ty) * 2)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Click counter popup */
+.heart-popup {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: popupFloat 1s ease-out forwards;
+    z-index: 9999;
+}
+
+@keyframes popupFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-60px) scale(0.8);
+        opacity: 0;
+    }
 }
 
 .app-count {
