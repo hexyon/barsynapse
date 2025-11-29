@@ -487,46 +487,38 @@ header {
     transition: filter 0.3s ease;
     user-select: none;
     -webkit-user-select: none;
-    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.3));
     position: relative;
 }
 
-.section-heart-icon:hover {
-    filter: drop-shadow(0 4px 12px rgba(255, 105, 180, 0.5));
-}
-
-
-
 /* Color variations */
 .section-heart-icon.color-red {
-    filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(0deg);
+    filter: hue-rotate(0deg);
 }
 
 .section-heart-icon.color-pink {
-    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.4)) hue-rotate(330deg);
+    filter: hue-rotate(330deg);
 }
 
 .section-heart-icon.color-purple {
-    filter: drop-shadow(0 2px 8px rgba(138, 43, 226, 0.4)) hue-rotate(270deg);
+    filter: hue-rotate(270deg);
 }
 
 .section-heart-icon.color-blue {
-    filter: drop-shadow(0 2px 8px rgba(30, 144, 255, 0.4)) hue-rotate(200deg);
+    filter: hue-rotate(200deg);
 }
 
 .section-heart-icon.color-rainbow {
-    filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.4));
-    animation: heartFloat 3s ease-in-out infinite, rainbowShift 3s linear infinite;
+    animation: rainbowShift 3s linear infinite;
 }
 
 @keyframes rainbowShift {
-    0% { filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(0deg); }
-    16.6% { filter: drop-shadow(0 2px 8px rgba(255, 165, 0, 0.4)) hue-rotate(60deg); }
-    33.3% { filter: drop-shadow(0 2px 8px rgba(255, 255, 0, 0.4)) hue-rotate(120deg); }
-    50% { filter: drop-shadow(0 2px 8px rgba(0, 255, 0, 0.4)) hue-rotate(180deg); }
-    66.6% { filter: drop-shadow(0 2px 8px rgba(0, 0, 255, 0.4)) hue-rotate(240deg); }
-    83.3% { filter: drop-shadow(0 2px 8px rgba(138, 43, 226, 0.4)) hue-rotate(300deg); }
-    100% { filter: drop-shadow(0 2px 8px rgba(255, 0, 0, 0.4)) hue-rotate(360deg); }
+    0% { filter: hue-rotate(0deg); }
+    16.6% { filter: hue-rotate(60deg); }
+    33.3% { filter: hue-rotate(120deg); }
+    50% { filter: hue-rotate(180deg); }
+    66.6% { filter: hue-rotate(240deg); }
+    83.3% { filter: hue-rotate(300deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
 /* Sparkle particles */
