@@ -340,6 +340,95 @@ function loadFooterLanguagePreference() {
     }
 }
 
+// Interactive heart with color changes and sparkles
+function initInteractiveHeart() {
+    const heart = document.querySelector('.section-heart-icon');
+    if (!heart) return;
+    
+    const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-rainbow'];
+    let currentColorIndex = 0;
+    let clickCount = 0;
+    
+    // Create sparkle effect
+    function createSparkles(x, y) {
+        const sparkleEmojis = ['✨', '⭐', '💫', '🌟', '💖', '💕'];
+        const sparkleCount = 8;
+        
+        for (let i = 0; i < sparkleCount; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+            
+            // Random direction for each sparkle
+            const angle = (Math.PI * 2 * i) / sparkleCount;
+            const distance = 50 + Math.random() * 30;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+            
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.setProperty('--tx', tx + 'px');
+            sparkle.style.setProperty('--ty', ty + 'px');
+            
+            document.body.appendChild(sparkle);
+            
+            // Remove sparkle after animation
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+    }
+    
+    // Create popup with click count
+    function createPopup(x, y) {
+        const popup = document.createElement('div');
+        popup.className = 'heart-popup';
+        popup.textContent = '+1 ❤️';
+        popup.style.left = x + 'px';
+        popup.style.top = y + 'px';
+        
+        document.body.appendChild(popup);
+        
+        setTimeout(() => {
+            popup.remove();
+        }, 1000);
+    }
+    
+    // Change heart color
+    function changeHeartColor() {
+        // Remove all color classes
+        colors.forEach(color => heart.classList.remove(color));
+        
+        // Add new color class
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+        heart.classList.add(colors[currentColorIndex]);
+    }
+    
+    // Heart click handler
+    heart.addEventListener('click', (e) => {
+        // Change color
+        changeHeartColor();
+        
+        // Create sparkles at click position
+        createSparkles(e.clientX, e.clientY);
+        
+        // Create popup
+        createPopup(e.clientX, e.clientY);
+        
+        // Increment click count
+        clickCount++;
+    });
+    
+    // Always start with red color (default)
+    function loadHeartColor() {
+        colors.forEach(color => heart.classList.remove(color));
+        heart.classList.add('color-red'); // Always default to red
+        currentColorIndex = 0;
+    }
+    
+    loadHeartColor();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     preloadFooterImages();
     loadThemePreference();
@@ -347,4 +436,5 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFooterLanguagePreference();
     showDescription(0);
     initKeyboardNavigation();
+    initInteractiveHeart();
 });
