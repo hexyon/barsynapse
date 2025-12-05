@@ -349,50 +349,7 @@ function initInteractiveHeart() {
     let currentColorIndex = 0;
     let clickCount = 0;
     
-    // Create sparkle effect
-    function createSparkles(x, y) {
-        const sparkleEmojis = ['✨', '⭐', '💫', '🌟', '💖', '💕'];
-        const sparkleCount = 8;
-        
-        for (let i = 0; i < sparkleCount; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
-            
-            // Random direction for each sparkle
-            const angle = (Math.PI * 2 * i) / sparkleCount;
-            const distance = 50 + Math.random() * 30;
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-            
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.setProperty('--tx', tx + 'px');
-            sparkle.style.setProperty('--ty', ty + 'px');
-            
-            document.body.appendChild(sparkle);
-            
-            // Remove sparkle after animation
-            setTimeout(() => {
-                sparkle.remove();
-            }, 1000);
-        }
-    }
-    
-    // Create popup with click count
-    function createPopup(x, y) {
-        const popup = document.createElement('div');
-        popup.className = 'heart-popup';
-        popup.textContent = '+1 ❤️';
-        popup.style.left = x + 'px';
-        popup.style.top = y + 'px';
-        
-        document.body.appendChild(popup);
-        
-        setTimeout(() => {
-            popup.remove();
-        }, 1000);
-    }
+
     
     // Change heart color
     function changeHeartColor() {
@@ -406,14 +363,8 @@ function initInteractiveHeart() {
     
     // Heart click handler
     heart.addEventListener('click', (e) => {
-        // Change color
+        // Change color only
         changeHeartColor();
-        
-        // Create sparkles at click position
-        createSparkles(e.clientX, e.clientY);
-        
-        // Create popup
-        createPopup(e.clientX, e.clientY);
         
         // Increment click count
         clickCount++;
