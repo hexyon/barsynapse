@@ -631,6 +631,17 @@ main {
     align-items: center;
 }
 
+/* Dark mode icon fixes for Media Hub and Dictionary Lens */
+[data-theme="dark"] .website[data-name="media hub"] .site-icon,
+[data-theme="dark"] .description-content[data-index="4"] .description-icon {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+}
+
+[data-theme="dark"] .website[data-name="dictionary lens"] .site-icon,
+[data-theme="dark"] .description-content[data-index="8"] .description-icon {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+}
+
 
 .site-name {
     font-family: 'Dudu Calligraphy', Roboto, Arial, sans-serif;
