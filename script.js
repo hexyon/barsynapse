@@ -159,6 +159,7 @@ function updateActiveLanguage(langCode) {
         'he': 'Hebrew',
         'ku': 'Kurdish',
         'tr': 'Turkish',
+        'hy': 'Armenian',
         'ka': 'Georgian'
     };
     
