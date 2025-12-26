@@ -894,13 +894,13 @@ main {
             #F0F8FF 75%,
             rgba(240, 248, 255, 0.85) 100%);
     clip-path: polygon(
-            /* Top edge - flat sides with gradual transition */
-            0% 0%,
-            5% 0%,
-            10% 5%,
-            15% 15%,
-            20% 24%,
-            25% 26%,
+            /* Top edge - upward arch corners with dramatic middle */
+            0% 5%,
+            5% 3%,
+            10% 0%,
+            15% 2%,
+            20% 8%,
+            25% 18%,
             32% 35%,
             38% 28%,
             45% 38%,
@@ -909,11 +909,11 @@ main {
             65% 32%,
             72% 42%,
             75% 34%,
-            80% 24%,
-            85% 15%,
-            90% 5%,
+            80% 18%,
+            85% 8%,
+            90% 2%,
             95% 0%,
-            100% 0%,
+            100% 3%,
             /* Right edge - flat */
             100% 100%,
             /* Bottom edge - irregular drips and icicles */
@@ -1003,12 +1003,12 @@ main {
         radial-gradient(ellipse 65px 22px at 50% 52%, rgba(250, 253, 255, 0.9) 0%, rgba(248, 252, 255, 0.62) 52%, transparent 82%),
         radial-gradient(ellipse 70px 24px at 88% 50%, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.68) 48%, transparent 78%);
     clip-path: polygon(
-            /* Top edge - flat sides with gradual transition */
-            0% 0%,
-            5% 0%,
-            10% 5%,
-            15% 15%,
-            22% 22%,
+            /* Top edge - upward arch corners with dramatic middle */
+            0% 6%,
+            5% 4%,
+            10% 0%,
+            15% 3%,
+            22% 12%,
             30% 26%,
             38% 20%,
             45% 25%,
@@ -1016,11 +1016,11 @@ main {
             60% 23%,
             68% 16%,
             75% 22%,
-            78% 15%,
-            85% 5%,
+            78% 12%,
+            85% 3%,
             90% 0%,
-            95% 0%,
-            100% 0%,
+            95% 4%,
+            100% 6%,
             /* Right edge - flat */
             100% 100%,
             /* Bottom edge - irregular drips (offset from first layer) */
