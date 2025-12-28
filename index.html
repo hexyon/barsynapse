@@ -23,12 +23,6 @@
     <header role="banner">
         <div class="logo">
             <h1>Bar Synapse</h1>
-            <button class="toggle-switch" onclick="toggleTheme()" title="Toggle Dark Mode" aria-label="Toggle dark mode"
-                aria-pressed="false">
-                <div class="switch-track">
-                    <div class="switch-thumb"></div>
-                </div>
-            </button>
         </div>
         <div class="header-buttons" role="toolbar" aria-label="Main actions">
             <button class="header-button primary" onclick="toggleView('grid')" aria-label="Switch to grid view">
@@ -42,6 +36,10 @@
             </button>
         </div>
         <nav class="language-selector" aria-label="Language selection">
+            <button class="settings-button" onclick="toggleSettingsPanel()" aria-label="Open settings"
+                aria-expanded="false">
+                <i class="fas fa-cog" aria-hidden="true"></i>
+            </button>
             <button class="default-language-button" onclick="changeLanguage('en')"
                 aria-label="Switch to English">English</button>
             <button class="language-button" onclick="toggleLanguageMenu()" aria-label="Select language"
@@ -59,6 +57,30 @@
             </div>
         </nav>
     </header>
+
+    <!-- Settings Panel -->
+    <div class="settings-overlay" id="settings-overlay" onclick="closeSettingsPanel()"></div>
+    <div class="settings-panel" id="settings-panel" role="dialog" aria-label="Settings">
+        <div class="settings-header">
+            <h2>Settings</h2>
+            <button class="close-settings" onclick="closeSettingsPanel()" aria-label="Close settings">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>Dark Mode</span>
+                </div>
+                <button class="toggle-switch" onclick="toggleTheme()" aria-label="Toggle dark mode"
+                    aria-pressed="false">
+                    <div class="switch-track">
+                        <div class="switch-thumb"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <div class="section-title" role="heading" aria-level="2">
         <h2>
