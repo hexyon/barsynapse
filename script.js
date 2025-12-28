@@ -387,41 +387,35 @@ function loadFooterLanguagePreference() {
     }
 }
 
-// Interactive heart with color changes and sparkles
+// Interactive heart with rainbow toggle (rainbow includes black)
 function initInteractiveHeart() {
     const heart = document.querySelector('.section-heart-icon');
     if (!heart) return;
 
-    const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-rainbow'];
-    let currentColorIndex = 0;
-    let clickCount = 0;
+    const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-black', 'color-rainbow'];
+    let isRainbow = false;
 
-
-
-    // Change heart color
-    function changeHeartColor() {
+    // Heart click handler - toggle between red and rainbow
+    heart.addEventListener('click', (e) => {
         // Remove all color classes
         colors.forEach(color => heart.classList.remove(color));
 
-        // Add new color class
-        currentColorIndex = (currentColorIndex + 1) % colors.length;
-        heart.classList.add(colors[currentColorIndex]);
-    }
-
-    // Heart click handler
-    heart.addEventListener('click', (e) => {
-        // Change color only
-        changeHeartColor();
-
-        // Increment click count
-        clickCount++;
+        if (!isRainbow) {
+            // Start rainbow animation (includes black)
+            heart.classList.add('color-rainbow');
+            isRainbow = true;
+        } else {
+            // Return to red
+            heart.classList.add('color-red');
+            isRainbow = false;
+        }
     });
 
     // Always start with red color (default)
     function loadHeartColor() {
         colors.forEach(color => heart.classList.remove(color));
         heart.classList.add('color-red'); // Always default to red
-        currentColorIndex = 0;
+        isRainbow = false;
     }
 
     loadHeartColor();
