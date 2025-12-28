@@ -22,7 +22,7 @@ function updateNavInfo() {
     current.textContent = currentIndex + 1;
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex === descriptions.length - 1;
-    
+
     // Update ARIA attributes
     prevBtn.setAttribute('aria-disabled', currentIndex === 0);
     nextBtn.setAttribute('aria-disabled', currentIndex === descriptions.length - 1);
@@ -71,16 +71,16 @@ async function loadTranslation(langCode) {
     try {
         // Try relative path first
         let response = await fetch(`languages/${langCode}.json`);
-        
+
         // If that fails, try absolute path from root
         if (!response.ok) {
             response = await fetch(`/languages/${langCode}.json`);
         }
-        
+
         if (!response.ok) {
             throw new Error(`Translation not found: ${langCode}`);
         }
-        
+
         return await response.json();
     } catch (error) {
         console.error('Error loading translation:', error);
@@ -94,19 +94,19 @@ function applyTranslation(trans) {
     // Update document language and direction
     document.documentElement.lang = trans.lang;
     document.body.dir = trans.direction;
-    
+
     // Update header
     document.querySelector('.toggle-switch').title = trans.header.toggleTheme;
     document.querySelectorAll('.header-button span')[0].textContent = trans.header.appsButton;
     document.querySelectorAll('.header-button span')[1].textContent = trans.header.launchAllButton;
     document.querySelector('.language-button span').textContent = trans.header.languageButton;
-    
+
     // Update section title (preserve heart icon)
     const sectionTitleText = document.querySelector('.section-title-text');
     if (sectionTitleText) {
         sectionTitleText.textContent = trans.sectionTitle;
     }
-    
+
     // Update apps
     const websites = document.querySelectorAll('.website');
     websites.forEach((website, index) => {
@@ -117,7 +117,7 @@ function applyTranslation(trans) {
             website.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
         }
     });
-    
+
     // Update descriptions
     const descriptions = document.querySelectorAll('.description-content');
     descriptions.forEach((desc, index) => {
@@ -129,7 +129,7 @@ function applyTranslation(trans) {
             desc.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
         }
     });
-    
+
     // Update footer
     const footerSections = document.querySelectorAll('.footer-section');
     footerSections[0].querySelector('.footer-title').textContent = trans.footer.aboutTitle;
@@ -137,7 +137,7 @@ function applyTranslation(trans) {
     footerSections[1].querySelector('.footer-title').textContent = trans.footer.createdWithTitle;
     footerSections[2].querySelector('.footer-title').textContent = trans.footer.developerTitle;
     document.querySelector('.copyright p').textContent = trans.footer.copyright;
-    
+
     // Apply RTL/LTR specific styling
     if (trans.direction === 'rtl') {
         document.body.classList.add('rtl-mode');
@@ -152,7 +152,7 @@ function updateActiveLanguage(langCode) {
     document.querySelectorAll('.language-option').forEach(option => {
         option.classList.remove('active');
     });
-    
+
     // Add active class to selected language
     const languageMap = {
         'ar': 'Arabic',
@@ -162,7 +162,7 @@ function updateActiveLanguage(langCode) {
         'hy': 'Armenian',
         'ka': 'Georgian'
     };
-    
+
     if (langCode !== 'en' && languageMap[langCode]) {
         document.querySelectorAll('.language-option').forEach(option => {
             if (option.textContent.trim() === languageMap[langCode]) {
@@ -175,30 +175,30 @@ function updateActiveLanguage(langCode) {
 // Change language without page reload
 async function changeLanguage(langCode) {
     console.log('Language changed to:', langCode);
-    
+
     // Close dropdown
     const dropdown = document.getElementById('language-dropdown');
     if (dropdown) {
         dropdown.classList.remove('show');
     }
-    
+
     // Load and apply translation
     const trans = await loadTranslation(langCode);
     if (trans) {
         translations[langCode] = trans;
         currentLanguage = langCode;
         applyTranslation(trans);
-        
+
         // Update active language indicator
         updateActiveLanguage(langCode);
-        
+
         // Save language preference
         localStorage.setItem('language-preference', langCode);
     }
 }
 
 // Close dropdown when clicking outside
-window.addEventListener('click', function(event) {
+window.addEventListener('click', function (event) {
     if (!event.target.matches('.language-button') && !event.target.closest('.language-button')) {
         const dropdown = document.getElementById('language-dropdown');
         const button = document.querySelector('.language-button');
@@ -211,25 +211,72 @@ window.addEventListener('click', function(event) {
     }
 });
 
+// Settings Panel Functions
+function toggleSettingsPanel() {
+    const panel = document.getElementById('settings-panel');
+    const overlay = document.getElementById('settings-overlay');
+    const button = document.querySelector('.settings-button');
+
+    const isActive = panel.classList.contains('active');
+
+    if (isActive) {
+        closeSettingsPanel();
+    } else {
+        panel.classList.add('active');
+        overlay.classList.add('active');
+        if (button) {
+            button.setAttribute('aria-expanded', 'true');
+        }
+        // Prevent body scroll and compensate for scrollbar width
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = scrollbarWidth + 'px';
+    }
+}
+
+function closeSettingsPanel() {
+    const panel = document.getElementById('settings-panel');
+    const overlay = document.getElementById('settings-overlay');
+    const button = document.querySelector('.settings-button');
+
+    panel.classList.remove('active');
+    overlay.classList.remove('active');
+    if (button) {
+        button.setAttribute('aria-expanded', 'false');
+    }
+    // Restore body scroll and remove padding
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+}
+
+// Close settings panel when pressing Escape key
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        const panel = document.getElementById('settings-panel');
+        if (panel && panel.classList.contains('active')) {
+            closeSettingsPanel();
+        }
+    }
+});
+
 // Theme switching functionality
 function toggleTheme() {
     const html = document.documentElement;
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
+
     if (newTheme === 'dark') {
         html.setAttribute('data-theme', 'dark');
     } else {
         html.removeAttribute('data-theme');
     }
-    
+
     // Save preference to localStorage
     localStorage.setItem('theme-preference', newTheme);
-    
-    // Update toggle button title and ARIA attributes
+
+    // Update ARIA attributes
     const toggleButton = document.querySelector('.toggle-switch');
     const isDark = newTheme === 'dark';
-    toggleButton.title = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
     toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     toggleButton.setAttribute('aria-pressed', isDark);
 }
@@ -238,18 +285,17 @@ function toggleTheme() {
 function loadThemePreference() {
     const savedTheme = localStorage.getItem('theme-preference');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    
+
     if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
-    
-    // Set initial toggle button title and ARIA attributes
+
+    // Set initial ARIA attributes
     const toggleButton = document.querySelector('.toggle-switch');
     if (toggleButton) {
         const isDark = theme === 'dark';
-        toggleButton.title = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
         toggleButton.setAttribute('aria-pressed', isDark);
     }
@@ -274,7 +320,7 @@ function initKeyboardNavigation() {
             }
         });
     });
-    
+
     // Add keyboard navigation for language menu items
     const languageOptions = document.querySelectorAll('.language-option');
     languageOptions.forEach(option => {
@@ -285,7 +331,7 @@ function initKeyboardNavigation() {
             }
         });
     });
-    
+
     // Add keyboard navigation for RTL toggle button
     const rtlToggle = document.querySelector('.rtl-toggle-circle');
     if (rtlToggle) {
@@ -312,9 +358,9 @@ function preloadFooterImages() {
 function toggleFooterLanguage() {
     const footer = document.querySelector('footer');
     const toggleCircle = document.querySelector('.rtl-toggle-circle');
-    
+
     isRtlFooter = !isRtlFooter;
-    
+
     if (isRtlFooter) {
         footer.classList.add('rtl-footer');
         toggleCircle.classList.add('active');
@@ -322,7 +368,7 @@ function toggleFooterLanguage() {
         footer.classList.remove('rtl-footer');
         toggleCircle.classList.remove('active');
     }
-    
+
     // Save preference
     localStorage.setItem('footer-language-preference', isRtlFooter ? 'rtl' : 'ltr');
 }
@@ -345,39 +391,39 @@ function loadFooterLanguagePreference() {
 function initInteractiveHeart() {
     const heart = document.querySelector('.section-heart-icon');
     if (!heart) return;
-    
+
     const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-rainbow'];
     let currentColorIndex = 0;
     let clickCount = 0;
-    
 
-    
+
+
     // Change heart color
     function changeHeartColor() {
         // Remove all color classes
         colors.forEach(color => heart.classList.remove(color));
-        
+
         // Add new color class
         currentColorIndex = (currentColorIndex + 1) % colors.length;
         heart.classList.add(colors[currentColorIndex]);
     }
-    
+
     // Heart click handler
     heart.addEventListener('click', (e) => {
         // Change color only
         changeHeartColor();
-        
+
         // Increment click count
         clickCount++;
     });
-    
+
     // Always start with red color (default)
     function loadHeartColor() {
         colors.forEach(color => heart.classList.remove(color));
         heart.classList.add('color-red'); // Always default to red
         currentColorIndex = 0;
     }
-    
+
     loadHeartColor();
 }
 
