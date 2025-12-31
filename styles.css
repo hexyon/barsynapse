@@ -126,6 +126,7 @@ body.rtl-mode .nav-controls {
 }
 
 
+
 /* Header Styles */
 header {
     display: grid;
@@ -1320,122 +1321,6 @@ footer {
     max-height: 600px;
 }
 
-footer.rtl-footer {
-    background: linear-gradient(rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.00)), url('images/FlagofIsrael.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Language Toggle - Book Page Flip */
-.rtl-toggle-circle {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    margin: 15px auto;
-    border-radius: 50%;
-    background: #f5f5f7;
-    border: 2px solid #f5f5f7;
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 1px 2px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 1.67s cubic-bezier(0.4, 0, 0.2, 1);
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    overflow: visible;
-    perspective: 600px;
-    transform-style: preserve-3d;
-}
-
-/* Center vertical line */
-.rtl-toggle-circle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 2px;
-    height: 55%;
-    background: #1d1d1f;
-    transform: translate(-50%, -50%);
-    border-radius: 1px;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Left side line (USA) / Right side line (Israel) */
-.rtl-toggle-circle::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 18%;
-    width: 6px;
-    height: 2px;
-    background: #1d1d1f;
-    transform: translateY(-50%);
-    border-radius: 1px;
-    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Hover State */
-.rtl-toggle-circle:hover {
-    background: #e8e8ed;
-    border-color: #c7c7cc;
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-/* Focus State for keyboard navigation */
-.rtl-toggle-circle:focus {
-    outline: none;
-}
-
-/* Active/Pressed State - subtle feedback only */
-.rtl-toggle-circle:active {
-    transform: scale(0.98);
-    transition: all 0.1s ease;
-}
-
-/* Page Flip Animation - Active State (Israel) */
-
-
-/* Center line with subtle rotation */
-.rtl-toggle-circle.active::before {
-    transform: translate(-50%, -50%) rotateZ(360deg);
-}
-
-/* Line moves from left to right with rotation */
-.rtl-toggle-circle.active::after {
-    left: auto;
-    right: 18%;
-    transform: translateY(-50%) rotateZ(180deg);
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .rtl-toggle-circle {
-    background: #f5f5f7;
-    border-color: #f5f5f7;
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] .rtl-toggle-circle:hover {
-    background: #e8e8ed;
-    border-color: #c7c7cc;
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] .rtl-toggle-circle:hover {
-    box-shadow:
-        0 4px 16px rgba(0, 122, 255, 0.4),
-        inset 0 1px 3px rgba(255, 255, 255, 0.3);
-}
 
 [data-theme="dark"] footer {
     border-top: none;
