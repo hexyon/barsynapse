@@ -332,60 +332,9 @@ function initKeyboardNavigation() {
         });
     });
 
-    // Add keyboard navigation for RTL toggle button
-    const rtlToggle = document.querySelector('.rtl-toggle-circle');
-    if (rtlToggle) {
-        rtlToggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleFooterLanguage();
-            }
-        });
-    }
 }
 
-// Toggle footer language (USA <-> Israel flag)
-let isRtlFooter = false;
-
-// Preload both flag images to prevent flash
-function preloadFooterImages() {
-    const usaFlag = new Image();
-    const israelFlag = new Image();
-    usaFlag.src = 'images/FlagofUSA.png';
-    israelFlag.src = 'images/FlagofIsrael.png';
-}
-
-function toggleFooterLanguage() {
-    const footer = document.querySelector('footer');
-    const toggleCircle = document.querySelector('.rtl-toggle-circle');
-
-    isRtlFooter = !isRtlFooter;
-
-    if (isRtlFooter) {
-        footer.classList.add('rtl-footer');
-        toggleCircle.classList.add('active');
-    } else {
-        footer.classList.remove('rtl-footer');
-        toggleCircle.classList.remove('active');
-    }
-
-    // Save preference
-    localStorage.setItem('footer-language-preference', isRtlFooter ? 'rtl' : 'ltr');
-}
-
-// Load footer language preference
-function loadFooterLanguagePreference() {
-    const savedFooterLang = localStorage.getItem('footer-language-preference');
-    if (savedFooterLang === 'rtl') {
-        const footer = document.querySelector('footer');
-        const toggleCircle = document.querySelector('.rtl-toggle-circle');
-        if (footer && toggleCircle) {
-            isRtlFooter = true;
-            footer.classList.add('rtl-footer');
-            toggleCircle.classList.add('active');
-        }
-    }
-}
+// Footer language preference removed - only USA flag is used
 
 // Interactive heart with rainbow toggle (rainbow includes black)
 function initInteractiveHeart() {
@@ -422,10 +371,8 @@ function initInteractiveHeart() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    preloadFooterImages();
     loadThemePreference();
     loadLanguagePreference();
-    loadFooterLanguagePreference();
     showDescription(0);
     initKeyboardNavigation();
     initInteractiveHeart();
