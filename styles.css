@@ -166,21 +166,7 @@ header {
     position: relative;
 }
 
-/* Christmas hat decoration */
-.logo h1::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -8px;
-    width: 50px;
-    height: 50px;
-    background-image: url('christmas/christmas-hat.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    pointer-events: none;
-    z-index: 10;
-}
+
 
 
 
@@ -230,7 +216,7 @@ header {
         0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-[data-theme="dark"] .switch-track {
+[data-theme="dark"] .toggle-switch:not(#icon-toggle) .switch-track {
     background: #2a2a2a;
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow:
@@ -238,7 +224,7 @@ header {
         0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] .switch-thumb {
+[data-theme="dark"] .toggle-switch:not(#icon-toggle) .switch-thumb {
     background: #ff3a4a;
     transform: translateX(22px);
     box-shadow:
@@ -254,7 +240,7 @@ header {
         0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] .toggle-switch:hover .switch-thumb {
+[data-theme="dark"] .toggle-switch:not(#icon-toggle):hover .switch-thumb {
     transform: translateX(22px) scale(1.08);
     box-shadow:
         0 2px 6px rgba(255, 58, 74, 0.5),
@@ -267,7 +253,7 @@ header {
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-theme="dark"] .toggle-switch:active .switch-thumb {
+[data-theme="dark"] .toggle-switch:not(#icon-toggle):active .switch-thumb {
     transform: translateX(22px) scale(0.92);
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -290,6 +276,65 @@ header {
 .toggle-switch:active .switch-track {
     animation: track-pulse 1s ease;
 }
+
+/* Icon Toggle - Active state styling */
+#icon-toggle[aria-pressed="true"] .switch-track {
+    background: #e0e0e0;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#icon-toggle[aria-pressed="true"] .switch-thumb {
+    background: #ff3a4a;
+    transform: translateX(22px);
+    box-shadow:
+        0 2px 4px rgba(255, 58, 74, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+#icon-toggle[aria-pressed="true"]:hover .switch-thumb {
+    transform: translateX(22px) scale(1.08);
+    box-shadow:
+        0 2px 6px rgba(255, 58, 74, 0.5),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#icon-toggle[aria-pressed="true"]:active .switch-thumb {
+    transform: translateX(22px) scale(0.92);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon Toggle - Dark mode styling */
+[data-theme="dark"] #icon-toggle[aria-pressed="true"] .switch-track {
+    background: #2a2a2a;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] #icon-toggle[aria-pressed="true"] .switch-thumb {
+    background: #ff3a4a;
+    transform: translateX(22px);
+    box-shadow:
+        0 2px 4px rgba(255, 58, 74, 0.4),
+        0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] #icon-toggle[aria-pressed="true"]:hover .switch-thumb {
+    transform: translateX(22px) scale(1.08);
+    box-shadow:
+        0 2px 6px rgba(255, 58, 74, 0.5),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] #icon-toggle[aria-pressed="true"]:active .switch-thumb {
+    transform: translateX(22px) scale(0.92);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 
 .header-buttons {
     display: flex;
@@ -371,10 +416,12 @@ header {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 998;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .settings-overlay.active {
@@ -586,16 +633,17 @@ header {
 }
 
 .section-heart-icon {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     vertical-align: middle;
     order: 2;
-    cursor: pointer;
+    cursor: default;
     transition: none;
     user-select: none;
     -webkit-user-select: none;
     position: relative;
+    opacity: 0;
 }
 
 /* Color variations */
@@ -890,301 +938,17 @@ main {
     overflow: visible;
 }
 
-/* Shimmer animation for snow sparkle */
-@keyframes snowShimmer {
 
-    0%,
-    100% {
-        opacity: 0.95;
-        filter: contrast(1.05) brightness(1.02);
-    }
 
-    50% {
-        opacity: 1;
-        filter: contrast(1.08) brightness(1.05);
-    }
-}
 
-/* Complex 3D snowy land effect - Base layer */
-.descriptions-container::before {
-    content: '';
-    position: absolute;
-    top: -16px;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background:
-        /* Crystalline sparkle points */
-        radial-gradient(circle 2px at 12% 35%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 28% 45%, rgba(240, 248, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 48% 38%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 67% 42%, rgba(230, 243, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 85% 40%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        /* Multiple overlapping snow layers for depth */
-        radial-gradient(ellipse 120px 25px at 15% 60%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 40%, transparent 70%),
-        radial-gradient(ellipse 100px 30px at 35% 50%, #F8FCFF 0%, rgba(248, 252, 255, 0.9) 45%, transparent 75%),
-        radial-gradient(ellipse 140px 28px at 55% 55%, #FFFFFF 0%, rgba(255, 255, 255, 0.96) 42%, transparent 72%),
-        radial-gradient(ellipse 110px 32px at 75% 48%, #F0F8FF 0%, rgba(240, 248, 255, 0.92) 48%, transparent 78%),
-        radial-gradient(ellipse 95px 26px at 90% 58%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 40%, transparent 70%),
-        /* Smaller overlapping mounds */
-        radial-gradient(ellipse 70px 20px at 25% 65%, #F8FCFF 0%, rgba(248, 252, 255, 0.88) 50%, transparent 80%),
-        radial-gradient(ellipse 80px 22px at 45% 62%, #FFFFFF 0%, rgba(255, 255, 255, 0.9) 45%, transparent 75%),
-        radial-gradient(ellipse 65px 18px at 65% 68%, #F0F8FF 0%, rgba(240, 248, 255, 0.86) 48%, transparent 78%),
-        radial-gradient(ellipse 75px 24px at 82% 60%, #F8FCFF 0%, rgba(248, 252, 255, 0.9) 46%, transparent 76%),
-        /* Base snow layer with gradient */
-        linear-gradient(180deg,
-            #FFFFFF 0%,
-            #FAFEFF 25%,
-            #F5FBFF 50%,
-            #F0F8FF 75%,
-            rgba(240, 248, 255, 0.85) 100%);
-    border-radius: 0;
-    box-shadow:
-        /* Enhanced 3D shadows for depth */
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        0 2px 6px rgba(0, 0, 0, 0.1),
-        0 1px 3px rgba(0, 0, 0, 0.08),
-        /* Inner texture and highlights */
-        inset 0 -3px 6px rgba(173, 216, 230, 0.5),
-        inset 0 3px 5px rgba(255, 255, 255, 1),
-        /* Enhanced sparkle highlights */
-        inset -4px 3px 3px rgba(255, 255, 255, 0.85),
-        inset 4px 3px 3px rgba(255, 255, 255, 0.85),
-        inset 0 -2px 3px rgba(200, 235, 255, 0.6);
-    z-index: 10;
-    pointer-events: none;
-    /* Add realistic snow texture with shimmer */
-    filter: contrast(1.05) brightness(1.02);
-    animation: snowShimmer 4s ease-in-out infinite;
-    background-blend-mode: screen, screen, screen, screen, screen, overlay, overlay, overlay, overlay, overlay, overlay, overlay, overlay, overlay, normal;
-    /* Add subtle noise texture for snow crystals */
-    background-image:
-        /* Crystalline sparkle points */
-        radial-gradient(circle 2px at 12% 35%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 28% 45%, rgba(240, 248, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 48% 38%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 67% 42%, rgba(230, 243, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 85% 40%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        /* Enhanced noise texture for snow grain */
-        repeating-linear-gradient(0deg, transparent 0px, rgba(255, 255, 255, 0.05) 1px, transparent 2px),
-        repeating-linear-gradient(90deg, transparent 0px, rgba(255, 255, 255, 0.05) 1px, transparent 2px),
-        repeating-linear-gradient(45deg, transparent 0px, rgba(248, 252, 255, 0.04) 1px, transparent 3px),
-        repeating-linear-gradient(-45deg, transparent 0px, rgba(248, 252, 255, 0.04) 1px, transparent 3px),
-        /* Multiple overlapping snow layers for depth */
-        radial-gradient(ellipse 120px 25px at 15% 60%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 40%, transparent 70%),
-        radial-gradient(ellipse 100px 30px at 35% 50%, #F8FCFF 0%, rgba(248, 252, 255, 0.9) 45%, transparent 75%),
-        radial-gradient(ellipse 140px 28px at 55% 55%, #FFFFFF 0%, rgba(255, 255, 255, 0.96) 42%, transparent 72%),
-        radial-gradient(ellipse 110px 32px at 75% 48%, #F0F8FF 0%, rgba(240, 248, 255, 0.92) 48%, transparent 78%),
-        radial-gradient(ellipse 95px 26px at 90% 58%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 40%, transparent 70%),
-        /* Smaller overlapping mounds */
-        radial-gradient(ellipse 70px 20px at 25% 65%, #F8FCFF 0%, rgba(248, 252, 255, 0.88) 50%, transparent 80%),
-        radial-gradient(ellipse 80px 22px at 45% 62%, #FFFFFF 0%, rgba(255, 255, 255, 0.9) 45%, transparent 75%),
-        radial-gradient(ellipse 65px 18px at 65% 68%, #F0F8FF 0%, rgba(240, 248, 255, 0.86) 48%, transparent 78%),
-        radial-gradient(ellipse 75px 24px at 82% 60%, #F8FCFF 0%, rgba(248, 252, 255, 0.9) 46%, transparent 76%),
-        /* Base snow layer with gradient */
-        linear-gradient(180deg,
-            #FFFFFF 0%,
-            #FAFEFF 25%,
-            #F5FBFF 50%,
-            #F0F8FF 75%,
-            rgba(240, 248, 255, 0.85) 100%);
-    clip-path: polygon(
-            /* Top edge - upward arch corners with dramatic middle */
-            0% 5%,
-            5% 3%,
-            10% 0%,
-            15% 2%,
-            20% 8%,
-            25% 18%,
-            32% 35%,
-            38% 28%,
-            45% 38%,
-            52% 30%,
-            58% 40%,
-            65% 32%,
-            72% 42%,
-            75% 34%,
-            80% 18%,
-            85% 8%,
-            90% 2%,
-            95% 0%,
-            100% 3%,
-            /* Right edge - flat */
-            100% 100%,
-            /* Bottom edge - irregular drips and icicles */
-            98% 96%,
-            95% 88%,
-            92% 94%,
-            88% 90%,
-            85% 97%,
-            80% 92%,
-            75% 98%,
-            70% 93%,
-            65% 99%,
-            60% 94%,
-            55% 97%,
-            50% 92%,
-            45% 100%,
-            40% 95%,
-            35% 98%,
-            30% 93%,
-            25% 96%,
-            20% 91%,
-            15% 95%,
-            10% 89%,
-            5% 94%,
-            2% 90%,
-            /* Left edge - smooth */
-            0% 100%);
-}
 
-/* Additional irregular snow peaks and overlaps */
-.descriptions-container::after {
-    content: '';
-    position: absolute;
-    top: -14px;
-    left: 0;
-    width: 100%;
-    height: 35px;
-    background:
-        /* Additional crystalline sparkle points */
-        radial-gradient(circle 1.5px at 18% 38%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 38% 42%, rgba(248, 252, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 56% 35%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 72% 40%, rgba(240, 248, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 92% 37%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        /* Prominent overlapping snow peaks */
-        radial-gradient(ellipse 90px 28px at 20% 45%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 75%),
-        radial-gradient(ellipse 110px 32px at 42% 40%, rgba(250, 253, 255, 0.95) 0%, rgba(248, 252, 255, 0.7) 48%, transparent 78%),
-        radial-gradient(ellipse 85px 26px at 60% 48%, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.78) 45%, transparent 72%),
-        radial-gradient(ellipse 95px 30px at 80% 42%, rgba(245, 250, 255, 0.93) 0%, rgba(240, 248, 255, 0.72) 50%, transparent 80%),
-        /* Smaller accent peaks */
-        radial-gradient(ellipse 60px 20px at 10% 55%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.65) 55%, transparent 85%),
-        radial-gradient(ellipse 65px 22px at 50% 52%, rgba(250, 253, 255, 0.9) 0%, rgba(248, 252, 255, 0.62) 52%, transparent 82%),
-        radial-gradient(ellipse 70px 24px at 88% 50%, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.68) 48%, transparent 78%);
-    border-radius: 0;
-    box-shadow:
-        /* Soft glow and depth */
-        0 3px 8px rgba(0, 0, 0, 0.12),
-        0 1px 4px rgba(0, 0, 0, 0.08),
-        inset 0 2px 3px rgba(255, 255, 255, 1),
-        inset 0 -2px 4px rgba(173, 216, 230, 0.4);
-    z-index: 11;
-    pointer-events: none;
-    /* Add realistic snow texture - slightly different from base layer */
-    filter: contrast(1.03) brightness(1.01);
-    animation: snowShimmer 4.5s ease-in-out infinite;
-    background-blend-mode: screen, screen, screen, screen, screen, overlay, overlay, overlay, overlay, overlay, overlay, overlay, normal;
-    /* Add subtle noise texture offset from first layer */
-    background-image:
-        /* Additional crystalline sparkle points */
-        radial-gradient(circle 1.5px at 18% 38%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 38% 42%, rgba(248, 252, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 56% 35%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 2px at 72% 40%, rgba(240, 248, 255, 1) 0%, transparent 100%),
-        radial-gradient(circle 1.5px at 92% 37%, rgba(255, 255, 255, 1) 0%, transparent 100%),
-        /* Offset noise texture for layered effect */
-        repeating-linear-gradient(30deg, transparent 0px, rgba(255, 255, 255, 0.04) 1px, transparent 2px),
-        repeating-linear-gradient(120deg, transparent 0px, rgba(255, 255, 255, 0.04) 1px, transparent 2px),
-        repeating-linear-gradient(60deg, transparent 0px, rgba(250, 253, 255, 0.03) 1px, transparent 3px),
-        repeating-linear-gradient(-60deg, transparent 0px, rgba(250, 253, 255, 0.03) 1px, transparent 3px),
-        /* Prominent overlapping snow peaks */
-        radial-gradient(ellipse 90px 28px at 20% 45%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.75) 50%, transparent 75%),
-        radial-gradient(ellipse 110px 32px at 42% 40%, rgba(250, 253, 255, 0.95) 0%, rgba(248, 252, 255, 0.7) 48%, transparent 78%),
-        radial-gradient(ellipse 85px 26px at 60% 48%, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.78) 45%, transparent 72%),
-        radial-gradient(ellipse 95px 30px at 80% 42%, rgba(245, 250, 255, 0.93) 0%, rgba(240, 248, 255, 0.72) 50%, transparent 80%),
-        /* Smaller accent peaks */
-        radial-gradient(ellipse 60px 20px at 10% 55%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.65) 55%, transparent 85%),
-        radial-gradient(ellipse 65px 22px at 50% 52%, rgba(250, 253, 255, 0.9) 0%, rgba(248, 252, 255, 0.62) 52%, transparent 82%),
-        radial-gradient(ellipse 70px 24px at 88% 50%, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.68) 48%, transparent 78%);
-    clip-path: polygon(
-            /* Top edge - upward arch corners with dramatic middle */
-            0% 6%,
-            5% 4%,
-            10% 0%,
-            15% 3%,
-            22% 12%,
-            30% 26%,
-            38% 20%,
-            45% 25%,
-            52% 18%,
-            60% 23%,
-            68% 16%,
-            75% 22%,
-            78% 12%,
-            85% 3%,
-            90% 0%,
-            95% 4%,
-            100% 6%,
-            /* Right edge - flat */
-            100% 100%,
-            /* Bottom edge - irregular drips (offset from first layer) */
-            97% 91%,
-            93% 85%,
-            89% 93%,
-            84% 87%,
-            79% 95%,
-            74% 89%,
-            69% 96%,
-            64% 90%,
-            59% 94%,
-            54% 88%,
-            49% 97%,
-            44% 91%,
-            39% 95%,
-            34% 89%,
-            29% 93%,
-            24% 87%,
-            19% 92%,
-            14% 86%,
-            9% 90%,
-            4% 84%,
-            /* Left edge - smooth */
-            0% 100%);
-}
 
-/* Glow animation for dark mode snow */
-@keyframes snowGlow {
 
-    0%,
-    100% {
-        filter: contrast(1.1) brightness(1.15) drop-shadow(0 0 8px rgba(200, 230, 255, 0.6));
-    }
 
-    50% {
-        filter: contrast(1.15) brightness(1.25) drop-shadow(0 0 12px rgba(220, 240, 255, 0.8));
-    }
-}
 
-/* Dark mode snow adjustments - Hidden */
-[data-theme="dark"] .descriptions-container::before {
-    display: none;
-}
 
-[data-theme="dark"] .descriptions-container::after {
-    display: none;
-}
 
-/* Candy cane decoration - positioned above snow */
-.descriptions-section::before {
-    content: '';
-    position: absolute;
-    top: -76px;
-    left: 5%;
-    width: 50px;
-    height: 80px;
-    background-image: url('christmas/candy-cane.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-    pointer-events: none;
-}
 
-/* Hide candy cane in dark mode */
-[data-theme="dark"] .descriptions-section::before {
-    display: none;
-}
 
 
 
@@ -1321,6 +1085,122 @@ footer {
     max-height: 600px;
 }
 
+footer.rtl-footer {
+    background: linear-gradient(rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.00)), url('images/FlagofIsrael.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Language Toggle - Book Page Flip */
+.rtl-toggle-circle {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 15px auto;
+    border-radius: 50%;
+    background: #f5f5f7;
+    border: 2px solid #f5f5f7;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 1.67s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: visible;
+    perspective: 600px;
+    transform-style: preserve-3d;
+}
+
+/* Center vertical line */
+.rtl-toggle-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 55%;
+    background: #1d1d1f;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Left side line (USA) / Right side line (Israel) */
+.rtl-toggle-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 18%;
+    width: 6px;
+    height: 2px;
+    background: #1d1d1f;
+    transform: translateY(-50%);
+    border-radius: 1px;
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover State */
+.rtl-toggle-circle:hover {
+    background: #e8e8ed;
+    border-color: #c7c7cc;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Focus State for keyboard navigation */
+.rtl-toggle-circle:focus {
+    outline: none;
+}
+
+/* Active/Pressed State - subtle feedback only */
+.rtl-toggle-circle:active {
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Page Flip Animation - Active State (Israel) */
+
+
+/* Center line with subtle rotation */
+.rtl-toggle-circle.active::before {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+}
+
+/* Line moves from left to right with rotation */
+.rtl-toggle-circle.active::after {
+    left: auto;
+    right: 18%;
+    transform: translateY(-50%) rotateZ(180deg);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .rtl-toggle-circle {
+    background: #f5f5f7;
+    border-color: #f5f5f7;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .rtl-toggle-circle:hover {
+    background: #e8e8ed;
+    border-color: #c7c7cc;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .rtl-toggle-circle:hover {
+    box-shadow:
+        0 4px 16px rgba(0, 122, 255, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
 
 [data-theme="dark"] footer {
     border-top: none;
