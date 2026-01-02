@@ -16,7 +16,6 @@
 </head>
 
 <body>
-    <!-- Canvas-based snow effect initialized via snow.js -->
     <div class="noise-overlay"></div>
     <div class="background-gradient"></div>
 
@@ -72,7 +71,18 @@
                 <div class="setting-label">
                     <span>Dark Mode</span>
                 </div>
-                <button class="toggle-switch" onclick="toggleTheme()" aria-label="Toggle dark mode"
+                <button class="toggle-switch" onclick="toggleTheme(event)" aria-label="Toggle dark mode"
+                    aria-pressed="false">
+                    <div class="switch-track">
+                        <div class="switch-thumb"></div>
+                    </div>
+                </button>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>Change Icon</span>
+                </div>
+                <button class="toggle-switch" id="icon-toggle" onclick="toggleIcon(event)" aria-label="Toggle icon"
                     aria-pressed="false">
                     <div class="switch-track">
                         <div class="switch-thumb"></div>
@@ -490,7 +500,6 @@
             </div>
         </footer>
 
-        <script src="snow.js"></script>
         <script src="script.js"></script>
 </body>
 
