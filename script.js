@@ -260,7 +260,12 @@ document.addEventListener('keydown', function (event) {
 });
 
 // Theme switching functionality
-function toggleTheme() {
+function toggleTheme(event) {
+    // Prevent event from bubbling up
+    if (event) {
+        event.stopPropagation();
+    }
+
     const html = document.documentElement;
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -301,6 +306,88 @@ function loadThemePreference() {
     }
 }
 
+// Icon switching functionality
+function toggleIcon(event) {
+    // Prevent event from bubbling up
+    if (event) {
+        event.stopPropagation();
+    }
+
+    const heartIcon = document.querySelector('.section-heart-icon');
+    const currentIcon = heartIcon.getAttribute('src');
+    const newIcon = currentIcon.includes('heart-pixel.png') ? 'icons/bow-tie.png' : 'icons/heart-pixel.png';
+
+    heartIcon.setAttribute('src', newIcon);
+
+    // Update size based on icon type
+    if (newIcon.includes('bow-tie.png')) {
+        heartIcon.style.width = '96px';
+        heartIcon.style.height = '96px';
+        heartIcon.style.cursor = 'default'; // Not clickable
+
+        // Remove all color animation classes when switching to bow-tie
+        const colorClasses = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-black', 'color-rainbow'];
+        colorClasses.forEach(cls => heartIcon.classList.remove(cls));
+    } else {
+        heartIcon.style.width = '48px';
+        heartIcon.style.height = '48px';
+        heartIcon.style.cursor = 'pointer'; // Clickable
+
+        // Add red color class when switching back to heart
+        heartIcon.classList.add('color-red');
+    }
+
+    // Update alt text
+    const altText = newIcon.includes('heart-pixel.png') ? '' : '';
+    heartIcon.setAttribute('alt', altText);
+
+    // Save preference to localStorage
+    localStorage.setItem('icon-preference', newIcon);
+
+    // Update ARIA attributes
+    const toggleButton = document.getElementById('icon-toggle');
+    const isBowTie = newIcon.includes('bow-tie.png');
+    toggleButton.setAttribute('aria-label', isBowTie ? 'Switch to heart icon' : 'Switch to bow-tie icon');
+    toggleButton.setAttribute('aria-pressed', isBowTie);
+}
+
+// Load saved icon preference
+function loadIconPreference() {
+    const savedIcon = localStorage.getItem('icon-preference');
+    const heartIcon = document.querySelector('.section-heart-icon');
+
+    if (savedIcon && heartIcon) {
+        heartIcon.setAttribute('src', savedIcon);
+
+        // Set size based on icon type
+        if (savedIcon.includes('bow-tie.png')) {
+            heartIcon.style.width = '96px';
+            heartIcon.style.height = '96px';
+            heartIcon.style.cursor = 'default'; // Not clickable
+        } else {
+            heartIcon.style.width = '48px';
+            heartIcon.style.height = '48px';
+            heartIcon.style.cursor = 'pointer'; // Clickable
+        }
+
+        // Set initial ARIA attributes
+        const toggleButton = document.getElementById('icon-toggle');
+        if (toggleButton) {
+            const isBowTie = savedIcon.includes('bow-tie.png');
+            toggleButton.setAttribute('aria-label', isBowTie ? 'Switch to heart icon' : 'Switch to bow-tie icon');
+            toggleButton.setAttribute('aria-pressed', isBowTie);
+        }
+    } else if (heartIcon) {
+        // No saved preference, default to heart with pointer cursor
+        heartIcon.style.cursor = 'pointer';
+    }
+
+    // Show the icon after loading (prevents flash)
+    if (heartIcon) {
+        heartIcon.style.opacity = '1';
+    }
+}
+
 // Load saved language preference
 async function loadLanguagePreference() {
     const savedLang = localStorage.getItem('language-preference');
@@ -332,9 +419,60 @@ function initKeyboardNavigation() {
         });
     });
 
+    // Add keyboard navigation for RTL toggle button
+    const rtlToggle = document.querySelector('.rtl-toggle-circle');
+    if (rtlToggle) {
+        rtlToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFooterLanguage();
+            }
+        });
+    }
 }
 
-// Footer language preference removed - only USA flag is used
+// Toggle footer language (USA <-> Israel flag)
+let isRtlFooter = false;
+
+// Preload both flag images to prevent flash
+function preloadFooterImages() {
+    const usaFlag = new Image();
+    const israelFlag = new Image();
+    usaFlag.src = 'images/FlagofUSA.png';
+    israelFlag.src = 'images/FlagofIsrael.png';
+}
+
+function toggleFooterLanguage() {
+    const footer = document.querySelector('footer');
+    const toggleCircle = document.querySelector('.rtl-toggle-circle');
+
+    isRtlFooter = !isRtlFooter;
+
+    if (isRtlFooter) {
+        footer.classList.add('rtl-footer');
+        toggleCircle.classList.add('active');
+    } else {
+        footer.classList.remove('rtl-footer');
+        toggleCircle.classList.remove('active');
+    }
+
+    // Save preference
+    localStorage.setItem('footer-language-preference', isRtlFooter ? 'rtl' : 'ltr');
+}
+
+// Load footer language preference
+function loadFooterLanguagePreference() {
+    const savedFooterLang = localStorage.getItem('footer-language-preference');
+    if (savedFooterLang === 'rtl') {
+        const footer = document.querySelector('footer');
+        const toggleCircle = document.querySelector('.rtl-toggle-circle');
+        if (footer && toggleCircle) {
+            isRtlFooter = true;
+            footer.classList.add('rtl-footer');
+            toggleCircle.classList.add('active');
+        }
+    }
+}
 
 // Interactive heart with rainbow toggle (rainbow includes black)
 function initInteractiveHeart() {
@@ -344,8 +482,14 @@ function initInteractiveHeart() {
     const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-black', 'color-rainbow'];
     let isRainbow = false;
 
-    // Heart click handler - toggle between red and rainbow
+    // Heart click handler - toggle between red and rainbow (only for heart, not bow-tie)
     heart.addEventListener('click', (e) => {
+        // Only allow clicking if it's the heart icon, not bow-tie
+        const currentIcon = heart.getAttribute('src');
+        if (currentIcon && currentIcon.includes('bow-tie.png')) {
+            return; // Don't do anything if it's the bow-tie
+        }
+
         // Remove all color classes
         colors.forEach(color => heart.classList.remove(color));
 
@@ -371,8 +515,11 @@ function initInteractiveHeart() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    preloadFooterImages();
     loadThemePreference();
+    loadIconPreference();
     loadLanguagePreference();
+    loadFooterLanguagePreference();
     showDescription(0);
     initKeyboardNavigation();
     initInteractiveHeart();
