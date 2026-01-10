@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="designs/grid-design.css" id="design-css">
 </head>
 
 <body>
@@ -83,6 +84,17 @@
                     <span>Change Icon</span>
                 </div>
                 <button class="toggle-switch" id="icon-toggle" onclick="toggleIcon(event)" aria-label="Toggle icon"
+                    aria-pressed="false">
+                    <div class="switch-track">
+                        <div class="switch-thumb"></div>
+                    </div>
+                </button>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>Change Design</span>
+                </div>
+                <button class="toggle-switch" id="design-toggle" onclick="toggleDesign(event)" aria-label="Toggle design"
                     aria-pressed="false">
                     <div class="switch-track">
                         <div class="switch-thumb"></div>
@@ -266,6 +278,320 @@
                     <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                     Visit
                 </a>
+            </div>
+        </div>
+    </main>
+
+    <main role="main">
+        <!-- Apps List -->
+        <div class="apps-list" role="list">
+            <!-- Media Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Media</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="0" data-category="media" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://slidepro.netlify.app/favicon.ico" alt="Slide Pro Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Slide Pro</div>
+                                <div class="list-subtitle">Feature-rich image slideshow</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">A sleek, feature-rich image slideshow web app. Upload multiple
+                                images and control the slideshow with start, stop, shuffle, fullscreen, loop, and
+                                progress bar options. Customize slide delay, navigate with arrow keys, and enjoy smooth
+                                transitions with a responsive design.</p>
+                            <a href="https://slidepro.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="list-item" data-index="4" data-category="media" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://mediahubon.netlify.app/favicon.ico" alt="Media Hub Icon"
+                                class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Media Hub</div>
+                                <div class="list-subtitle">Sleek media viewer</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">A sleek media viewer web app for images and videos with a
+                                modern UI. Features include fullscreen viewing, keyboard navigation, file upload
+                                support, blur background effects, and an index system. It offers smooth transitions and
+                                a responsive design.</p>
+                            <a href="https://mediahubon.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Utility Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Utility</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="1" data-category="utility" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://photoresolutionsorter.netlify.app/favicon.ico"
+                                alt="Photo Resolution Sorter Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Photo Resolution Sorter</div>
+                                <div class="list-subtitle">Categorize images by resolution</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">Photo Resolution Sorter: A web tool that categorizes images by
+                                resolution. Upload your photos to automatically sort them into low, standard, or
+                                high-res groups. Process entire collections at once and export with a single click.
+                                Simple, fast, effective.</p>
+                            <a href="https://photoresolutionsorter.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Text</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="2" data-category="text" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://readeron.netlify.app/favicon.ico" alt="Reader Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Reader</div>
+                                <div class="list-subtitle">Rich text editing and display</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">Reader is a simple web app designed for rich text editing and
+                                display. The application features a clean, minimalist design with rounded edges and a
+                                user-friendly interface. Users can input text into an editor with a customized toolbar
+                                and submit it to display the formatted content below.</p>
+                            <a href="https://readeron.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Tool</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="3" data-category="tool" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://randomnumbergeneratoron.netlify.app/favicon.ico"
+                                alt="Random Number Generator Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Random Number Generator</div>
+                                <div class="list-subtitle">Generate 12-digit numbers</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">A simple web app that generates 12-digit numbers. It features
+                                a button to generate numbers, a display area, and a copy-to-clipboard function. The
+                                design includes a responsive layout, and interactive buttons. Ideal for quick and easy
+                                random number generation.</p>
+                            <a href="https://randomnumbergeneratoron.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Design</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="5" data-category="design" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://gradientdesigner.netlify.app/favicon.ico" alt="Gradient Designer Icon"
+                                class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Gradient Designer</div>
+                                <div class="list-subtitle">Create custom gradients</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">A dynamic Gradient Designer web app for creating, customizing,
+                                and downloading gradient backgrounds. Generate random gradients, manually select colors,
+                                extract colors from photos, and view color names. Enjoy responsive design and an
+                                interactive UI for a seamless experience.</p>
+                            <a href="https://gradientdesigner.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Personal</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="6" data-category="personal" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://tokenon.netlify.app/favicon.ico" alt="Token Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Token</div>
+                                <div class="list-subtitle">Minimalist personal website</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">A sleek, minimalist personal website offering a seamless user
+                                experience with intuitive navigation and modern aesthetics.</p>
+                            <a href="https://tokenon.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Journal Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Journal</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="7" data-category="journal" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://memoryprism.netlify.app/favicon.ico" alt="Memory Prism Icon"
+                                class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Memory Prism</div>
+                                <div class="list-subtitle">Online memory journal</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">An online memory that lets you easily write and save your
+                                personal entries. Use the simple editor to capture your thoughts, format them as you
+                                like, and revisit them anytime. Duplicate entries are prevented to keep your journal
+                                unique. You can also save all your entries to a file or load them back, ensuring your
+                                memories are secure and accessible.</p>
+                            <a href="https://memoryprism.netlify.app" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dictionary Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">Dictionary</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="8" data-category="dictionary" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://raw.githubusercontent.com/hexyon/dictionarylens/refs/heads/main/static/favicon.ico"
+                                alt="Dictionary Lens Icon" class="list-icon">
+                            <div class="list-text">
+                                <div class="list-title">Dictionary Lens</div>
+                                <div class="list-subtitle">Interactive word exploration</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">Dictionary Lens is an interactive web application that brings
+                                words to life with definitions and visual imagery. Search for any word to see its
+                                meanings, usage examples, and related images in a clean, modern interface. Features
+                                history and a clickable mode that lets you explore word relationships by clicking on
+                                terms within definitions.</p>
+                            <a href="https://dlalternative.onrender.com" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Category -->
+            <div class="list-section">
+                <h3 class="list-section-header">AI</h3>
+                <div class="list-group">
+                    <div class="list-item" data-index="9" data-category="ai" role="listitem" tabindex="0">
+                        <div class="list-item-content">
+                            <img src="https://raw.githubusercontent.com/hexyon/brainside/refs/heads/main/public/favicon.ico"
+                                alt="Brain Side Icon" class="list-icon brain-side-icon">
+                            <div class="list-text">
+                                <div class="list-title">Brain Side</div>
+                                <div class="list-subtitle">3D brain visualization</div>
+                            </div>
+                            <i class="fas fa-chevron-right list-chevron" aria-hidden="true"></i>
+                        </div>
+                        <div class="list-item-detail">
+                            <p class="detail-description">AI-powered interactive 3D brain visualization. Search any
+                                activity to see which brain regions light up.</p>
+                            <a href="https://brainside.onrender.com/" target="_blank" class="detail-button">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
