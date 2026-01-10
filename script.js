@@ -133,17 +133,12 @@ let translations = {};
 // Load translation file
 async function loadTranslation(langCode) {
     try {
-        // Determine which design is currently active
-        const designLink = document.getElementById('design-css');
-        const currentDesign = designLink ? designLink.getAttribute('href') : 'designs/grid-design.css';
-        const designFolder = currentDesign.includes('list-design.css') ? 'list-design' : 'grid-design';
-
-        // Try relative path first with design folder
-        let response = await fetch(`languages/${designFolder}/${langCode}.json`);
+        // Try relative path first
+        let response = await fetch(`languages/${langCode}.json`);
 
         // If that fails, try absolute path from root
         if (!response.ok) {
-            response = await fetch(`/languages/${designFolder}/${langCode}.json`);
+            response = await fetch(`/languages/${langCode}.json`);
         }
 
         if (!response.ok) {
@@ -176,22 +171,7 @@ function applyTranslation(trans) {
         sectionTitleText.textContent = trans.sectionTitle;
     }
 
-    // Update category headers for list design (if they exist)
-    if (trans.categories) {
-        const categoryHeaders = document.querySelectorAll('.list-section-header');
-        categoryHeaders.forEach((header) => {
-            const categoryText = header.textContent.toLowerCase();
-            // Match category by checking if translation exists
-            for (const [key, value] of Object.entries(trans.categories)) {
-                if (categoryText === key.toLowerCase() || categoryText === value.toLowerCase()) {
-                    header.textContent = value;
-                    break;
-                }
-            }
-        });
-    }
-
-    // Update apps in grid view
+    // Update apps
     const websites = document.querySelectorAll('.website');
     websites.forEach((website, index) => {
         if (trans.apps[index]) {
@@ -199,30 +179,6 @@ function applyTranslation(trans) {
             website.querySelector('.site-name').textContent = app.name;
             website.querySelector('.badge').textContent = app.badge;
             website.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
-        }
-    });
-
-    // Update list items (if they exist)
-    const listItems = document.querySelectorAll('.list-item');
-    listItems.forEach((item) => {
-        const dataIndex = parseInt(item.getAttribute('data-index'));
-        if (trans.apps[dataIndex]) {
-            const app = trans.apps[dataIndex];
-            const listTitle = item.querySelector('.list-title');
-            const listSubtitle = item.querySelector('.list-subtitle');
-            const detailDescription = item.querySelector('.detail-description');
-            const detailButton = item.querySelector('.detail-button');
-
-            if (listTitle) listTitle.textContent = app.name;
-            if (listSubtitle && app.subtitle) listSubtitle.textContent = app.subtitle;
-            if (detailDescription) detailDescription.textContent = app.description;
-            if (detailButton) {
-                // Find the text node after the SVG
-                const textNode = Array.from(detailButton.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-                if (textNode) {
-                    textNode.textContent = app.visit;
-                }
-            }
         }
     });
 
@@ -525,14 +481,6 @@ function toggleDesign(event) {
     const isList = newDesign.includes('list-design.css');
     toggleButton.setAttribute('aria-label', isList ? 'Switch to grid design' : 'Switch to list design');
     toggleButton.setAttribute('aria-pressed', isList);
-
-    // Reload the current language to get the correct translations for the new design
-    if (currentLanguage && currentLanguage !== 'en') {
-        changeLanguage(currentLanguage);
-    } else {
-        // Reload English translations
-        changeLanguage('en');
-    }
 }
 
 // Load saved design preference
