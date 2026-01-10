@@ -31,9 +31,10 @@
 
 /* Standard phones (iPhone 12, 13, 14, etc.) */
 @media (max-width: 768px) {
+
     /* Base Typography */
     body {
-        font-size: 17px; 
+        font-size: 17px;
         line-height: 1.5;
     }
 
@@ -63,7 +64,7 @@
 
     .header-button {
         flex: 1;
-        min-height: 44px; 
+        min-height: 44px;
         padding: 0.75rem 1rem;
         font-size: 0.95rem;
         justify-content: center;
@@ -79,7 +80,7 @@
     .settings-button,
     .default-language-button,
     .language-button {
-        min-height: 44px; 
+        min-height: 44px;
         min-width: 44px;
         padding: 0.75rem 1.25rem;
     }
@@ -118,7 +119,8 @@
     /* Website Cards */
     .website {
         padding: 1.25rem;
-        min-height: 44px; /* Ensure touch target */
+        min-height: 44px;
+        /* Ensure touch target */
     }
 
     .website-header {
@@ -140,7 +142,7 @@
     }
 
     .visit-button {
-        min-height: 44px; 
+        min-height: 44px;
         padding: 0.75rem 1.25rem;
         font-size: 1rem;
     }
@@ -148,56 +150,80 @@
     /* List View Optimization */
     .apps-list {
         padding: 0;
+        gap: 24px;
     }
 
     .list-section {
-        margin-bottom: 1.5rem;
+        margin-bottom: 24px;
     }
 
     .list-section-header {
-        font-size: 1.3rem;
-        padding: 0.75rem 0;
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .list-group {
+        border-radius: 16px;
     }
 
     .list-item {
-        min-height: 60px; /* Larger touch target for list items */
-        padding: 0.75rem 1rem;
-        margin-bottom: 0.5rem;
+        min-height: 72px;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .list-item-content {
+        padding: 14px 16px;
+        gap: 14px;
     }
 
     .list-icon {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 10px;
     }
 
     .list-title {
-        font-size: 1.05rem;
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-bottom: 3px;
     }
 
     .list-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
     .list-chevron {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-left: 4px;
     }
 
     .list-item-detail {
-        padding: 1rem 0 0.5rem 0;
+        padding: 0;
     }
 
     .detail-description {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 1rem;
+        line-height: 1.6;
         margin-bottom: 1rem;
+        padding: 0 16px 12px;
     }
 
     .detail-button {
-        min-height: 44px; 
+        min-height: 44px;
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
+        margin: 0 16px 16px;
+        gap: 10px;
+    }
+
+    .detail-button .icon {
+        width: 20px;
+        height: 20px;
     }
 
     /* Description Section */
@@ -242,7 +268,7 @@
     }
 
     .nav-button {
-        min-width: 44px; 
+        min-width: 44px;
         min-height: 44px;
         width: 44px;
         height: 44px;
@@ -435,6 +461,7 @@
 
 /* Tablets (iPad, etc.) */
 @media (min-width: 769px) and (max-width: 1024px) {
+
     /* Grid View - Two Columns */
     .grid-view {
         grid-template-columns: repeat(2, 1fr);
