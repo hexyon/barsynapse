@@ -178,7 +178,12 @@ function applyTranslation(trans) {
             const app = trans.apps[index];
             website.querySelector('.site-name').textContent = app.name;
             website.querySelector('.badge').textContent = app.badge;
-            website.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
+            
+            // Update visit button - remove extra text, keep only icon and translated "Visit"
+            const visitBtn = website.querySelector('.visit-button');
+            if (visitBtn) {
+                visitBtn.innerHTML = `<i class="fas fa-external-link-alt" aria-hidden="true"></i> ${app.visit}`;
+            }
         }
     });
 
@@ -190,7 +195,12 @@ function applyTranslation(trans) {
             desc.querySelector('.description-title').textContent = app.name;
             desc.querySelector('.description-badge').textContent = app.badge;
             desc.querySelector('.description-text').textContent = app.description;
-            desc.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
+            
+            // Update visit button - remove extra text, keep only icon and translated "Visit"
+            const visitBtn = desc.querySelector('.visit-button');
+            if (visitBtn) {
+                visitBtn.innerHTML = `<i class="fas fa-external-link-alt" aria-hidden="true"></i> ${app.visit}`;
+            }
         }
     });
 
@@ -219,13 +229,14 @@ function applyTranslation(trans) {
                 detailDesc.textContent = app.description;
             }
 
-            // Update detail button
+            // Update detail button - remove extra text, keep only SVG and translated "Visit"
             const detailButton = item.querySelector('.detail-button');
             if (detailButton) {
-                // Keep the SVG icon, only update text
-                const textNode = Array.from(detailButton.childNodes).find(node => node.nodeType === 3);
-                if (textNode) {
-                    textNode.textContent = app.visit;
+                const svg = detailButton.querySelector('svg');
+                if (svg) {
+                    detailButton.innerHTML = '';
+                    detailButton.appendChild(svg);
+                    detailButton.appendChild(document.createTextNode(app.visit));
                 }
             }
         }
