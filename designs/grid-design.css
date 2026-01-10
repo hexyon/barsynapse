@@ -1,0 +1,155 @@
+/* Grid View Design */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.website {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-standard);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.website:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.website-header {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.site-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: contain;
+    margin-right: 1rem;
+    background-color: transparent;
+    padding: 6px;
+    transition: var(--transition-standard);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.website:hover .site-icon {
+    transform: scale(1.1);
+}
+
+.brain-side-icon.site-icon {
+    width: 56px;
+    height: 56px;
+}
+
+.website[data-name="brain side"] .website-header {
+    align-items: center;
+}
+
+[data-theme="dark"] .website[data-name="dictionary lens"] .site-icon,
+[data-theme="dark"] .description-content[data-index="8"] .description-icon {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+}
+
+[data-theme="dark"] .website[data-name="reader"] .site-icon,
+[data-theme="dark"] .description-content[data-index="2"] .description-icon {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+}
+
+.site-name {
+    font-family: 'Dudu Calligraphy', Roboto, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    flex: 1;
+}
+
+.badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    background: #e0e0e0;
+    color: #333333;
+    margin-left: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .badge {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.action-buttons {
+    display: flex;
+    margin-top: auto;
+    gap: 0.75rem;
+}
+
+.visit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.3rem;
+    border-radius: var(--card-radius);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-standard);
+    flex: 1;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.visit-button i {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.visit-button:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+}
+
+.visit-button:active {
+    opacity: 0.8;
+}
+
+/* Hide list view elements */
+.apps-list,
+.list-section,
+.list-section-header,
+.list-group,
+.list-item,
+.list-item-content,
+.list-icon,
+.list-text,
+.list-title,
+.list-subtitle,
+.list-chevron,
+.list-item-detail,
+.detail-description,
+.detail-button {
+    display: none !important;
+}
