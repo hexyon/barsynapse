@@ -171,7 +171,7 @@ function applyTranslation(trans) {
         sectionTitleText.textContent = trans.sectionTitle;
     }
 
-    // Update apps
+    // Update apps (Grid View)
     const websites = document.querySelectorAll('.website');
     websites.forEach((website, index) => {
         if (trans.apps[index]) {
@@ -182,7 +182,7 @@ function applyTranslation(trans) {
         }
     });
 
-    // Update descriptions
+    // Update descriptions (Carousel View)
     const descriptions = document.querySelectorAll('.description-content');
     descriptions.forEach((desc, index) => {
         if (trans.apps[index]) {
@@ -193,6 +193,58 @@ function applyTranslation(trans) {
             desc.querySelector('.visit-button').childNodes[2].textContent = ` ${app.visit}`;
         }
     });
+
+    // Update list view elements (for list design)
+    const listItems = document.querySelectorAll('.list-item');
+    listItems.forEach((item) => {
+        const index = parseInt(item.getAttribute('data-index'));
+        if (trans.apps[index]) {
+            const app = trans.apps[index];
+
+            // Update list title
+            const listTitle = item.querySelector('.list-title');
+            if (listTitle) {
+                listTitle.textContent = app.name;
+            }
+
+            // Update list subtitle
+            const listSubtitle = item.querySelector('.list-subtitle');
+            if (listSubtitle && app.subtitle) {
+                listSubtitle.textContent = app.subtitle;
+            }
+
+            // Update detail description
+            const detailDesc = item.querySelector('.detail-description');
+            if (detailDesc) {
+                detailDesc.textContent = app.description;
+            }
+
+            // Update detail button
+            const detailButton = item.querySelector('.detail-button');
+            if (detailButton) {
+                // Keep the SVG icon, only update text
+                const textNode = Array.from(detailButton.childNodes).find(node => node.nodeType === 3);
+                if (textNode) {
+                    textNode.textContent = app.visit;
+                }
+            }
+        }
+    });
+
+    // Update category headers (list section headers)
+    if (trans.categories) {
+        const listSections = document.querySelectorAll('.list-section');
+        listSections.forEach((section) => {
+            const header = section.querySelector('.list-section-header');
+            const firstItem = section.querySelector('.list-item');
+            if (header && firstItem) {
+                const category = firstItem.getAttribute('data-category');
+                if (category && trans.categories[category]) {
+                    header.textContent = trans.categories[category];
+                }
+            }
+        });
+    }
 
     // Update footer
     const footerSections = document.querySelectorAll('.footer-section');
