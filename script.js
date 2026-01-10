@@ -1,3 +1,67 @@
+// ============================================
+// List Item Expansion
+// ============================================
+
+function initListItems() {
+    const listItems = document.querySelectorAll('.list-item');
+
+    listItems.forEach((item, index) => {
+        // Click handler
+        item.addEventListener('click', (e) => {
+            // Don't toggle if clicking the visit button
+            if (e.target.closest('.detail-button')) {
+                return;
+            }
+            toggleListItem(item);
+        });
+
+        // Keyboard handler
+        item.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleListItem(item);
+            }
+            // Arrow key navigation
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = item.nextElementSibling;
+                if (next && next.classList.contains('list-item')) {
+                    next.focus();
+                }
+            }
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = item.previousElementSibling;
+                if (prev && prev.classList.contains('list-item')) {
+                    prev.focus();
+                }
+            }
+        });
+    });
+}
+
+function toggleListItem(item) {
+    const isExpanded = item.classList.contains('expanded');
+
+    // Close all other items
+    document.querySelectorAll('.list-item.expanded').forEach(expandedItem => {
+        if (expandedItem !== item) {
+            expandedItem.classList.remove('expanded');
+        }
+    });
+
+    // Toggle current item
+    if (isExpanded) {
+        item.classList.remove('expanded');
+    } else {
+        item.classList.add('expanded');
+        // Smooth scroll to item if needed
+        setTimeout(() => {
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+}
+
 let currentIndex = 0;
 
 function showDescription(index) {
@@ -396,6 +460,47 @@ async function loadLanguagePreference() {
     }
 }
 
+// Design switching functionality
+function toggleDesign(event) {
+    // Prevent event from bubbling up
+    if (event) {
+        event.stopPropagation();
+    }
+
+    const designLink = document.getElementById('design-css');
+    const currentDesign = designLink.getAttribute('href');
+    const newDesign = currentDesign.includes('grid-design.css') ? 'designs/list-design.css' : 'designs/grid-design.css';
+
+    designLink.setAttribute('href', newDesign);
+
+    // Save preference to localStorage
+    localStorage.setItem('design-preference', newDesign);
+
+    // Update ARIA attributes
+    const toggleButton = document.getElementById('design-toggle');
+    const isList = newDesign.includes('list-design.css');
+    toggleButton.setAttribute('aria-label', isList ? 'Switch to grid design' : 'Switch to list design');
+    toggleButton.setAttribute('aria-pressed', isList);
+}
+
+// Load saved design preference
+function loadDesignPreference() {
+    const savedDesign = localStorage.getItem('design-preference');
+    const designLink = document.getElementById('design-css');
+
+    if (savedDesign && designLink) {
+        designLink.setAttribute('href', savedDesign);
+
+        // Set initial ARIA attributes
+        const toggleButton = document.getElementById('design-toggle');
+        if (toggleButton) {
+            const isList = savedDesign.includes('list-design.css');
+            toggleButton.setAttribute('aria-label', isList ? 'Switch to grid design' : 'Switch to list design');
+            toggleButton.setAttribute('aria-pressed', isList);
+        }
+    }
+}
+
 // Add keyboard navigation for application cards
 function initKeyboardNavigation() {
     const websites = document.querySelectorAll('.website');
@@ -518,9 +623,11 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadFooterImages();
     loadThemePreference();
     loadIconPreference();
+    loadDesignPreference();
     loadLanguagePreference();
     loadFooterLanguagePreference();
     showDescription(0);
+    initListItems();
     initKeyboardNavigation();
     initInteractiveHeart();
 });
