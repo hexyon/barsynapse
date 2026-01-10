@@ -1,0 +1,484 @@
+:root {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+}
+
+/* ============================================
+   Mobile Breakpoints
+   ============================================ */
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    body {
+        font-size: 16px;
+    }
+
+    header {
+        padding: max(1rem, var(--safe-area-inset-top)) 1rem 1rem 1rem;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Standard phones (iPhone 12, 13, 14, etc.) */
+@media (max-width: 768px) {
+    /* Base Typography */
+    body {
+        font-size: 17px; 
+        line-height: 1.5;
+    }
+
+    /* Header Optimization */
+    header {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: max(1.25rem, var(--safe-area-inset-top)) 1.25rem 1.25rem 1.25rem;
+    }
+
+    .logo {
+        justify-content: center;
+        order: 1;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .header-buttons {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .header-button {
+        flex: 1;
+        min-height: 44px; 
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        justify-content: center;
+    }
+
+    .language-selector {
+        order: 3;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .settings-button,
+    .default-language-button,
+    .language-button {
+        min-height: 44px; 
+        min-width: 44px;
+        padding: 0.75rem 1.25rem;
+    }
+
+    .settings-button {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* Section Title */
+    .section-title {
+        margin: 1.5rem 0;
+    }
+
+    .section-title h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-heart-icon {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* Main Content */
+    main {
+        padding: 0 1.25rem 2rem;
+        padding-bottom: max(2rem, calc(2rem + var(--safe-area-inset-bottom)));
+    }
+
+    /* Grid View - Single Column */
+    .grid-view {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Website Cards */
+    .website {
+        padding: 1.25rem;
+        min-height: 44px; /* Ensure touch target */
+    }
+
+    .website-header {
+        gap: 0.75rem;
+    }
+
+    .site-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .site-name {
+        font-size: 1.1rem;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .visit-button {
+        min-height: 44px; 
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    /* List View Optimization */
+    .apps-list {
+        padding: 0;
+    }
+
+    .list-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .list-section-header {
+        font-size: 1.3rem;
+        padding: 0.75rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .list-item {
+        min-height: 60px; /* Larger touch target for list items */
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .list-icon {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .list-title {
+        font-size: 1.05rem;
+    }
+
+    .list-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .list-chevron {
+        font-size: 1rem;
+    }
+
+    .list-item-detail {
+        padding: 1rem 0 0.5rem 0;
+    }
+
+    .detail-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .detail-button {
+        min-height: 44px; 
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Description Section */
+    .descriptions-section {
+        padding: 1.5rem 1.25rem;
+        padding-bottom: max(1.5rem, calc(1.5rem + var(--safe-area-inset-bottom)));
+    }
+
+    .description-content {
+        padding: 1.25rem;
+    }
+
+    .description-header {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .description-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .description-title {
+        font-size: 1.5rem;
+    }
+
+    .description-badge {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .description-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+    }
+
+    /* Navigation Controls */
+    .nav-controls {
+        gap: 1.5rem;
+        padding: 1.25rem 0;
+    }
+
+    .nav-button {
+        min-width: 44px; 
+        min-height: 44px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .nav-info {
+        font-size: 1.1rem;
+    }
+
+    /* Settings Panel - Full Screen on Mobile */
+    .settings-panel {
+        width: 100%;
+        right: -100%;
+    }
+
+    .settings-panel.active {
+        right: 0;
+    }
+
+    .settings-header {
+        padding: max(1.25rem, calc(1.25rem + var(--safe-area-inset-top))) 1.5rem 1.25rem 1.5rem;
+    }
+
+    .settings-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .close-settings {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+    }
+
+    .settings-content {
+        padding: 1.5rem;
+    }
+
+    .setting-item {
+        padding: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .setting-label {
+        font-size: 1.05rem;
+    }
+
+    /* Toggle Switch - Larger for Mobile */
+    .toggle-switch {
+        width: 56px;
+        height: 32px;
+    }
+
+    .switch-track {
+        border-radius: 16px;
+    }
+
+    .switch-thumb {
+        width: 26px;
+        height: 26px;
+        top: 2px;
+        left: 2px;
+    }
+
+    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle) .switch-thumb,
+    #icon-toggle[aria-pressed="true"] .switch-thumb,
+    #design-toggle[aria-pressed="true"] .switch-thumb {
+        transform: translateX(24px);
+    }
+
+    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle):hover .switch-thumb,
+    #icon-toggle[aria-pressed="true"]:hover .switch-thumb,
+    #design-toggle[aria-pressed="true"]:hover .switch-thumb {
+        transform: translateX(24px) scale(1.08);
+    }
+
+    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle):active .switch-thumb,
+    #icon-toggle[aria-pressed="true"]:active .switch-thumb,
+    #design-toggle[aria-pressed="true"]:active .switch-thumb {
+        transform: translateX(24px) scale(0.92);
+    }
+
+    /* Language Dropdown */
+    .language-dropdown {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        min-width: 200px;
+    }
+
+    .language-option {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1.25rem;
+        padding-bottom: max(2rem, calc(2rem + var(--safe-area-inset-bottom)));
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-title {
+        font-size: 1.1rem;
+    }
+
+    .footer-section p {
+        font-size: 0.95rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .social-link {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1.3rem;
+    }
+
+    .copyright {
+        padding-top: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Improve Touch Feedback */
+    .website:active,
+    .list-item:active,
+    .header-button:active,
+    .visit-button:active,
+    .detail-button:active,
+    .nav-button:active,
+    .language-option:active,
+    .settings-button:active {
+        opacity: 0.7;
+        transition: opacity 0.1s ease;
+    }
+
+    /* Reduce Motion for Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding: max(0.75rem, var(--safe-area-inset-top)) 1rem 0.75rem 1rem;
+    }
+
+    .logo h1 {
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .section-title {
+        margin: 1rem 0;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        padding: 0 1rem 1.5rem;
+    }
+
+    .descriptions-section {
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+        padding-bottom: max(1.5rem, calc(1.5rem + var(--safe-area-inset-bottom)));
+    }
+}
+
+/* Tablets (iPad, etc.) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Grid View - Two Columns */
+    .grid-view {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    /* Maintain touch targets */
+    .header-button,
+    .visit-button,
+    .detail-button,
+    .nav-button,
+    .settings-button,
+    .language-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Safe area support */
+    header {
+        padding-top: max(1.5rem, var(--safe-area-inset-top));
+        padding-left: max(2rem, var(--safe-area-inset-left));
+        padding-right: max(2rem, var(--safe-area-inset-right));
+    }
+
+    main {
+        padding-bottom: max(3rem, calc(3rem + var(--safe-area-inset-bottom)));
+    }
+
+    footer {
+        padding-bottom: max(2rem, calc(2rem + var(--safe-area-inset-bottom)));
+    }
+}
+
+/* Prevent text size adjustment on orientation change */
+@media (max-width: 768px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* Improve tap highlight */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: rgba(0, 122, 255, 0.1);
+    }
+}
