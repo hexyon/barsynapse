@@ -12,7 +12,27 @@ function initListItems() {
             if (e.target.closest('.detail-button')) {
                 return;
             }
+            
+            // Don't toggle if user is selecting text
+            const selection = window.getSelection();
+            if (selection && selection.toString().length > 0) {
+                return;
+            }
+            
+            // Don't toggle if clicking directly on the description text area
+            if (e.target.closest('.detail-description')) {
+                return;
+            }
+            
             toggleListItem(item);
+        });
+
+        // Mousedown handler to allow text selection
+        item.addEventListener('mousedown', (e) => {
+            // Allow text selection in description area
+            if (e.target.closest('.detail-description')) {
+                e.stopPropagation();
+            }
         });
 
         // Keyboard handler
