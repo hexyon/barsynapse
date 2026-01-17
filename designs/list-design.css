@@ -64,6 +64,12 @@ main {
     gap: 12px;
 }
 
+.list-item.expanded .list-item-content {
+    border-bottom: 0.5px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
 .list-icon {
     width: 40px;
     height: 40px;
@@ -97,7 +103,7 @@ main {
 
 .list-subtitle {
     font-size: 0.9rem;
-    color: var(--text-color-secondary);
+    color: var(--text-color);
 }
 
 .list-chevron {
@@ -129,6 +135,11 @@ main {
     line-height: 1.7;
     color: var(--text-color);
     margin: 0;
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 .detail-button {
