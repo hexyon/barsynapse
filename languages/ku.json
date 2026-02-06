@@ -1,0 +1,95 @@
+{
+  "lang": "ku",
+  "direction": "ltr",
+  "header": {
+    "title": "Bar Synapse",
+    "toggleTheme": "Moda Tarî Veguherîne",
+    "appsButton": "Sepan",
+    "launchAllButton": "Hemûyan Veke",
+    "languageButton": "Language"
+  },
+  "sectionTitle": "Berhevoka Dîjîtal",
+  "categories": {
+    "media": "Medya",
+    "utility": "Alîkar",
+    "text": "Nivîs",
+    "tool": "Amûr",
+    "design": "Dîzayn",
+    "personal": "Kesane",
+    "journal": "Rojname",
+    "dictionary": "Ferheng",
+    "ai": "Zîrekiya Destikî"
+  },
+  "apps": [
+    {
+      "name": "Slaydê Pro",
+      "badge": "Medya",
+      "subtitle": "Nîşandana wêneyan ya dewlemend",
+      "visit": "Serdana Bike",
+      "description": "Sepaneke wêbê ya şîk û dewlemend ji bo nîşandana wêneyan. Gelek wêneyan bar bikin û kontrola nîşandanê bi vebijarkên destpêkirin, rawestandin, têkel kirin, dîmena tevahî, loop û barê pêşkeftinê bikin. Derengketina slaydan xwerû bikin, bi bişkokên tîrê bigerin û ji guhertinên nerm bi dîzayneke responsive kêfxweş bibin."
+    },
+    {
+      "name": "Xwîner",
+      "badge": "Nivîs",
+      "subtitle": "Guherandin û nîşandana nivîsên dewlemend",
+      "visit": "Serdana Bike",
+      "description": "Xwîner sepaneke wêbeke hêsan e ku ji bo guherandin û nîşandana nivîsên dewlemend hatiye çêkirin. Sepan xwedî dîzaynek paqij û mînîmalîst e bi quncikên girseyî û navrûyek hevseng ji bo bikarhêner. Bikarhêner dikarin nivîs di edîtoreke bi toolbareke xwerû de binivîsin û bişînin da ku naveroka format kirî li jêr nîşan bidin."
+    },
+    {
+      "name": "Çêkera Hejmarên Rast Hatî",
+      "badge": "Amûr",
+      "subtitle": "Hejmarên 12-hejmaran çêbikin",
+      "visit": "Serdana Bike",
+      "description": "Sepaneke wêbeke hêsan ku hejmarên 12-hejmaran çêdike. Bişkokek ji bo çêkirina hejmaran, qadeke dîtin û fonksiyoneke kopîkirinê bo clipboard-ê tê de heye. Dîzayn rêxistinek responsive û bişkokên înteraktîf vedihewîne. Ji bo çêkirina bilez û hêsan a hejmarên rast hatî mînak e."
+    },
+    {
+      "name": "Navendê Medyayê",
+      "badge": "Medya",
+      "subtitle": "Dîtbarê medyayê ya şîk",
+      "visit": "Serdana Bike",
+      "description": "Sepaneke wêbeke şîk a dîtina medyayê ji bo wêne û vîdyoyan bi navrûyek bikarhênerê modern. Taybetî dîtina dîmena tevahî, gerîna klavyeyê, piştgirîya barkirin pelê, efektên paşxaneyê blur û pergaleke îndekså vedihewîne. Guhertinên nerm û dîzayinek responsive pêşkêş dike."
+    },
+    {
+      "name": "Dîzaynerê Gradientê",
+      "badge": "Dîzayn",
+      "subtitle": "Gradientên xwerû çêbikin",
+      "visit": "Serdana Bike",
+      "description": "Sepaneke wêbeke dînamîk a Dîzaynerê Gradientê ji bo çêkirin, xwerûkirin û daxistina paşxaneyên gradient. Gradientên rast hatî çêbikin, rengan bi destî hilbijêrin, rengan ji wêneyan derxînin û navên rengan nîşan bidin. Ji dîzayineke responsive û navrûyeke înteraktîf a bikarhêner kêfxweş bibin ji bo ezmûnek nerm."
+    },
+    {
+      "name": "Nîşane",
+      "badge": "Kesane",
+      "subtitle": "Malpera kesane ya mînîmalîst",
+      "visit": "Serdana Bike",
+      "description": "Malpera kesane ya şîk û mînîmalîst ku ezmûnek bikarhênerê bêkêmasî bi gerîna întuîtîf û estetîkeke modern pêşkêş dike."
+    },
+    {
+      "name": "Prîzma Bîranînê",
+      "badge": "Rojname",
+      "subtitle": "Rojnameya bîranînê ya serhêl",
+      "visit": "Serdana Bike",
+      "description": "Bîranînek serhêl ku destûrê dide we bi hêsanî tomaran kesane binivîsin û biparêzin. Edîtorê hêsan bikar bînin da ku ramanên xwe bistînin, wan wek ku hûn dixwazin format bikin û her dem serdana wan bikin. Tomar dubare têne astengkirin da ku rojnameya we bêhempa bimîne. Her weha hûn dikarin hemî tomarên xwe di pelekê de biparêzin an dîsa barbikin, ku ewlehî û gihandina bîranînên we misoger dike."
+    },
+    {
+      "name": "Lênza Ferhengê",
+      "badge": "Ferheng",
+      "subtitle": "Gerîna peyvan a înteraktîf",
+      "visit": "Serdana Bike",
+      "description": "Lênza Ferhengê sepaneke wêbeke înteraktîf e ku peyvan bi pênase û wêneyên dîtbarî jiyandin dike. Ji bo her peyvekê bigerin da ku wateyan, mînakên bikaranînê û wêneyên têkildar di navrûyeke paqij û modern de bibînin. Dîrok û moda klîkkirin vedihewîne ku destûrê dide we têkiliyên peyvan bi klîkkirina bêjeyên di nav pênaseyan de bigerin."
+    },
+    {
+      "name": "Aliyê Mejiyê",
+      "badge": "Zîrekiya Destikî",
+      "subtitle": "Dîtbariya mejiyê ya 3D",
+      "visit": "Serdana Bike",
+      "description": "Dîtbariya mejiyê ya înteraktîf a 3D bi hêza AI-ê. Li her çalakiyekê bigerin da ku bibînin kîjan herêmên mejiyê ronî dibin."
+    }
+  ],
+  "footer": {
+    "aboutTitle": "About Bar Synapse",
+    "aboutText": "An experimental collection of curated web applications",
+    "createdWithTitle": "Created with",
+    "developerTitle": "Developer",
+    "copyright": "© 2026 Bar Synapse by Hexy | All rights reserved"
+  }
+}
