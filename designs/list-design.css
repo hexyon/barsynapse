@@ -83,8 +83,8 @@ main {
     height: 48px;
 }
 
-[data-theme="dark"] .list-item[data-index="8"] .list-icon,
-[data-theme="dark"] .list-item[data-index="2"] .list-icon {
+[data-theme="dark"] .list-item[data-index="7"] .list-icon,
+[data-theme="dark"] .list-item[data-index="1"] .list-icon {
     filter: invert(1);
 }
 
