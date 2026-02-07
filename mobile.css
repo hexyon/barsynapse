@@ -308,7 +308,12 @@
 
     .setting-item {
         padding: 1.25rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.25rem;
+        min-height: 70px;
+    }
+    
+    .setting-item:last-child {
+        margin-bottom: 0;
     }
 
     .setting-label {

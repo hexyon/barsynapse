@@ -408,9 +408,10 @@ document.addEventListener('keydown', function (event) {
 
 // Theme switching functionality
 function toggleTheme(event) {
-    // Prevent event from bubbling up
+    // Prevent event from bubbling up and default behavior
     if (event) {
         event.stopPropagation();
+        event.preventDefault();
     }
 
     const html = document.documentElement;
@@ -431,6 +432,9 @@ function toggleTheme(event) {
     const isDark = newTheme === 'dark';
     toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     toggleButton.setAttribute('aria-pressed', isDark);
+    
+    // Return false to prevent any further event propagation
+    return false;
 }
 
 // Load saved theme preference
@@ -455,9 +459,10 @@ function loadThemePreference() {
 
 // Icon switching functionality
 function toggleIcon(event) {
-    // Prevent event from bubbling up
+    // Prevent event from bubbling up and default behavior
     if (event) {
         event.stopPropagation();
+        event.preventDefault();
     }
 
     const heartIcon = document.querySelector('.section-heart-icon');
@@ -496,6 +501,9 @@ function toggleIcon(event) {
     const isBowTie = newIcon.includes('bow-tie.png');
     toggleButton.setAttribute('aria-label', isBowTie ? 'Switch to heart icon' : 'Switch to bow-tie icon');
     toggleButton.setAttribute('aria-pressed', isBowTie);
+    
+    // Return false to prevent any further event propagation
+    return false;
 }
 
 // Load saved icon preference
