@@ -426,13 +426,11 @@ function toggleTheme(event) {
     // Save preference to localStorage
     localStorage.setItem('theme-preference', newTheme);
 
-    // Update ARIA attributes - specifically target the theme toggle button
-    const toggleButton = document.querySelector('.setting-item:first-child .toggle-switch');
+    // Update ARIA attributes
+    const toggleButton = document.querySelector('.toggle-switch');
     const isDark = newTheme === 'dark';
-    if (toggleButton) {
-        toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggleButton.setAttribute('aria-pressed', isDark);
-    }
+    toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    toggleButton.setAttribute('aria-pressed', isDark);
 }
 
 // Load saved theme preference
@@ -446,8 +444,8 @@ function loadThemePreference() {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 
-    // Set initial ARIA attributes - specifically target the theme toggle button
-    const toggleButton = document.querySelector('.setting-item:first-child .toggle-switch');
+    // Set initial ARIA attributes
+    const toggleButton = document.querySelector('.toggle-switch');
     if (toggleButton) {
         const isDark = theme === 'dark';
         toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
