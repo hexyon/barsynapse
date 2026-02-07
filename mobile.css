@@ -315,6 +315,11 @@
         font-size: 1.05rem;
     }
 
+    /* Hide Change Icon button on mobile */
+    .setting-item:nth-child(2) {
+        display: none;
+    }
+
     /* Toggle Switch - Larger for Mobile */
     .toggle-switch {
         width: 56px;
