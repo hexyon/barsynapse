@@ -678,8 +678,58 @@ header {
 /* Section Title */
 .section-title {
     text-align: center;
-    margin: 2rem 0;
+    margin: 0 0 2rem 0;
     position: relative;
+    overflow: hidden;
+    border-top: 1.5px solid #000000;
+}
+
+[data-theme="dark"] .section-title {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.section-title-squares {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: -1.5px;
+}
+
+.heart-square {
+    width: 112px;
+    height: 112px;
+    border: 1.5px solid #000000;
+    border-top: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .heart-square {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.heart-square-bg {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: 3px solid #dc3232;
+    border-top: none;
+    filter: hue-rotate(0deg);
+    z-index: 0;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.heart-square-bg.color-rainbow {
+    animation: rainbowShift 15s linear infinite;
+}
+
+.section-heart-icon {
+    position: relative;
+    z-index: 1;
 }
 
 .section-title h2 {
@@ -727,7 +777,23 @@ header {
 }
 
 .section-heart-icon.color-rainbow {
-    animation: rainbowShift 3s linear infinite;
+    animation: rainbowShift 15s linear infinite;
+    animation-delay: 0s;
+}
+
+.heart-square.color-rainbow {
+    animation: squareBgRainbow 15s linear infinite;
+    animation-delay: 0s;
+}
+
+@keyframes squareBgRainbow {
+    0%   { background: hsl(0,   100%, 45%); }
+    16.6%{ background: hsl(60,  100%, 45%); }
+    33.3%{ background: hsl(120, 100%, 45%); }
+    50%  { background: hsl(180, 100%, 45%); }
+    66.6%{ background: hsl(240, 100%, 45%); }
+    83.3%{ background: hsl(300, 100%, 45%); }
+    100% { background: hsl(360, 100%, 45%); }
 }
 
 @keyframes rainbowShift {

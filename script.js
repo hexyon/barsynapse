@@ -470,18 +470,17 @@ function toggleIcon(event) {
     if (newIcon.includes('bow-tie.png')) {
         heartIcon.style.width = '96px';
         heartIcon.style.height = '96px';
-        heartIcon.style.cursor = 'default'; // Not clickable
+        heartIcon.style.cursor = 'default';
 
-        // Remove all color animation classes when switching to bow-tie
-        const colorClasses = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-black', 'color-rainbow'];
-        colorClasses.forEach(cls => heartIcon.classList.remove(cls));
+        // Fully reset heart internal state + DOM via the shared reset function
+        if (heartReset) heartReset();
     } else {
         heartIcon.style.width = '48px';
         heartIcon.style.height = '48px';
-        heartIcon.style.cursor = 'pointer'; // Clickable
+        heartIcon.style.cursor = 'pointer';
 
-        // Add red color class when switching back to heart
-        heartIcon.classList.add('color-red');
+        // Fully reset heart internal state + DOM so it starts fresh as red
+        if (heartReset) heartReset();
     }
 
     // Update alt text
@@ -510,12 +509,13 @@ function loadIconPreference() {
         if (savedIcon.includes('bow-tie.png')) {
             heartIcon.style.width = '96px';
             heartIcon.style.height = '96px';
-            heartIcon.style.cursor = 'default'; // Not clickable
+            heartIcon.style.cursor = 'default';
         } else {
             heartIcon.style.width = '48px';
             heartIcon.style.height = '48px';
-            heartIcon.style.cursor = 'pointer'; // Clickable
+            heartIcon.style.cursor = 'pointer';
         }
+        // heartReset() will be called by initInteractiveHeart at DOMContentLoaded
 
         // Set initial ARIA attributes
         const toggleButton = document.getElementById('icon-toggle');
@@ -639,44 +639,103 @@ function loadFooterLanguagePreference() {
     }
 }
 
-// Interactive heart with rainbow toggle (rainbow includes black)
+// Interactive heart with single/double click
+// Returns a resetToRed() function so toggleIcon can fully reset internal state
+let heartReset = null;
+
 function initInteractiveHeart() {
     const heart = document.querySelector('.section-heart-icon');
+    const squareBg = document.querySelector('.heart-square-bg');
     if (!heart) return;
 
     const colors = ['color-red', 'color-pink', 'color-purple', 'color-blue', 'color-black', 'color-rainbow'];
-    let isRainbow = false;
+    // State: 'red' | 'rainbow' | 'frozen'
+    let state = 'red';
+    let clickTimer = null;
+    let rainbowStart = null;
+    const CYCLE = 15000;
 
-    // Heart click handler - toggle between red and rainbow (only for heart, not bow-tie)
-    heart.addEventListener('click', (e) => {
-        // Only allow clicking if it's the heart icon, not bow-tie
-        const currentIcon = heart.getAttribute('src');
-        if (currentIcon && currentIcon.includes('bow-tie.png')) {
-            return; // Don't do anything if it's the bow-tie
+    function currentHue() {
+        if (rainbowStart === null) return 0;
+        return ((performance.now() - rainbowStart) % CYCLE) / CYCLE * 360;
+    }
+
+    function startRainbow() {
+        rainbowStart = performance.now();
+        colors.forEach(c => heart.classList.remove(c));
+        heart.style.filter = '';
+        if (squareBg) {
+            squareBg.classList.remove('color-rainbow');
+            squareBg.style.animation = '';
+            squareBg.style.filter = '';
         }
+        void heart.offsetWidth; // force reflow to restart animation
+        heart.classList.add('color-rainbow');
+        if (squareBg) squareBg.classList.add('color-rainbow');
+        state = 'rainbow';
+    }
 
-        // Remove all color classes
-        colors.forEach(color => heart.classList.remove(color));
+    function freezeOnCurrent() {
+        const hue = currentHue();
+        colors.forEach(c => heart.classList.remove(c));
+        heart.style.filter = `hue-rotate(${hue}deg)`;
+        if (squareBg) {
+            squareBg.classList.remove('color-rainbow');
+            squareBg.style.animation = '';
+            squareBg.style.filter = `hue-rotate(${hue}deg)`;
+        }
+        state = 'frozen';
+    }
 
-        if (!isRainbow) {
-            // Start rainbow animation (includes black)
-            heart.classList.add('color-rainbow');
-            isRainbow = true;
+    function resetToRed() {
+        if (clickTimer) {
+            clearTimeout(clickTimer);
+            clickTimer = null;
+        }
+        state = 'red';
+        rainbowStart = null;
+        colors.forEach(c => heart.classList.remove(c));
+        heart.style.filter = '';
+        heart.classList.add('color-red');
+        if (squareBg) {
+            squareBg.classList.remove('color-rainbow');
+            squareBg.style.animation = '';
+            squareBg.style.filter = 'hue-rotate(0deg)';
+        }
+    }
+
+    heart.addEventListener('click', (e) => {
+        const currentIcon = heart.getAttribute('src');
+        if (currentIcon && currentIcon.includes('bow-tie.png')) return;
+
+        if (clickTimer) {
+            // Double-click detected: reset to red from any state
+            clearTimeout(clickTimer);
+            clickTimer = null;
+            resetToRed();
         } else {
-            // Return to red
-            heart.classList.add('color-red');
-            isRainbow = false;
+            // Single click — wait to confirm not a double-click
+            clickTimer = setTimeout(() => {
+                clickTimer = null;
+                if (state === 'red') {
+                    // red → start rainbow
+                    startRainbow();
+                } else if (state === 'rainbow') {
+                    // rainbow → freeze on current color
+                    freezeOnCurrent();
+                } else {
+                    // frozen → reset to red
+                    resetToRed();
+                }
+            }, 220);
         }
     });
 
-    // Always start with red color (default)
-    function loadHeartColor() {
-        colors.forEach(color => heart.classList.remove(color));
-        heart.classList.add('color-red'); // Always default to red
-        isRainbow = false;
-    }
+    // Expose reset so toggleIcon can call it
+    heartReset = resetToRed;
 
-    loadHeartColor();
+    // Default: red
+    resetToRed();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
