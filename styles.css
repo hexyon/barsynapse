@@ -681,11 +681,6 @@ header {
     margin: 0 0 2rem 0;
     position: relative;
     overflow: hidden;
-    border-top: 1.5px solid #000000;
-}
-
-[data-theme="dark"] .section-title {
-    border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 .section-title-squares {
