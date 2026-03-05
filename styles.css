@@ -710,12 +710,16 @@ header {
     position: absolute;
     inset: 0;
     background: transparent;
-    border: 3px solid #dc3232;
+    border: 3px solid #fb3343;
     border-top: none;
     filter: hue-rotate(0deg);
     z-index: 0;
     box-sizing: border-box;
     pointer-events: none;
+}
+
+.heart-square-bg.bowtie-mode {
+    border-color: #a72a23;
 }
 
 .heart-square-bg.color-rainbow {

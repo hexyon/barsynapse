@@ -461,6 +461,7 @@ function toggleIcon(event) {
     }
 
     const heartIcon = document.querySelector('.section-heart-icon');
+    const squareBg = document.querySelector('.heart-square-bg');
     const currentIcon = heartIcon.getAttribute('src');
     const newIcon = currentIcon.includes('heart-pixel.png') ? 'icons/bow-tie.png' : 'icons/heart-pixel.png';
 
@@ -471,6 +472,7 @@ function toggleIcon(event) {
         heartIcon.style.width = '96px';
         heartIcon.style.height = '96px';
         heartIcon.style.cursor = 'default';
+        if (squareBg) squareBg.classList.add('bowtie-mode');
 
         // Fully reset heart internal state + DOM via the shared reset function
         if (heartReset) heartReset();
@@ -478,6 +480,7 @@ function toggleIcon(event) {
         heartIcon.style.width = '48px';
         heartIcon.style.height = '48px';
         heartIcon.style.cursor = 'pointer';
+        if (squareBg) squareBg.classList.remove('bowtie-mode');
 
         // Fully reset heart internal state + DOM so it starts fresh as red
         if (heartReset) heartReset();
@@ -510,6 +513,8 @@ function loadIconPreference() {
             heartIcon.style.width = '96px';
             heartIcon.style.height = '96px';
             heartIcon.style.cursor = 'default';
+            const squareBg = document.querySelector('.heart-square-bg');
+            if (squareBg) squareBg.classList.add('bowtie-mode');
         } else {
             heartIcon.style.width = '48px';
             heartIcon.style.height = '48px';
