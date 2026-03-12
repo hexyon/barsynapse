@@ -111,6 +111,12 @@ body.rtl-mode .nav-controls {
     background: #000000;
 }
 
+/* Invert black icons to white in dark mode */
+[data-theme="dark"] .invert-in-dark {
+    filter: invert(1);
+    transition: filter 0.2s ease;
+}
+
 .background-gradient {
     display: none;
 }
