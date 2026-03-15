@@ -156,14 +156,11 @@ header {
 }
 
 .logo h1 {
-    font-family: 'Dudu Calligraphy', 'Alegreya', serif;
-    font-weight: 500;
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
     font-size: 1.85rem;
-    color: #ffffff;
-    background: url('backgrounds/background.png');
-    background-size: cover;
-    background-position: center 70%;
-    background-repeat: no-repeat;
+    color: var(--text-color);
+    background: none;
     border: 1.5px solid #000000;
     border-radius: 0;
     padding: 0.7rem 1.3rem;
@@ -173,14 +170,14 @@ header {
     text-decoration: none;
     margin: 0;
     position: relative;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7), 1px 1px 3px rgba(0, 0, 0, 1);
+    text-shadow: none;
 }
-
-
 
 [data-theme="dark"] .logo h1 {
-    border: none;
+    border-color: rgba(255, 255, 255, 0.2);
 }
+
+
 
 
 
@@ -1790,6 +1787,10 @@ footer::after {
         font-size: 1.5rem;
         padding: 0.6rem 1.1rem;
     }
+
+[data-theme="dark"] .logo h1 {
+    border-color: rgba(255, 255, 255, 0.2);
+}
 
     .toggle-switch {
         width: 45px;
