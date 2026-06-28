@@ -517,7 +517,7 @@ header {
 }
 
 .language-dropdown {
-    display: none;
+    display: block;
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
@@ -528,10 +528,14 @@ header {
     min-width: 180px;
     z-index: 1000;
     overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
 }
 
 .language-dropdown.show {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .language-option {
@@ -583,9 +587,10 @@ main {
     font-weight: 600;
     color: var(--text-color-secondary);
     margin-bottom: 10px;
-    padding: 0 16px;
+    padding: 0 16px 0 10px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    border-left: 2px solid var(--primary-color);
 }
 
 .list-group {
@@ -641,6 +646,7 @@ main {
     border-radius: 8px;
     object-fit: contain;
     flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .brain-side-icon {
@@ -717,6 +723,16 @@ main {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.detail-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .detail-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 .detail-button:active {
@@ -1410,6 +1426,7 @@ footer::after {
 
 .list-item.expanded .list-chevron {
     animation: chevron-open 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    color: var(--primary-color);
 }
 
 .list-item:not(.expanded) .list-chevron {
