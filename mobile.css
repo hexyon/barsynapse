@@ -24,8 +24,8 @@
         padding: 0.5rem 1rem;
     }
 
-    .section-title h2 {
-        font-size: 1.6rem;
+    .header-title {
+        font-size: 1.1rem;
     }
 }
 
@@ -60,19 +60,11 @@
         line-height: 1.1;
     }
 
-    .header-buttons {
+    .header-title {
+        grid-column: 1;
         order: 2;
-        width: 100%;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .header-button {
-        flex: 1;
-        min-height: 44px;
-        padding: 0.75rem 1rem;
-        font-size: 0.95rem;
-        justify-content: center;
+        font-size: 1.1rem;
+        white-space: normal;
     }
 
     .language-selector {
@@ -98,16 +90,6 @@
         height: 44px;
         padding: 0.75rem;
     }
-
-    /* Section Title */
-    .section-title {
-        margin: 1.5rem 0;
-    }
-
-    .section-title h2 {
-        font-size: 1.75rem;
-    }
-
 
     /* Main Content */
     main {
@@ -168,7 +150,7 @@
 
     .list-chevron {
         font-size: 1.1rem;
-        margin-left: 4px;
+        margin-inline-start: 4px;
     }
 
     .list-item-detail {
@@ -232,11 +214,6 @@
         font-size: 1.05rem;
     }
 
-    /* Hide Change Icon button on mobile */
-    .setting-item:nth-child(2) {
-        display: none;
-    }
-
     /* Toggle Switch - Larger for Mobile */
     .toggle-switch {
         width: 56px;
@@ -254,21 +231,15 @@
         left: 2px;
     }
 
-    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle) .switch-thumb,
-    #icon-toggle[aria-pressed="true"] .switch-thumb,
-    #design-toggle[aria-pressed="true"] .switch-thumb {
+    [data-theme="dark"] .toggle-switch .switch-thumb {
         transform: translateX(24px);
     }
 
-    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle):hover .switch-thumb,
-    #icon-toggle[aria-pressed="true"]:hover .switch-thumb,
-    #design-toggle[aria-pressed="true"]:hover .switch-thumb {
+    [data-theme="dark"] .toggle-switch:hover .switch-thumb {
         transform: translateX(24px) scale(1.08);
     }
 
-    [data-theme="dark"] .toggle-switch:not(#icon-toggle):not(#design-toggle):active .switch-thumb,
-    #icon-toggle[aria-pressed="true"]:active .switch-thumb,
-    #design-toggle[aria-pressed="true"]:active .switch-thumb {
+    [data-theme="dark"] .toggle-switch:active .switch-thumb {
         transform: translateX(24px) scale(0.92);
     }
 
@@ -287,66 +258,9 @@
     }
 
     /* Footer */
-    footer {
-        padding: 1.5rem 1.25rem;
-        padding-bottom: max(1.5rem, calc(1.5rem + var(--safe-area-inset-bottom)));
-    }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .footer-section {
-        text-align: center;
-        margin-bottom: 0;
-    }
-
-    .footer-section:first-child {
-        justify-content: center;
-        min-height: auto;
-    }
-
-    .footer-section:first-child p:not(.footer-title) {
-        margin: 0 auto;
-        max-width: 18ch;
-    }
-
-    .footer-title {
-        font-size: 1.1rem;
-    }
-
-    /* Hide decorative lines on mobile - ONLY FIX NEEDED */
-    .footer-title::after {
-        display: none;
-    }
-
-    .footer-section p {
-        font-size: 0.95rem;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .social-link {
-        min-width: 44px;
-        min-height: 44px;
-        font-size: 1.3rem;
-    }
-
     .copyright {
         padding-top: 1.5rem;
         font-size: 0.9rem;
-    }
-
-    /* Reduce Motion for Accessibility */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
     }
 }
 
@@ -361,20 +275,8 @@
         padding: 0.5rem 1rem;
     }
 
-    .section-title {
-        margin: 1rem 0;
-    }
-
-    .section-title h2 {
-        font-size: 1.5rem;
-    }
-
     main {
         padding: 0 1rem 1.5rem;
-    }
-
-    .descriptions-section {
-        padding: 1rem;
     }
 
     footer {
@@ -386,18 +288,11 @@
 /* Tablets (iPad, etc.) */
 @media (min-width: 769px) and (max-width: 1024px) {
 
-    /* Grid View - Two Columns */
-    .grid-view {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
-
     /* Maintain touch targets */
-    .header-button,
-    .visit-button,
     .detail-button,
-    .nav-button,
     .settings-button,
+    .header-icon-button,
+    .default-language-button,
     .language-button {
         min-height: 44px;
         min-width: 44px;

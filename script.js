@@ -1,4 +1,21 @@
 // ===========================================
+// Toast (replaces blocking alert() calls)
+// ===========================================
+
+let toastTimeout = null;
+
+function showToast(message, duration = 4000) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+    }, duration);
+}
+
+// ===========================================
 // List Item Expansion
 // ===========================================
 
@@ -48,13 +65,16 @@ function toggleListItem(item) {
     document.querySelectorAll('.list-item.expanded').forEach(expandedItem => {
         if (expandedItem !== item) {
             expandedItem.classList.remove('expanded');
+            expandedItem.setAttribute('aria-expanded', 'false');
         }
     });
 
     if (isExpanded) {
         item.classList.remove('expanded');
+        item.setAttribute('aria-expanded', 'false');
     } else {
         item.classList.add('expanded');
+        item.setAttribute('aria-expanded', 'true');
         setTimeout(() => {
             item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
@@ -63,9 +83,14 @@ function toggleListItem(item) {
 
 function openAllWebsites() {
     const links = document.querySelectorAll('.detail-button');
+    let blockedCount = 0;
     links.forEach(link => {
-        window.open(link.href, '_blank');
+        const opened = window.open(link.href, '_blank', 'noopener,noreferrer');
+        if (!opened) blockedCount++;
     });
+    if (blockedCount > 0) {
+        showToast('Your browser blocked some pop-ups. Allow pop-ups for this site to open every app at once.');
+    }
 }
 
 function toggleLanguageMenu() {
@@ -86,7 +111,7 @@ async function loadTranslation(langCode) {
         return await response.json();
     } catch (error) {
         console.error('Error loading translation:', error);
-        alert(`Unable to load ${langCode} translation. Please make sure you're running this from a web server, or the translation files are in the correct location.`);
+        showToast(`Couldn't load that language right now. Staying on the current language.`);
         return null;
     }
 }
@@ -184,7 +209,11 @@ async function changeLanguage(langCode) {
         currentLanguage = langCode;
         applyTranslation(trans);
         updateActiveLanguage(langCode);
-        localStorage.setItem('language-preference', langCode);
+        try {
+            localStorage.setItem('language-preference', langCode);
+        } catch (error) {
+            console.warn('Could not persist language preference:', error);
+        }
     }
 }
 
@@ -248,7 +277,11 @@ function toggleTheme(event) {
         html.removeAttribute('data-theme');
     }
 
-    localStorage.setItem('theme-preference', newTheme);
+    try {
+        localStorage.setItem('theme-preference', newTheme);
+    } catch (error) {
+        console.warn('Could not persist theme preference:', error);
+    }
     const toggleButton = document.querySelector('.toggle-switch');
     const isDark = newTheme === 'dark';
     toggleButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
@@ -258,8 +291,12 @@ function toggleTheme(event) {
 }
 
 function loadThemePreference() {
-    const savedTheme = localStorage.getItem('theme-preference');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem('theme-preference');
+    } catch (error) {
+        console.warn('Could not read theme preference:', error);
+    }
     const theme = savedTheme || 'light';
 
     if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -275,7 +312,12 @@ function loadThemePreference() {
 }
 
 async function loadLanguagePreference() {
-    const savedLang = localStorage.getItem('language-preference');
+    let savedLang = null;
+    try {
+        savedLang = localStorage.getItem('language-preference');
+    } catch (error) {
+        console.warn('Could not read language preference:', error);
+    }
     if (savedLang && savedLang !== 'en') await changeLanguage(savedLang);
 }
 

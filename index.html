@@ -18,13 +18,13 @@
 </head>
 
 <body>
-    <div class="noise-overlay"></div>
-    <div class="background-gradient"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <header role="banner">
         <div class="logo">
             <h1>Bar Synapse</h1>
-        </div>
+</div>
+<h2 class="header-title">Applications</h2>
         <nav class="language-selector" aria-label="Language selection">
             <button class="settings-button" onclick="toggleSettingsPanel()" aria-label="Open settings"
                 aria-expanded="false">
@@ -76,12 +76,6 @@
         </div>
     </div>
 
-    <!-- Section Title -->
-    <div class="section-title-wrapper" aria-label="Section: Applications">
-        <h2 class="section-title-text">Applications</h2>
-    </div>
-
-
     <main role="main" aria-label="Application gallery">
         <!-- Apps List -->
         <div class="apps-list" role="list">
@@ -89,7 +83,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Media</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="0" data-category="media" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="0" data-category="media" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-0">
                         <div class="list-item-content">
                             <img src="icons/SlidePro/favicon.ico" alt="Slide Pro Icon"
                                 class="list-icon">
@@ -99,12 +94,12 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-0">
                             <p class="detail-description">A sleek, feature-rich image slideshow web app. Upload multiple
                                 images and control the slideshow with start, stop, shuffle, fullscreen, loop, and
                                 progress bar options. Customize slide delay, navigate with arrow keys, and enjoy smooth
                                 transitions with a responsive design.</p>
-                            <a href="https://slideprofirst.vercel.app" target="_blank" class="detail-button">
+                            <a href="https://slideprofirst.vercel.app" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -115,7 +110,8 @@
                         </div>
                     </div>
 
-                    <div class="list-item" data-index="3" data-category="media" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="3" data-category="media" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-3">
                         <div class="list-item-content">
                             <img src="icons/MediaHub/favicon.ico" alt="Media Hub Icon"
                                 class="list-icon invert-in-dark">
@@ -125,12 +121,12 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-3">
                             <p class="detail-description">A sleek media viewer web app for images and videos with a
                                 modern UI. Features include fullscreen viewing, keyboard navigation, file upload
                                 support, blur background effects, and an index system. It offers smooth transitions and
                                 a responsive design.</p>
-                            <a href="https://mediahub-cpnc.onrender.com" target="_blank" class="detail-button">
+                            <a href="https://mediahub-cpnc.onrender.com" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -147,7 +143,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Text</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="1" data-category="text" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="1" data-category="text" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-1">
                         <div class="list-item-content">
                             <img src="icons/Reader/favicon.ico" alt="Reader Icon" class="list-icon">
                             <div class="list-text">
@@ -156,12 +153,12 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-1">
                             <p class="detail-description">Reader is a simple web app designed for rich text editing and
                                 display. The application features a clean, minimalist design with rounded edges and a
                                 user-friendly interface. Users can input text into an editor with a customized toolbar
                                 and submit it to display the formatted content below.</p>
-                            <a href="https://readercontent.vercel.app" target="_blank" class="detail-button">
+                            <a href="https://readercontent.vercel.app" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -172,7 +169,8 @@
                         </div>
                     </div>
 
-                    <div class="list-item" data-index="9" data-category="text" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="9" data-category="text" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-9">
                         <div class="list-item-content">
                             <img src="icons/HebrewAlphabet/favicon.ico" alt="Hebrew Alphabet Icon" class="list-icon invert-in-dark">
                             <div class="list-text">
@@ -181,9 +179,9 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-9">
                             <p class="detail-description">A simple, immersive Hebrew alphabet experience for browsing all 22 letters and learning a short meaning, value, and note for each one.</p>
-                            <a href="https://hebrewalphabet.vercel.app/" target="_blank" class="detail-button">
+                            <a href="https://hebrewalphabet.vercel.app/" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -200,7 +198,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Tool</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="2" data-category="tool" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="2" data-category="tool" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-2">
                         <div class="list-item-content">
                             <img src="icons/RandomNumberGenerator/favicon.ico"
                                 alt="Random Number Generator Icon" class="list-icon">
@@ -210,12 +209,12 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-2">
                             <p class="detail-description">A simple web app that generates 12-digit numbers. It features
                                 a button to generate numbers, a display area, and a copy-to-clipboard function. The
                                 design includes a responsive layout, and interactive buttons. Ideal for quick and easy
                                 random number generation.</p>
-                            <a href="https://randomnumbergeneratoron.vercel.app" target="_blank" class="detail-button">
+                            <a href="https://randomnumbergeneratoron.vercel.app" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -232,7 +231,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Design</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="4" data-category="design" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="4" data-category="design" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-4">
                         <div class="list-item-content">
                             <img src="icons/GradientDesigner/favicon.ico" alt="Gradient Designer Icon"
                                 class="list-icon invert-in-dark">
@@ -242,12 +242,12 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-4">
                             <p class="detail-description">A dynamic Gradient Designer web app for creating, customizing,
                                 and downloading gradient backgrounds. Generate random gradients, manually select colors,
                                 extract colors from photos, and view color names. Enjoy responsive design and an
                                 interactive UI for a seamless experience.</p>
-                            <a href="https://gradientdesigner.vercel.app" target="_blank" class="detail-button">
+                            <a href="https://gradientdesigner.vercel.app" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -264,7 +264,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Personal</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="5" data-category="personal" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="5" data-category="personal" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-5">
                         <div class="list-item-content">
                             <img src="icons/Token/favicon.ico" alt="Token Icon" class="list-icon invert-in-dark">
                             <div class="list-text">
@@ -273,10 +274,10 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-5">
                             <p class="detail-description">A sleek, minimalist personal website offering a seamless user
                                 experience with intuitive navigation and modern aesthetics.</p>
-                            <a href="https://tokenhexy.vercel.app/" target="_blank" class="detail-button">
+                            <a href="https://tokenhexy.vercel.app/" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -293,7 +294,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Journal</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="6" data-category="journal" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="6" data-category="journal" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-6">
                         <div class="list-item-content">
                             <img src="icons/MemoryPrism/favicon.ico" alt="Memory Prism Icon"
                                 class="list-icon">
@@ -303,13 +305,13 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-6">
                             <p class="detail-description">An online memory that lets you easily write and save your
                                 personal entries. Use the simple editor to capture your thoughts, format them as you
                                 like, and revisit them anytime. Duplicate entries are prevented to keep your journal
                                 unique. You can also save all your entries to a file or load them back, ensuring your
                                 memories are secure and accessible.</p>
-                            <a href="https://memoryprism.vercel.app" target="_blank" class="detail-button">
+                            <a href="https://memoryprism.vercel.app" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -326,7 +328,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">Dictionary</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="7" data-category="dictionary" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="7" data-category="dictionary" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-7">
                         <div class="list-item-content">
                             <img src="icons/DictionaryLens/favicon.ico"
                                 alt="Dictionary Lens Icon" class="list-icon">
@@ -336,13 +339,13 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-7">
                             <p class="detail-description">Dictionary Lens is an interactive web application that brings
                                 words to life with definitions and visual imagery. Search for any word to see its
                                 meanings, usage examples, and related images in a clean, modern interface. Features
                                 history and a clickable mode that lets you explore word relationships by clicking on
                                 terms within definitions.</p>
-                            <a href="https://dlalternative.onrender.com" target="_blank" class="detail-button">
+                            <a href="https://dlalternative.onrender.com" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -359,7 +362,8 @@
             <div class="list-section">
                 <h3 class="list-section-header">AI</h3>
                 <div class="list-group">
-                    <div class="list-item" data-index="8" data-category="ai" role="listitem" tabindex="0">
+                    <div class="list-item" data-index="8" data-category="ai" role="listitem" tabindex="0"
+                        aria-expanded="false" aria-controls="detail-8">
                         <div class="list-item-content">
                             <img src="icons/BrainSide/favicon.ico"
                                 alt="Brain Side Icon" class="list-icon brain-side-icon">
@@ -369,10 +373,10 @@
                             </div>
                             <i class="fas fa-chevron-down list-chevron" aria-hidden="true"></i>
                         </div>
-                        <div class="list-item-detail">
+                        <div class="list-item-detail" id="detail-8">
                             <p class="detail-description">AI-powered interactive brain visualization. Search any
                                 activity to see which brain regions light up.</p>
-                            <a href="https://brainsidepro.onrender.com/" target="_blank" class="detail-button">
+                            <a href="https://brainsidepro.onrender.com/" target="_blank" rel="noopener noreferrer" class="detail-button">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -387,7 +391,6 @@
         </div>
     </main>
 
-
         <footer role="contentinfo">
             <div class="footer-content">
                 <div class="footer-section">
@@ -397,11 +400,11 @@
                 <div class="footer-section">
                     <p class="footer-title">Created with</p>
                     <div class="tool-links">
-                        <a href="https://claude.ai/" target="_blank" class="ai-tool-button"
+                        <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" class="ai-tool-button"
                             aria-label="Claude AI (opens in new tab)">
                             <img src="logos/claude.png" alt="" class="ai-logo">Claude
                         </a>
-                        <a href="https://chatgpt.com/" target="_blank" class="ai-tool-button"
+                        <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="ai-tool-button"
                             aria-label="ChatGPT (opens in new tab)">
                             <img src="logos/openai.png" alt="" class="ai-logo">ChatGPT
                         </a>
@@ -409,7 +412,7 @@
                 </div>
                 <div class="footer-section">
                     <p class="footer-title">Developer</p>
-                    <a href="https://github.com/hexyon" target="_blank" class="github-link"
+                    <a href="https://github.com/hexyon" target="_blank" rel="noopener noreferrer" class="github-link"
                         aria-label="Hexy's GitHub profile (opens in new tab)">
                         <i class="fab fa-github" aria-hidden="true"></i>
                         Hexy

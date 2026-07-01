@@ -26,13 +26,6 @@
     --medium-text: #e5e5e5;
 }
 
-@font-face {
-    font-family: 'Dudu Calligraphy';
-    src: url('font/Dudu_Calligraphy.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -53,32 +46,21 @@ body {
     direction: ltr;
 }
 
+/* Respect the OS-level motion preference everywhere, not just on mobile */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /* RTL Support */
 body.rtl-mode {
     direction: rtl;
-}
-
-body.rtl-mode .header-button i,
-body.rtl-mode .language-button i,
-body.rtl-mode .visit-button i {
-    margin-right: 0;
-    margin-left: 0.5rem;
-}
-
-body.rtl-mode .site-icon,
-body.rtl-mode .description-icon {
-    margin-right: 0;
-    margin-left: 1rem;
-}
-
-body.rtl-mode .badge {
-    margin-left: 0;
-    margin-right: 0.75rem;
-}
-
-body.rtl-mode .description-badge {
-    margin-left: 0;
-    margin-right: 1rem;
 }
 
 body.rtl-mode .language-dropdown {
@@ -92,7 +74,7 @@ body.rtl-mode .footer-section:first-child .footer-title::after {
     transform: none;
 }
 
-body.rtl-mode .description-text {
+body.rtl-mode .detail-description {
     text-align: right;
 }
 
@@ -100,10 +82,6 @@ body.rtl-mode .description-text {
 body.rtl-mode footer,
 body.rtl-mode .footer-content,
 body.rtl-mode .footer-section {
-    direction: ltr;
-}
-
-body.rtl-mode .nav-controls {
     direction: ltr;
 }
 
@@ -116,20 +94,6 @@ body.rtl-mode .nav-controls {
 [data-theme="dark"] .invert-in-dark {
     filter: invert(1);
     transition: filter 0.2s ease;
-}
-
-.background-gradient {
-    display: none;
-}
-
-.noise-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.05;
-    z-index: -1;
 }
 
 /* Header Styles */
@@ -155,7 +119,7 @@ header {
 }
 
 .logo h1 {
-    font-family: 'Alegreya', serif;
+    font-family: 'Alegreya', Georgia, serif;
     font-weight: 400;
     font-size: 1.45rem;
     color: var(--text-color);
@@ -249,9 +213,6 @@ header {
     color: #333333;
 }
 
-/* Hover effects */
-
-
 /* Active/pressed state */
 .toggle-switch:active .switch-thumb {
     transform: translateX(0) scale(0.92);
@@ -272,39 +233,6 @@ header {
 
 .toggle-switch:active .switch-track {
     animation: track-pulse 0.3s ease;
-}
-
-.header-buttons {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-}
-
-.header-button {
-    display: flex;
-    align-items: center;
-    padding: 0.7rem 1.3rem;
-    border-radius: var(--card-radius);
-    font-weight: 500;
-    font-size: 1rem;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    transition: var(--transition-standard);
-    background: var(--bg-color);
-    color: var(--text-color);
-}
-
-.header-button i {
-    margin-right: 0.5rem;
-    font-size: 1rem;
-}
-
-.header-button:hover {
-    opacity: 0.8;
-}
-
-.header-button:active {
-    transform: scale(0.98);
 }
 
 .language-selector {
@@ -398,7 +326,7 @@ header {
 }
 
 .settings-header h2 {
-    font-family: 'Dudu Calligraphy', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-family: 'Alegreya', Georgia, serif;
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text-color);
@@ -504,7 +432,7 @@ header {
 }
 
 .language-button i {
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
     font-size: 1rem;
 }
 
@@ -564,6 +492,32 @@ header {
     font-size: 1.1rem;
 }
 
+/* Toast notifications (replaces blocking alert() calls) */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(12px);
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--button-radius);
+    font-size: 0.92rem;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    max-width: min(420px, calc(100% - 2rem));
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 /* Main Content */
 main {
     max-width: 980px;
@@ -587,10 +541,7 @@ main {
     font-weight: 600;
     color: var(--text-color-secondary);
     margin-bottom: 10px;
-    padding: 0 16px 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    border-left: 2px solid var(--primary-color);
+    padding: 0 16px;
 }
 
 .list-group {
@@ -632,6 +583,7 @@ main {
     align-items: center;
     padding: 12px 16px;
     gap: 12px;
+    overflow: hidden;
 }
 
 .list-item.expanded .list-item-content {
@@ -643,10 +595,8 @@ main {
 .list-icon {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
     object-fit: contain;
     flex-shrink: 0;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 
 .brain-side-icon {
@@ -662,10 +612,22 @@ main {
 .list-text {
     flex: 1;
     min-width: 0;
+    position: relative;
+    padding-left: 6px;
+}
+
+.list-text::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: -999px;
+    bottom: -999px;
+    width: 1px;
+    background: var(--border-color);
 }
 
 .list-title {
-    font-family: 'Dudu Calligraphy', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-family: 'Alegreya', Georgia, serif;
     font-weight: 500;
     font-size: 1.3rem;
     color: var(--text-color);
@@ -726,17 +688,15 @@ main {
 }
 
 .detail-button:hover {
-    background: rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .detail-button:hover {
-    background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.25);
 }
 
 .detail-button:active {
-    opacity: 0.7;
+    opacity: 1;
     transition: opacity 0.1s ease;
 }
 
@@ -750,274 +710,150 @@ main {
     display: inline-block;
 }
 
-
+/* Footer */
 footer {
-    background: linear-gradient(rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.00)), url('images/FlagofUSA.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: min(890px, calc(100% - 2rem));
-    padding: 3.12rem 2.04rem 2.14rem;
-    margin: 1.85rem auto 2rem;
-    border-top: 1px solid rgba(226, 232, 240, 0.8);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    aspect-ratio: 1.9 / 1;
-    max-height: 618px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    padding: 3rem 2rem 2.5rem;
 }
-
-
-
 
 [data-theme="dark"] footer {
-    border-top: none;
-}
-
-.footer-section {
-    backdrop-filter: saturate(1.1) blur(2px);
-}
-
-.footer-section,
-.footer-section p,
-.footer-title {
-    color: #111827;
-}
-
-[data-theme="dark"] .footer-section,
-[data-theme="dark"] .footer-section p,
-[data-theme="dark"] .footer-title {
-    color: #f9fafb;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.58);
-    z-index: 1;
-}
-
-footer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%,
-            rgba(255, 255, 255, 0.07) 0%,
-            rgba(255, 255, 255, 0.025) 70%,
-            transparent 100%);
-    pointer-events: none;
-    z-index: 1;
+    --bg-color: #f0f0f0;
+    --text-color: #333333;
+    --text-color-secondary: #6c757d;
+    --border-color: rgba(0, 0, 0, 0.1);
+    background: #f0f0f0;
+    border-top-color: rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 0.9fr 0.9fr;
-    gap: 1.4rem;
-    max-width: 1200px;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 0 1.05rem;
     align-items: start;
-    position: relative;
-    z-index: 2;
 }
 
 .footer-section {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.64rem;
-    text-align: center;
-    margin-bottom: 0;
-    min-height: 0;
-    background: rgba(255, 255, 255, 0.12);
-    padding: 0.96rem 1.08rem 1rem;
+    gap: 0.65rem;
+    text-align: left;
+    background: var(--bg-color);
+    padding: 1.25rem 1.4rem;
     border-radius: var(--button-radius);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
-    backdrop-filter: blur(10px) saturate(125%);
+    border: 1px solid var(--border-color);
     transition: var(--transition-standard);
 }
 
 .footer-section:hover {
-    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
-    background: rgba(255, 255, 255, 0.14);
+    border-color: var(--border-color);
 }
 
-.footer-section:first-child {
-    text-align: left;
-    min-height: 146px;
-}
-
-.footer-section:first-child p:not(.footer-title) {
-    line-height: 1.42;
+.footer-section p:not(.footer-title) {
+    color: var(--text-color-secondary);
     font-size: 0.94rem;
+    line-height: 1.5;
     margin: 0;
-    text-align: left;
-}
-
-.footer-section:first-child .footer-title {
-    text-align: left;
-}
-
-.footer-section:first-child .footer-title::after {
-    left: 0;
-    width: 100%;
-    transform: none;
 }
 
 .footer-title {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-family: 'Alegreya', Georgia, serif;
     font-weight: 600;
-    font-size: 1.12rem;
-    color: var(--dark-text);
-    line-height: 1.2;
-    letter-spacing: 0;
-    margin-bottom: 0.08rem;
-    position: relative;
-    display: block;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.footer-title::after {
-    content: '';
-    display: block;
-    position: relative;
-    left: 0;
-    bottom: auto;
-    width: 100%;
-    height: 1px;
-    margin-top: 0.68rem;
-    background: rgba(255, 255, 255, 0.68);
-    border-radius: 999px;
-    box-shadow: none;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
 }
 
 .tool-links {
     display: flex;
-    justify-content: center;
-    gap: 0.76rem;
-    margin-top: 0.18rem;
-    flex-wrap: nowrap;
-    width: 100%;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
 }
 
 .tool-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1f2937;
+    color: var(--text-color);
     text-decoration: none;
-    min-height: 56px;
-    font-size: 1.02rem;
+    min-height: 44px;
+    font-size: 0.94rem;
     font-weight: 500;
-    padding: 0 1.32rem;
+    padding: 0 1rem;
     flex: 1 1 0;
     border-radius: var(--button-radius);
-    background: rgba(255, 255, 255, 0.10);
-    text-shadow: none;
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.26);
-    transition: all 0.24s ease;
-    -webkit-tap-highlight-color: transparent;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
 }
 
 .tool-links a i {
-    margin-right: 0.5rem;
-}
-
-.ai-tool-button {
-    padding: 0 1.32rem !important;
-    font-size: 1.02rem !important;
+    margin-inline-end: 0.5rem;
 }
 
 .ai-logo {
     width: 18px;
     height: 18px;
-    margin-right: 0.42rem;
+    margin-inline-end: 0.42rem;
     object-fit: contain;
     vertical-align: middle;
 }
 
 .tool-links a:hover {
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.34);
-    color: inherit;
-    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
-.tool-links a:focus {
-    outline: none;
+
+
+.tool-links a:active {
+    transform: scale(0.88);
+    transition: transform 0.07s ease;
 }
 
 .github-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1f2937;
+    color: var(--text-color);
     text-decoration: none;
-    min-height: 56px;
+    min-height: 44px;
     width: 100%;
-    font-size: 1.02rem;
+    font-size: 0.94rem;
     font-weight: 500;
-    padding: 0 1.32rem;
+    padding: 0 1rem;
     border-radius: var(--button-radius);
-    background: rgba(255, 255, 255, 0.10);
-    text-shadow: none;
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.26);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-tap-highlight-color: transparent;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
 }
 
 .github-link i {
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
 }
 
 .github-link:hover {
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.34);
-    color: inherit;
-    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
-.github-link:focus {
-    outline: none;
+
+
+.github-link:active {
+    transform: scale(0.88);
+    transition: transform 0.07s ease;
 }
 
 .copyright {
-    max-width: 1200px;
-    margin: 1.7rem auto 0;
-    padding: 0 1.75rem;
+    max-width: 980px;
+    margin: 2rem auto 0;
     text-align: center;
-    position: relative;
-    z-index: 2;
 }
 
 .copyright p {
-    color: #6E6E73;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.10);
-    padding: 0.72rem 1.4rem;
-    border-radius: var(--button-radius);
-    display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.10);
+    color: var(--text-color-secondary);
+    font-size: 0.85rem;
+    margin: 0;
 }
 
 /* Responsive Styles */
@@ -1033,12 +869,6 @@ footer::after {
     .logo {
         flex: 1;
         order: 1;
-    }
-
-    .header-buttons {
-        order: 2;
-        flex: none;
-        gap: 0.5rem;
     }
 
     .language-selector {
@@ -1082,323 +912,46 @@ footer::after {
         transform: translateX(30px);
     }
 
-    .header-buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 0.75rem;
-    }
-
-    .header-button {
-        padding: 0.7rem 0.9rem;
-        min-width: 48px;
-        min-height: 48px;
-        justify-content: center;
-    }
-
-    .header-button span {
-        display: none;
-    }
-
-    .header-button i {
-        margin-right: 0;
-        font-size: 1.3rem;
-    }
-
-
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1rem;
     }
 
     .footer-section {
-        margin-bottom: 1rem;
-        padding: 1.25rem 1rem;
-        border-radius: var(--button-radius);
+        text-align: center;
+    }
+
+    .footer-section p:not(.footer-title) {
+        text-align: center;
     }
 }
-
-@media (min-width: 769px) {
-    footer {
-        padding: 0;
-        width: min(836px, calc(100% - 2rem));
-        max-height: 582px;
-        margin: 1.75rem auto 1.7rem;
-    }
-
-    .footer-content {
-        position: absolute;
-        top: calc(100% * 2.05 / 13);
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 3.9rem);
-        max-width: 808px;
-        grid-template-columns: 0.78fr 1.08fr 0.86fr;
-        gap: 1.26rem;
-        margin: 0;
-        padding: 0;
-    }
-
-    .footer-section {
-        gap: 0.68rem;
-        padding: 1rem 1.16rem 1.06rem;
-        border-radius: var(--button-radius);
-    }
-
-    .footer-section:first-child {
-        max-width: 232px;
-        min-height: 146px;
-        justify-self: start;
-    }
-
-    .footer-section:first-child p:not(.footer-title) {
-        max-width: 16ch;
-        font-size: 1rem;
-        line-height: 1.42;
-    }
-
-    .footer-title {
-        font-size: 1.22rem;
-    }
-
-    .footer-title::after {
-        margin-top: 0.62rem;
-    }
-
-    .tool-links {
-        gap: 0.68rem;
-    }
-
-    .tool-links a,
-    .github-link {
-        min-height: 52px;
-        font-size: 0.97rem;
-        padding: 0 1.15rem;
-    }
-
-    .ai-tool-button {
-        padding: 0 1.15rem !important;
-        font-size: 1.2rem !important;
-    }
-
-    .ai-logo {
-        width: 20px;
-        height: 20px;
-        margin-right: 0.5rem;
-    }
-
-    .copyright {
-        position: absolute;
-        left: 50%;
-        bottom: calc(100% * 1.6 / 13);
-        transform: translateX(-50%);
-        width: fit-content;
-        max-width: calc(100% - 4.4rem);
-        margin: 0;
-        padding: 0;
-    }
-
-    .copyright p {
-        font-size: 0.87rem;
-        padding: 0.62rem 1.18rem;
-    }
-
-    .footer-section,
-    .footer-section p,
-    .footer-title {
-        color: rgba(255, 255, 255, 0.95) !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
-    }
-
-    .copyright p {
-        color: rgba(255, 255, 255, 0.95) !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
-    }
-
-    .tool-links a,
-    .github-link {
-        color: rgba(255, 255, 255, 0.92);
-    }
-
-    .github-link {
-        font-size: 1.2rem;
-    }
-
-    .github-link i {
-        font-size: 20px;
-        margin-right: 0.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-
-
-    footer {
-        background-image: none !important;
-        background: var(--bg-color) !important;
-        width: auto;
-        padding: 2.5rem 1rem max(1.5rem, env(safe-area-inset-bottom));
-        margin: 0;
-        aspect-ratio: auto !important;
-        height: auto !important;
-        max-height: none !important;
-        border-top: 0.5px solid var(--border-color) !important;
-    }
-
-    footer::before {
-        background: none;
-    }
-
-    footer::after {
-        background: none;
-    }
-
-    .footer-content {
-        padding: 0 0.5rem;
-    }
-
-    .footer-section {
-        text-align: center !important;
-    }
-
-    [data-theme="dark"] .footer-section {
-        background: rgba(30, 30, 32, 0.85) !important;
-        border: 1px solid rgba(60, 60, 67, 0.6) !important;
-    }
-
-    .footer-section:first-child {
-        text-align: center !important;
-    }
-
-    .footer-section:first-child p:not(.footer-title) {
-        text-align: center !important;
-    }
-
-    .footer-section:first-child .footer-title {
-        text-align: center !important;
-    }
-
-    .footer-section:first-child .footer-title::after {
-        left: 0;
-        width: 100%;
-        transform: none;
-    }
-
-    .footer-title {
-        color: #1f2937 !important;
-        text-shadow: none !important;
-    }
-
-    [data-theme="dark"] .footer-title {
-        color: #f9fafb !important;
-        text-shadow: none !important;
-    }
-
-    .footer-section p {
-        color: #374151 !important;
-        text-shadow: none !important;
-    }
-
-    [data-theme="dark"] .footer-section p {
-        color: #e5e7eb !important;
-        text-shadow: none !important;
-    }
-
-    .tool-links {
-        flex-direction: column;
-        gap: 0.875rem;
-        align-items: stretch;
-    }
-
-    .tool-links a {
-        padding: 0.875rem 1.25rem;
-        font-size: 1.05rem;
-        min-height: 50px;
-        border-radius: var(--button-radius);
-        font-weight: 600;
-    }
-
-    .github-link {
-        padding: 0.875rem 1.25rem;
-        font-size: 1.05rem;
-        min-height: 50px;
-        border-radius: var(--button-radius);
-        font-weight: 600;
-    }
-
-    .tool-links a,
-    .github-link {
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
-        color: #1f2937 !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        border: 0.5px solid rgba(226, 232, 240, 0.8);
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-theme="dark"] .tool-links a,
-    [data-theme="dark"] .github-link {
-        background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%) !important;
-        color: #f9fafb !important;
-        border: 1px solid rgba(60, 60, 67, 0.6);
-    }
-
-    .tool-links a:active,
-    .github-link:active {
-        transform: scale(0.96);
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    }
-
-    .copyright p {
-        color: #6E6E73 !important;
-        text-shadow: none !important;
-        font-size: 0.875rem;
-        padding: 0.75rem 1.25rem;
-        background: rgba(255, 255, 255, 0.6) !important;
-        border-radius: var(--button-radius);
-    }
-
-    [data-theme="dark"] .copyright p {
-        color: #a1a1a6 !important;
-        background: rgba(30, 30, 32, 0.85) !important;
-        border: 1px solid rgba(60, 60, 67, 0.6);
-    }
-
-    .rtl-toggle-circle {
-        display: none !important;
-    }
-}
-
 
 /* ============================================
-   Section Title — "Applications"
+   Header Title - "Applications"
    ============================================ */
 
-.section-title-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 3rem 2rem 0.5rem;
-}
-
-.section-title-text {
+.header-title {
+    grid-column: 2;
     font-family: 'Alegreya', Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-weight: 500;
+    font-size: 1.3rem;
     color: var(--text-color);
     margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    border: 1.5px solid #000000;
+    padding: 0.85rem 1.35rem 0.8rem;
+    position: relative;
 }
 
-@media (max-width: 768px) {
-    .section-title-wrapper {
-        padding: 2rem 1.5rem 0.25rem;
-    }
-
-    .section-title-text {
-        font-size: clamp(2rem, 8vw, 2.6rem);
-    }
+.header-title::before {
+    content: none;
 }
+
+[data-theme="dark"] .header-title {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
 
 /* ============================================
    Micro-interactions
