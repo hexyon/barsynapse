@@ -20,12 +20,17 @@
     }
 
     .logo h1 {
-        font-size: 1.4rem;
-        padding: 0.5rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.2rem 0 0;
     }
 
     .header-title {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
+    }
+
+    .default-language-button {
+        font-size: 0.78rem;
+        padding: 0.6rem 0.6rem;
     }
 }
 
@@ -41,7 +46,7 @@
     /* Header Optimization */
     header {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.5rem;
         padding: max(1.25rem, var(--safe-area-inset-top)) 1.25rem 1.25rem 1.25rem;
     }
 
@@ -51,19 +56,25 @@
     }
 
     .logo h1 {
-        font-size: 1.5rem;
-        padding: 0.6rem 1.2rem;
-        min-height: 58px;
+        border: none;
+        background: none;
+        font-size: 1.65rem;
+        padding: 0.2rem 0 0;
+        min-height: 0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        line-height: 1.1;
+        line-height: 1.15;
     }
 
     .header-title {
         grid-column: 1;
         order: 2;
-        font-size: 1.1rem;
+        border: none;
+        padding: 0 0 0.35rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--text-color-secondary);
         white-space: normal;
     }
 
@@ -71,7 +82,8 @@
         grid-column: 1;
         order: 3;
         justify-content: center;
-        gap: 0.5rem;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
         width: 100%;
     }
 
@@ -80,8 +92,9 @@
     .default-language-button,
     .language-button {
         min-height: 44px;
-        min-width: 44px;
-        padding: 0.75rem 1rem;
+        min-width: 0;
+        padding: 0.65rem 0.85rem;
+        flex-shrink: 0;
     }
 
     .settings-button,
@@ -89,6 +102,26 @@
         width: 44px;
         height: 44px;
         padding: 0.75rem;
+    }
+
+    .default-language-button {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .language-button {
+        padding: 0.65rem;
+        width: 44px;
+        justify-content: center;
+    }
+
+    .language-button span {
+        display: none;
+    }
+
+    .language-button i {
+        margin-inline-end: 0;
+        font-size: 1.05rem;
     }
 
     /* Main Content */
@@ -138,14 +171,15 @@
     }
 
     .list-title {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         font-weight: 500;
-        margin-bottom: 3px;
+        line-height: 1.25;
+        margin-bottom: 2px;
     }
 
     .list-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.4;
+        font-size: 0.92rem;
+        line-height: 1.35;
     }
 
     .list-chevron {
@@ -272,7 +306,7 @@
 
     .logo h1 {
         font-size: 1.3rem;
-        padding: 0.5rem 1rem;
+        padding: 0.2rem 0 0;
     }
 
     main {
