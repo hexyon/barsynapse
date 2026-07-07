@@ -301,12 +301,47 @@
 /* Landscape Orientation Adjustments */
 @media (max-width: 768px) and (orientation: landscape) {
     header {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
         padding: max(0.75rem, var(--safe-area-inset-top)) 1rem 0.75rem 1rem;
     }
 
+    .logo {
+        justify-content: center;
+        order: 1;
+    }
+
     .logo h1 {
+        border: none;
+        background: none;
         font-size: 1.3rem;
         padding: 0.2rem 0 0;
+        min-height: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.15;
+    }
+
+    .header-title {
+        grid-column: 1;
+        order: 2;
+        border: none;
+        padding: 0 0 0.25rem;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: var(--text-color-secondary);
+        white-space: normal;
+        text-align: center;
+    }
+
+    .language-selector {
+        grid-column: 1;
+        order: 3;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        width: 100%;
     }
 
     main {
