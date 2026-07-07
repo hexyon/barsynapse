@@ -1,269 +1,320 @@
 :root {
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
 }
 
-/* ==========================================================
-   Mobile (phones)
-========================================================== */
+/* ============================================
+   Mobile Breakpoints
+   ============================================ */
 
-@media (max-width:768px){
-
-    html{
-        -webkit-text-size-adjust:100%;
-        text-size-adjust:100%;
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    body {
+        font-size: 16px;
     }
 
-    body{
-        font-size:17px;
-        line-height:1.5;
-        overflow-x:hidden;
+    header {
+        padding: max(1rem, var(--safe-area-inset-top)) 1rem 1rem 1rem;
     }
 
-    /* ---------------- Header ---------------- */
+    .logo h1 {
+        font-size: 1.4rem;
+        padding: 0.5rem 1rem;
+    }
+}
 
-    header{
-        position:sticky;
-        top:0;
-        z-index:1000;
+/* Standard phones (iPhone 12, 13, 14, etc.) */
+@media (max-width: 768px) {
 
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-
-        gap:14px;
-
-        padding:
-            max(16px,var(--safe-top))
-            16px
-            16px;
-
-        background:var(--bg-color);
+    /* Base Typography */
+    body {
+        font-size: 17px;
+        line-height: 1.5;
     }
 
-    .logo{
-        width:100%;
-        justify-content:center;
+    /* Header Optimization */
+    header {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: max(1.25rem, var(--safe-area-inset-top)) 1.25rem 1.25rem 1.25rem;
     }
 
-    .logo h1{
-        font-size:1.5rem;
-        padding:.65rem 1.25rem;
-        line-height:1;
+    .logo {
+        justify-content: center;
+        order: 1;
     }
 
-    .language-selector{
-        width:100%;
-        display:flex;
-        justify-content:center;
-        flex-wrap:wrap;
-        gap:8px;
+    .logo h1 {
+        font-size: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        min-height: 58px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.1;
+    }
+
+    .language-selector {
+        grid-column: 1;
+        order: 2;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
     }
 
     .settings-button,
     .header-icon-button,
     .default-language-button,
-    .language-button{
-        min-width:44px;
-        min-height:44px;
+    .language-button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1rem;
     }
 
-    /* ---------------- Main ---------------- */
-
-    main{
-
-        max-width:100%;
-
-        padding:
-            18px
-            18px
-            calc(40px + var(--safe-bottom));
-
-        margin:0;
+    .settings-button,
+    .header-icon-button {
+        width: 44px;
+        height: 44px;
+        padding: 0.75rem;
     }
 
-    .apps-list{
-        gap:22px;
-        padding-top:4px;
+    /* Main Content */
+    main {
+        padding: 1rem 1.25rem 2rem;
+        padding-bottom: max(2rem, calc(2rem + var(--safe-area-inset-bottom)));
     }
 
-    .list-section{
-        margin:0;
+
+    /* List View Optimization */
+    .apps-list {
+        padding: 0;
+        gap: 24px;
     }
 
-    .list-section-header{
-
-        font-size:13px;
-        padding:10px 16px;
+    .list-section {
+        margin-bottom: 24px;
     }
 
-    .list-item{
-
-        min-height:72px;
-
-        scroll-margin-top:150px;
+    .list-section-header {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 16px;
+        margin-bottom: 0;
     }
 
-    .list-item-content{
-
-        padding:14px 16px;
-
-        gap:14px;
+    .list-group {
+        border-radius: var(--content-radius);
     }
 
-    .list-icon{
-
-        width:48px;
-        height:48px;
-        min-width:48px;
+    .list-item {
+        min-height: 72px;
+        padding: 0;
+        margin-bottom: 0;
     }
 
-    .list-title{
-
-        font-size:1.15rem;
+    .list-item-content {
+        padding: 14px 16px;
+        gap: 14px;
     }
 
-    .list-subtitle{
-
-        font-size:.95rem;
+    .list-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: var(--content-radius);
     }
 
-    .list-chevron{
-
-        font-size:18px;
+    .list-title {
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-bottom: 3px;
     }
 
-    .detail-description{
-
-        padding:0 16px 16px;
-
-        font-size:1rem;
-
-        line-height:1.6;
+    .list-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.4;
     }
 
-    .detail-button{
-
-        min-height:44px;
-
-        padding:12px 18px;
-
-        margin:0 16px 16px;
+    .list-chevron {
+        font-size: 1.1rem;
+        margin-inline-start: 4px;
     }
 
-    /* ---------------- Settings ---------------- */
-
-    .settings-panel{
-
-        width:100%;
-
-        right:-100%;
+    .list-item-detail {
+        padding: 0;
     }
 
-    .settings-panel.active{
-
-        right:0;
+    .detail-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        padding: 0 16px 12px;
     }
 
-    .settings-header{
-
-        padding:
-            max(20px,calc(20px + var(--safe-top)))
-            20px
-            20px;
+    .detail-button {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        margin: 0 16px 16px;
+        gap: 10px;
+        border-radius: var(--content-radius);
     }
 
-    .settings-content{
-
-        padding:20px;
+    .detail-button .icon {
+        width: 20px;
+        height: 20px;
     }
 
-    /* ---------------- Language Menu ---------------- */
-
-    .language-dropdown{
-
-        left:50%;
-
-        right:auto;
-
-        transform:translateX(-50%);
-
-        min-width:220px;
+    /* Settings Panel - Full Screen on Mobile */
+    .settings-panel {
+        width: 100%;
+        right: -100%;
     }
 
-    .language-option{
-
-        min-height:44px;
-
-        display:flex;
-
-        align-items:center;
+    .settings-panel.active {
+        right: 0;
     }
 
-    /* ---------------- Footer ---------------- */
-
-    footer{
-
-        padding:
-            32px
-            18px
-            calc(32px + var(--safe-bottom));
+    .settings-header {
+        padding: max(1.25rem, calc(1.25rem + var(--safe-area-inset-top))) 1.5rem 1.25rem 1.5rem;
     }
 
-    .footer-content{
-
-        grid-template-columns:1fr;
+    .settings-header h2 {
+        font-size: 1.75rem;
     }
 
-    .footer-section{
-
-        text-align:center;
+    .close-settings {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
     }
 
+    .settings-content {
+        padding: 1.5rem;
+    }
+
+    .setting-item {
+        padding: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .setting-label {
+        font-size: 1.05rem;
+    }
+
+    /* Toggle Switch - Larger for Mobile */
+    .toggle-switch {
+        width: 56px;
+        height: 32px;
+    }
+
+    .switch-track {
+        border-radius: var(--content-radius);
+    }
+
+    .switch-thumb {
+        width: 26px;
+        height: 26px;
+        top: 2px;
+        left: 2px;
+    }
+
+    [data-theme="dark"] .toggle-switch .switch-thumb {
+        transform: translateX(24px);
+    }
+
+    [data-theme="dark"] .toggle-switch:hover .switch-thumb {
+        transform: translateX(24px) scale(1.08);
+    }
+
+    [data-theme="dark"] .toggle-switch:active .switch-thumb {
+        transform: translateX(24px) scale(0.92);
+    }
+
+    /* Language Dropdown */
+    .language-dropdown {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        min-width: 200px;
+    }
+
+    .language-option {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    /* Footer */
+    .copyright {
+        padding-top: 1.5rem;
+        font-size: 0.9rem;
+    }
 }
 
-/* ==========================================================
-   Small Phones
-========================================================== */
-
-@media (max-width:375px){
-
-    body{
-
-        font-size:16px;
+/* Landscape Orientation Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        padding: max(0.75rem, var(--safe-area-inset-top)) 1rem 0.75rem 1rem;
     }
 
-    .logo h1{
-
-        font-size:1.35rem;
+    .logo h1 {
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
     }
 
-    .language-selector{
-
-        gap:6px;
+    main {
+        padding: 0 1rem 1.5rem;
     }
 
+    footer {
+        padding: 1.5rem 1rem;
+        padding-bottom: max(1.5rem, calc(1.5rem + var(--safe-area-inset-bottom)));
+    }
 }
 
-/* ==========================================================
-   Landscape Phones
-========================================================== */
+/* Tablets (iPad, etc.) */
+@media (min-width: 769px) and (max-width: 1024px) {
 
-@media (max-width:768px) and (orientation:landscape){
-
-    header{
-
-        gap:10px;
-
-        padding:
-            max(12px,var(--safe-top))
-            16px
-            12px;
+    /* Maintain touch targets */
+    .detail-button,
+    .settings-button,
+    .header-icon-button,
+    .default-language-button,
+    .language-button {
+        min-height: 44px;
+        min-width: 44px;
     }
 
-    .logo h1{
-
-        font-size:1.3rem;
+    /* Safe area support */
+    header {
+        padding-top: max(1.5rem, var(--safe-area-inset-top));
+        padding-left: max(2rem, var(--safe-area-inset-left));
+        padding-right: max(2rem, var(--safe-area-inset-right));
     }
 
+    main {
+        padding-bottom: max(3rem, calc(3rem + var(--safe-area-inset-bottom)));
+    }
+
+    footer {
+        padding-bottom: max(2rem, calc(2rem + var(--safe-area-inset-bottom)));
+    }
+}
+
+/* Prevent text size adjustment on orientation change */
+@media (max-width: 768px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* Improve tap highlight */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: rgba(0, 122, 255, 0.1);
+    }
 }
