@@ -129,9 +129,6 @@ function applyTranslation(trans) {
         visitAllIconButton.setAttribute('title', trans.header.launchAllButton);
     }
 
-    const sectionTitleText = document.querySelector('.section-title-text');
-    if (sectionTitleText) sectionTitleText.textContent = trans.sectionTitle;
-
     const listItems = document.querySelectorAll('.list-item');
     listItems.forEach((item) => {
         const index = parseInt(item.getAttribute('data-index'));
