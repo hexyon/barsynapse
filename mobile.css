@@ -38,9 +38,11 @@
         line-height: 1.5;
     }
 
-    /* Header Optimization */
+    /* Header Optimization — stack vertically: logo → title → controls */
     header {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 0.75rem;
         padding: max(1.25rem, var(--safe-area-inset-top)) 1.25rem 1.25rem 1.25rem;
     }
@@ -48,12 +50,12 @@
     .logo {
         justify-content: center;
         order: 1;
+        width: auto;
     }
 
     .logo h1 {
         font-size: 1.5rem;
         padding: 0.6rem 1.2rem;
-        min-height: 58px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -61,18 +63,22 @@
     }
 
     .header-title {
-        grid-column: 1;
         order: 2;
         font-size: 1.1rem;
         white-space: normal;
+        text-align: center;
+        width: 100%;
+        /* Override desktop grid-column */
+        grid-column: unset;
     }
 
     .language-selector {
-        grid-column: 1;
         order: 3;
         justify-content: center;
         gap: 0.5rem;
         width: 100%;
+        /* Override desktop grid-column */
+        grid-column: unset;
     }
 
     .settings-button,
@@ -267,6 +273,9 @@
 /* Landscape Orientation Adjustments */
 @media (max-width: 768px) and (orientation: landscape) {
     header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         padding: max(0.75rem, var(--safe-area-inset-top)) 1rem 0.75rem 1rem;
     }
 
