@@ -76,7 +76,10 @@ function toggleListItem(item) {
         item.classList.add('expanded');
         item.setAttribute('aria-expanded', 'true');
         setTimeout(() => {
-            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            item.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+});
         }, 100);
     }
 }
