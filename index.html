@@ -26,28 +26,32 @@
 </div>
 <h2 class="header-title">Applications</h2>
         <nav class="language-selector" aria-label="Language selection">
-            <button class="settings-button" onclick="toggleSettingsPanel()" aria-label="Open settings"
-                aria-expanded="false">
-                <i class="fas fa-cog" aria-hidden="true"></i>
-            </button>
-            <button class="header-icon-button visit-all-icon-button" onclick="openAllWebsites()"
-                aria-label="Visit all applications in new tabs" title="Visit All">
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </button>
-            <button class="default-language-button" onclick="changeLanguage('en')"
-                aria-label="Switch to English">English</button>
-            <button class="language-button" onclick="toggleLanguageMenu()" aria-label="Select language"
-                aria-expanded="false" aria-haspopup="true">
-                <i class="fas fa-language" aria-hidden="true"></i>
-                <span>Language</span>
-            </button>
-            <div class="language-dropdown" id="language-dropdown" role="menu" aria-label="Available languages">
-                <div class="language-option" onclick="changeLanguage('he')" role="menuitem" tabindex="0">Hebrew</div>
-                <div class="language-option" onclick="changeLanguage('ar')" role="menuitem" tabindex="0">Arabic</div>
-                <div class="language-option" onclick="changeLanguage('ku')" role="menuitem" tabindex="0">Kurdish</div>
-                <div class="language-option" onclick="changeLanguage('tr')" role="menuitem" tabindex="0">Turkish</div>
-                <div class="language-option" onclick="changeLanguage('hy')" role="menuitem" tabindex="0">Armenian</div>
-                <div class="language-option" onclick="changeLanguage('ka')" role="menuitem" tabindex="0">Georgian</div>
+            <div class="action-buttons-group">
+                <button class="settings-button" onclick="toggleSettingsPanel()" aria-label="Open settings"
+                    aria-expanded="false">
+                    <i class="fas fa-cog" aria-hidden="true"></i>
+                </button>
+                <button class="header-icon-button visit-all-icon-button" onclick="openAllWebsites()"
+                    aria-label="Visit all applications in new tabs" title="Visit All">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="language-buttons-group">
+                <button class="default-language-button" onclick="changeLanguage('en')"
+                    aria-label="Switch to English">English</button>
+                <button class="language-button" onclick="toggleLanguageMenu()" aria-label="Select language"
+                    aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-language" aria-hidden="true"></i>
+                    <span>Language</span>
+                </button>
+                <div class="language-dropdown" id="language-dropdown" role="menu" aria-label="Available languages">
+                    <div class="language-option" onclick="changeLanguage('he')" role="menuitem" tabindex="0">Hebrew</div>
+                    <div class="language-option" onclick="changeLanguage('ar')" role="menuitem" tabindex="0">Arabic</div>
+                    <div class="language-option" onclick="changeLanguage('ku')" role="menuitem" tabindex="0">Kurdish</div>
+                    <div class="language-option" onclick="changeLanguage('tr')" role="menuitem" tabindex="0">Turkish</div>
+                    <div class="language-option" onclick="changeLanguage('hy')" role="menuitem" tabindex="0">Armenian</div>
+                    <div class="language-option" onclick="changeLanguage('ka')" role="menuitem" tabindex="0">Georgian</div>
+                </div>
             </div>
         </nav>
     </header>
