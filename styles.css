@@ -244,18 +244,6 @@ header {
     justify-content: flex-end;
 }
 
-.action-buttons-group {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.language-buttons-group {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
 .settings-button,
 .header-icon-button {
     display: flex;
