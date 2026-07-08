@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;700&display=swap');
 
 :root {
     --bg-color: #f0f0f0;
@@ -251,9 +251,9 @@ header {
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--card-radius);
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
     font-weight: 500;
     font-size: 1rem;
     border: 1px solid var(--border-color);
@@ -265,7 +265,7 @@ header {
 
 .settings-button i,
 .header-icon-button i {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .settings-button:hover,
@@ -395,8 +395,11 @@ header {
 .default-language-button {
     display: flex;
     align-items: center;
-    padding: 0.7rem 1.3rem;
-    border-radius: var(--card-radius);
+    justify-content: center;
+    width: 120px;
+    height: 44px;
+    padding: 0;
+    border-radius: 0;
     font-weight: 500;
     font-size: 1rem;
     border: 1px solid var(--border-color);
@@ -411,7 +414,13 @@ header {
 }
 
 .default-language-button:hover {
-    opacity: 0.8;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://flagcdn.com/w80/us.png'), url('https://flagcdn.com/w80/gb.png');
+    background-position: center, left center, right center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 100% 100%, 50% 100%, 50% 100%;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    opacity: 1;
 }
 
 .default-language-button:active {
@@ -421,8 +430,11 @@ header {
 .language-button {
     display: flex;
     align-items: center;
-    padding: 0.7rem 1.3rem;
-    border-radius: var(--card-radius);
+    justify-content: center;
+    width: 120px;
+    height: 44px;
+    padding: 0;
+    border-radius: 0;
     font-weight: 500;
     font-size: 1rem;
     border: 1px solid var(--border-color);
@@ -434,7 +446,7 @@ header {
 
 .language-button i {
     margin-inline-end: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.15rem;
 }
 
 .language-button:hover {
